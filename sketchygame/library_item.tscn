@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=3 uid="uid://bqe4q4ta5d6lt"]
+
+[ext_resource type="Script" uid="uid://ccpmmi7vb2npc" path="res://LibraryItem.cs" id="1_ca7xm"]
+[ext_resource type="FontFile" uid="uid://d1028gp713hqs" path="res://Fonts/Inter_24pt-ExtraBold.ttf" id="1_fmu0b"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mfa01"]
+bg_color = Color(0.00784314, 0.188235, 0.278431, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fmu0b"]
+bg_color = Color(0.877616, 0.877616, 0.877616, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 0.717647, 0.0117647, 1)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[node name="LibraryItem" type="Button"]
+offset_right = 256.0
+offset_bottom = 316.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_mfa01")
+script = ExtResource("1_ca7xm")
+
+[node name="ThumbnailContainer" type="Panel" parent="."]
+clip_contents = true
+layout_mode = 0
+offset_left = 18.0
+offset_top = 18.0
+offset_right = 238.0
+offset_bottom = 238.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fmu0b")
+
+[node name="Thumbnail" type="TextureRect" parent="ThumbnailContainer"]
+layout_mode = 0
+offset_right = 220.0
+offset_bottom = 220.0
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 263.0
+offset_right = 238.0
+offset_bottom = 291.0
+theme_override_colors/font_color = Color(0.129412, 0.619608, 0.737255, 1)
+theme_override_fonts/font = ExtResource("1_fmu0b")
+theme_override_font_sizes/font_size = 22
+text = "Object name"
+horizontal_alignment = 1
+vertical_alignment = 1
