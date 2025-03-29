@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://yuc0gpd5yr0l"]
+
+[ext_resource type="Texture2D" uid="uid://c7cq6mwp8adju" path="res://assets/images/test.png" id="1_no8ku"]
+[ext_resource type="Theme" uid="uid://dworn1ge53j5i" path="res://assets/styles/SaveItemComponentStyle.tres" id="1_o50to"]
+[ext_resource type="Script" uid="uid://bise20r2eke2x" path="res://scenes/scripts/SaveItemComponent/SaveitemComponent.cs" id="2_cghyb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_cghyb"]
+font_size = 24
+
+[node name="SaveItemComponent" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 120.0
+size_flags_horizontal = 3
+focus_mode = 0
+theme = ExtResource("1_o50to")
+alignment = 0
+script = ExtResource("2_cghyb")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Button"]
+layout_mode = 1
+offset_top = 10.0
+offset_right = 500.0
+offset_bottom = 110.0
+
+[node name="Description" type="Label" parent="Button/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Save ## - dd.mm.YYYY"
+label_settings = SubResource("LabelSettings_cghyb")
+
+[node name="ThumbnailRect" type="TextureRect" parent="Button/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+texture = ExtResource("1_no8ku")
+expand_mode = 2
