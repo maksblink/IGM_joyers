@@ -3,18 +3,15 @@ using System;
 
 public partial class LibraryItem : Button
 {
-	private TextureRect _thumbnail;
-	private Label _name;
+	[Export] private Texture2D _thumbnail;
+	[Export] private string _name;
 
+	public Texture2D Thumbnail {get => _thumbnail; set => _thumbnail = value; } 
+	public string Name {get => _name; set => _name = value; } 
+	
 	public override void _Ready()
 	{
-		_thumbnail = GetNode<TextureRect>("%Thumbnail");
-		_name = GetNode<Label>("%Name");
-	}
-
-	public override void _Process(double delta)
-	{
-		_thumbnail.Texture = texture;
-		_name.Text = displayName;
+		GetNode<TextureRect>("%Thumbnail").Texture = _thumbnail;
+		GetNode<Label>("%Name").Text = _name;
 	}
 }
