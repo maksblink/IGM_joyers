@@ -23,34 +23,47 @@ corner_radius_bottom_right = 18
 corner_radius_bottom_left = 18
 
 [node name="LibraryItem" type="Button"]
-offset_right = 256.0
-offset_bottom = 316.0
+custom_minimum_size = Vector2(256, 316)
+anchors_preset = -1
+anchor_right = 0.133333
+anchor_bottom = 0.292593
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_mfa01")
 script = ExtResource("1_ca7xm")
+metadata/_edit_use_anchors_ = true
 
 [node name="ThumbnailContainer" type="Panel" parent="."]
 clip_contents = true
 layout_mode = 0
-offset_left = 18.0
-offset_top = 18.0
-offset_right = 238.0
-offset_bottom = 238.0
+anchor_left = 0.0703125
+anchor_top = 0.056962
+anchor_right = 0.929688
+anchor_bottom = 0.753165
+offset_bottom = 1.52588e-05
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_fmu0b")
+metadata/_edit_use_anchors_ = true
 
 [node name="Thumbnail" type="TextureRect" parent="ThumbnailContainer"]
 layout_mode = 0
-offset_right = 220.0
-offset_bottom = 220.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+expand_mode = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="Name" type="Label" parent="."]
 layout_mode = 0
-offset_left = 18.0
-offset_top = 263.0
-offset_right = 238.0
-offset_bottom = 291.0
+anchor_left = 0.0703125
+anchor_top = 0.832278
+anchor_right = 0.929688
+anchor_bottom = 0.920886
+mouse_filter = 1
 theme_override_colors/font_color = Color(0.129412, 0.619608, 0.737255, 1)
 theme_override_fonts/font = ExtResource("1_fmu0b")
 theme_override_font_sizes/font_size = 22
 text = "Object name"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
