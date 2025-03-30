@@ -7,7 +7,7 @@ public partial class LibraryItem : Button
 	[Export] private string _itemName;
 
 	public Texture2D Thumbnail {get => _thumbnail; set => _thumbnail = value; } 
-	public string Name {get => _itemName; set => _itemName = value; } 
+	public string ItemName {get => _itemName; set => _itemName = value; } 
 	
 	public override void _Ready()
 	{
