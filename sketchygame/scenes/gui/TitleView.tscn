@@ -1,0 +1,145 @@
+[gd_scene load_steps=8 format=3 uid="uid://bkgv6d2xmtlie"]
+
+[ext_resource type="Texture2D" uid="uid://rvlv5xilt4eq" path="res://assets/images/Sketchy Game.png" id="1_leq6m"]
+[ext_resource type="Texture2D" uid="uid://btna6eba8fmk8" path="res://assets/images/Stickman Ball.png" id="1_uqhjv"]
+[ext_resource type="Texture2D" uid="uid://bbw8smaso3vmt" path="res://assets/images/Stickman Running.png" id="2_mww6x"]
+[ext_resource type="Texture2D" uid="uid://gqlkqct8gg6b" path="res://assets/images/sticker.png" id="3_gktf5"]
+[ext_resource type="PackedScene" uid="uid://jepahwvj3hmy" path="res://scenes/gui_components/button_no_focus.tscn" id="4_j3ai8"]
+[ext_resource type="Texture2D" uid="uid://dh2tsme4yyr1f" path="res://assets/images/Navigation Bar.png" id="5_j3ai8"]
+[ext_resource type="Theme" uid="uid://bgjnnludhvht5" path="res://assets/themes/nav_button.tres" id="6_a1deo"]
+
+[node name="TitleView" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Rectangle2" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -292.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.544245, 0.785296, 0.897435, 1)
+
+[node name="Rectangle3" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 356.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.556863, 0.792157, 0.901961, 1)
+
+[node name="StickmanBall" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 174.0
+offset_top = -314.0
+offset_right = 774.0
+offset_bottom = 286.0
+grow_vertical = 2
+scale = Vector2(0.519999, 1)
+texture = ExtResource("1_uqhjv")
+expand_mode = 2
+
+[node name="StickmanRunning" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 453.0
+offset_top = -2.0
+offset_right = 1153.0
+offset_bottom = 648.0
+texture = ExtResource("2_mww6x")
+expand_mode = 2
+
+[node name="Sticker" type="TextureRect" parent="."]
+layout_mode = 0
+offset_top = 352.0
+offset_right = 300.0
+offset_bottom = 652.0
+texture = ExtResource("3_gktf5")
+expand_mode = 2
+
+[node name="Logo" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 200.0
+offset_top = 80.0
+offset_right = -152.0
+offset_bottom = -418.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_leq6m")
+expand_mode = 2
+
+[node name="StartPlayground" parent="." instance=ExtResource("4_j3ai8")]
+layout_mode = 0
+offset_left = 478.0
+offset_top = 315.0
+offset_right = 728.0
+offset_bottom = 395.0
+theme_override_font_sizes/font_size = 28
+text = "Start playground
+"
+
+[node name="LoadPlayground" parent="." instance=ExtResource("4_j3ai8")]
+layout_mode = 0
+offset_left = 478.0
+offset_top = 407.0
+offset_right = 728.0
+offset_bottom = 487.0
+theme_override_font_sizes/font_size = 28
+text = "Load playground
+"
+
+[node name="Exit" parent="." instance=ExtResource("4_j3ai8")]
+layout_mode = 0
+offset_left = 478.0
+offset_top = 498.0
+offset_right = 728.0
+offset_bottom = 578.0
+theme_override_font_sizes/font_size = 28
+text = "Exit
+"
+
+[node name="NavBar" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_j3ai8")
+
+[node name="Close" type="Button" parent="NavBar"]
+layout_mode = 0
+offset_left = 4.0
+offset_right = 39.0
+offset_bottom = 220.0
+scale = Vector2(1, 0.188)
+focus_mode = 0
+theme = ExtResource("6_a1deo")
+
+[node name="Button" type="Button" parent="NavBar"]
+layout_mode = 0
+offset_left = 45.0
+offset_right = 80.0
+offset_bottom = 220.0
+scale = Vector2(1, 0.188)
+focus_mode = 0
+theme = ExtResource("6_a1deo")
+
+[node name="Fullscreen" type="Button" parent="NavBar"]
+layout_mode = 0
+offset_left = 86.0
+offset_right = 121.0
+offset_bottom = 220.0
+scale = Vector2(1, 0.188)
+focus_mode = 0
+theme = ExtResource("6_a1deo")
