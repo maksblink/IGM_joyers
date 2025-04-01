@@ -96,7 +96,6 @@ size_flags_stretch_ratio = 3.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_851f3")
 
 [node name="Canvas" type="Node2D" parent="PanelContainer/DrawingPanel/DrawingPanelContainer/CanvasContainer"]
-position = Vector2(0, -24)
 
 [node name="ButtonsContainer" type="Control" parent="PanelContainer/DrawingPanel/DrawingPanelContainer"]
 layout_mode = 2
@@ -139,6 +138,10 @@ anchor_left = 0.104167
 anchor_top = 0.0923077
 anchor_right = 0.944444
 anchor_bottom = 0.746154
+offset_left = -9.53674e-05
+offset_top = 2.0
+offset_right = -9.15527e-05
+offset_bottom = 2.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_4ywno")
 metadata/_edit_use_anchors_ = true
 
@@ -172,6 +175,8 @@ anchor_left = 0.0553633
 anchor_top = 0.0923077
 anchor_right = 0.892734
 anchor_bottom = 0.746154
+offset_top = 2.0
+offset_bottom = 2.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_445mx")
 metadata/_edit_use_anchors_ = true
 
@@ -198,3 +203,13 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.2
 theme_override_styles/panel = SubResource("StyleBoxFlat_w6kid")
+
+[node name="GameWorldContainer" type="Control" parent="PanelContainer/GamePanel"]
+anchors_preset = 0
+anchor_left = 0.00757576
+anchor_top = 0.00925926
+anchor_right = 0.992424
+anchor_bottom = 0.990741
+metadata/_edit_use_anchors_ = true
+
+[node name="GameWorld" type="Node2D" parent="PanelContainer/GamePanel/GameWorldContainer"]
