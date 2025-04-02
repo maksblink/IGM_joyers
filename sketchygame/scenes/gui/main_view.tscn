@@ -1,0 +1,215 @@
+[gd_scene load_steps=15 format=3 uid="uid://boweirwxolhxx"]
+
+[ext_resource type="PackedScene" uid="uid://3drt5n08y3k" path="res://scenes/gui_components/kit_item_buttons.tscn" id="1_w6kid"]
+[ext_resource type="FontFile" uid="uid://d1028gp713hqs" path="res://Fonts/Inter_24pt-ExtraBold.ttf" id="2_5akto"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5akto"]
+bg_color = Color(0.00784314, 0.188235, 0.278431, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_851f3"]
+bg_color = Color(0.972549, 0.972549, 0.972549, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5akto"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ywno"]
+bg_color = Color(0.129412, 0.619608, 0.737255, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gh67i"]
+bg_color = Color(0.215686, 0.658824, 0.764706, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yt47q"]
+bg_color = Color(0.117647, 0.556863, 0.662745, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1f0yl"]
+bg_color = Color(0.129412, 0.619608, 0.737255, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_445mx"]
+bg_color = Color(0.129412, 0.619608, 0.737255, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u7o1m"]
+bg_color = Color(0.215686, 0.658824, 0.764706, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3m1st"]
+bg_color = Color(0.117647, 0.556863, 0.662745, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0yaee"]
+bg_color = Color(0.129412, 0.619608, 0.737255, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w6kid"]
+bg_color = Color(0.973535, 0.973535, 0.973535, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0, 0, 1)
+
+[node name="MainView" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="DrawingPanel" type="Panel" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_5akto")
+
+[node name="DrawingPanelContainer" type="VBoxContainer" parent="PanelContainer/DrawingPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.015625
+anchor_top = 0.00925926
+anchor_right = 0.984375
+anchor_bottom = 0.990741
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="CanvasContainer" type="Panel" parent="PanelContainer/DrawingPanel/DrawingPanelContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_851f3")
+
+[node name="Canvas" type="Node2D" parent="PanelContainer/DrawingPanel/DrawingPanelContainer/CanvasContainer"]
+
+[node name="ButtonsContainer" type="Control" parent="PanelContainer/DrawingPanel/DrawingPanelContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/DrawingPanel/DrawingPanelContainer/ButtonsContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="KitButtonsPanel" type="Panel" parent="PanelContainer/DrawingPanel/DrawingPanelContainer/ButtonsContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_5akto")
+
+[node name="KitItemButtons" parent="PanelContainer/DrawingPanel/DrawingPanelContainer/ButtonsContainer/VBoxContainer/KitButtonsPanel" instance=ExtResource("1_w6kid")]
+layout_mode = 1
+anchor_left = 0.0516351
+anchor_top = 0.146154
+anchor_right = 0.948365
+anchor_bottom = 0.853846
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/DrawingPanel/DrawingPanelContainer/ButtonsContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BtnLibraryContainer" type="Control" parent="PanelContainer/DrawingPanel/DrawingPanelContainer/ButtonsContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BtnLibraryPanel" type="Panel" parent="PanelContainer/DrawingPanel/DrawingPanelContainer/ButtonsContainer/VBoxContainer/HBoxContainer/BtnLibraryContainer"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.104167
+anchor_top = 0.0923077
+anchor_right = 0.944444
+anchor_bottom = 0.746154
+offset_left = -9.53674e-05
+offset_top = 2.0
+offset_right = -9.15527e-05
+offset_bottom = 2.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4ywno")
+metadata/_edit_use_anchors_ = true
+
+[node name="btn_ViewLibrary" type="Button" parent="PanelContainer/DrawingPanel/DrawingPanelContainer/ButtonsContainer/VBoxContainer/HBoxContainer/BtnLibraryContainer/BtnLibraryPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0619835
+anchor_right = 0.938017
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_fonts/font = ExtResource("2_5akto")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/hover = SubResource("StyleBoxFlat_gh67i")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_yt47q")
+theme_override_styles/normal = SubResource("StyleBoxFlat_1f0yl")
+text = "View object library
+"
+autowrap_mode = 2
+clip_text = true
+metadata/_edit_use_anchors_ = true
+
+[node name="BtnAddContainer" type="Control" parent="PanelContainer/DrawingPanel/DrawingPanelContainer/ButtonsContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BtnAddPanel" type="Panel" parent="PanelContainer/DrawingPanel/DrawingPanelContainer/ButtonsContainer/VBoxContainer/HBoxContainer/BtnAddContainer"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0553633
+anchor_top = 0.0923077
+anchor_right = 0.892734
+anchor_bottom = 0.746154
+offset_top = 2.0
+offset_bottom = 2.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_445mx")
+metadata/_edit_use_anchors_ = true
+
+[node name="btn_AddObject" type="Button" parent="PanelContainer/DrawingPanel/DrawingPanelContainer/ButtonsContainer/VBoxContainer/HBoxContainer/BtnAddContainer/BtnAddPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0619835
+anchor_right = 0.938017
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_fonts/font = ExtResource("2_5akto")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/hover = SubResource("StyleBoxFlat_u7o1m")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_3m1st")
+theme_override_styles/normal = SubResource("StyleBoxFlat_0yaee")
+text = "Add object
+"
+clip_text = true
+metadata/_edit_use_anchors_ = true
+
+[node name="GamePanel" type="Panel" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w6kid")
+
+[node name="GameWorldContainer" type="Control" parent="PanelContainer/GamePanel"]
+anchors_preset = 0
+anchor_left = 0.00757576
+anchor_top = 0.00925926
+anchor_right = 0.992424
+anchor_bottom = 0.990741
+metadata/_edit_use_anchors_ = true
+
+[node name="GameWorld" type="Node2D" parent="PanelContainer/GamePanel/GameWorldContainer"]
