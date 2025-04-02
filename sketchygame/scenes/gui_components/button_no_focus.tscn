@@ -9,3 +9,5 @@ offset_bottom = 8.0
 focus_mode = 0
 theme = ExtResource("1_cimb7")
 script = ExtResource("1_rxmiy")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
