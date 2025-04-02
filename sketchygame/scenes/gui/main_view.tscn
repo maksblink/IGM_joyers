@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://boweirwxolhxx"]
 
 [ext_resource type="PackedScene" uid="uid://3drt5n08y3k" path="res://scenes/gui_components/kit_item_buttons.tscn" id="1_w6kid"]
-[ext_resource type="FontFile" uid="uid://cfloebpa4blqo" path="res://Fonts/Inter_24pt-ExtraBold.ttf" id="2_5akto"]
+[ext_resource type="FontFile" uid="uid://d1028gp713hqs" path="res://Fonts/Inter_24pt-ExtraBold.ttf" id="2_5akto"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5akto"]
 bg_color = Color(0.00784314, 0.188235, 0.278431, 1)
@@ -158,9 +158,9 @@ theme_override_font_sizes/font_size = 25
 theme_override_styles/hover = SubResource("StyleBoxFlat_gh67i")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_yt47q")
 theme_override_styles/normal = SubResource("StyleBoxFlat_1f0yl")
-text = "View object
-library
+text = "View object library
 "
+autowrap_mode = 2
 clip_text = true
 metadata/_edit_use_anchors_ = true
 

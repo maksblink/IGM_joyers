@@ -99,7 +99,7 @@ anchor_bottom = 0.847826
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_61ugi")
-expand_mode = 3
+expand_mode = 2
 
 [node name="btn_Erase" type="Button" parent="ButtonsContainer"]
 layout_mode = 2
@@ -120,7 +120,7 @@ anchor_bottom = 0.880435
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_of5xm")
-expand_mode = 3
+expand_mode = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="Separator" type="ColorRect" parent="ButtonsContainer"]
@@ -149,7 +149,7 @@ anchor_top = 0.130435
 anchor_right = 0.893266
 anchor_bottom = 0.869565
 texture = ExtResource("3_p0bip")
-expand_mode = 3
+expand_mode = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="btn_Right" type="Button" parent="ButtonsContainer"]
@@ -169,7 +169,7 @@ anchor_top = 0.130435
 anchor_right = 0.900169
 anchor_bottom = 0.869565
 texture = ExtResource("4_vieo3")
-expand_mode = 3
+expand_mode = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="btn_Clear" type="Button" parent="ButtonsContainer"]
@@ -188,5 +188,5 @@ anchor_top = 0.152174
 anchor_right = 0.791667
 anchor_bottom = 0.847826
 texture = ExtResource("3_x3ti0")
-expand_mode = 3
+expand_mode = 2
 metadata/_edit_use_anchors_ = true
