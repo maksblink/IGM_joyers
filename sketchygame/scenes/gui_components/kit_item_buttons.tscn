@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://3drt5n08y3k"]
+[gd_scene load_steps=23 format=3 uid="uid://3drt5n08y3k"]
 
 [ext_resource type="Texture2D" uid="uid://dn5ffwne84lk8" path="res://assets/icon_btn_Draw.png" id="1_61ugi"]
 [ext_resource type="Texture2D" uid="uid://b0calmi4c8ehg" path="res://assets/icon_btn_Erase.png" id="2_of5xm"]
@@ -30,6 +30,12 @@ bg_color = Color(0.117647, 0.556863, 0.662745, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_noykb"]
 bg_color = Color(0.129412, 0.619608, 0.737255, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_p0bip"]
+grow_begin = -4.0
+grow_end = -4.0
+thickness = 4
+vertical = true
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mxjr4"]
 bg_color = Color(0.215686, 0.658824, 0.764706, 1)
@@ -88,6 +94,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_p0bip")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_xft0g")
 theme_override_styles/normal = SubResource("StyleBoxFlat_jctfq")
 icon_alignment = 1
+metadata/_edit_group_ = true
 
 [node name="TextureRect" type="TextureRect" parent="ButtonsContainer/btn_Draw"]
 layout_mode = 1
@@ -99,7 +106,8 @@ anchor_bottom = 0.847826
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_61ugi")
-expand_mode = 2
+expand_mode = 3
+stretch_mode = 5
 
 [node name="btn_Erase" type="Button" parent="ButtonsContainer"]
 layout_mode = 2
@@ -109,6 +117,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_ykg0j")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ycsr2")
 theme_override_styles/normal = SubResource("StyleBoxFlat_noykb")
 icon_alignment = 1
+metadata/_edit_group_ = true
 
 [node name="TextureRect" type="TextureRect" parent="ButtonsContainer/btn_Erase"]
 layout_mode = 1
@@ -120,16 +129,16 @@ anchor_bottom = 0.880435
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_of5xm")
-expand_mode = 2
+expand_mode = 3
+stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
-[node name="Separator" type="ColorRect" parent="ButtonsContainer"]
-custom_minimum_size = Vector2(5, 77)
+[node name="VSeparator" type="VSeparator" parent="ButtonsContainer"]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
+size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.4
-color = Color(0.00784314, 0.188235, 0.278431, 1)
+theme_override_constants/separation = 0
+theme_override_styles/separator = SubResource("StyleBoxLine_p0bip")
 
 [node name="btn_Left" type="Button" parent="ButtonsContainer"]
 layout_mode = 2
@@ -140,6 +149,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_mxjr4")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_t4io7")
 theme_override_styles/normal = SubResource("StyleBoxFlat_2eiab")
 icon_alignment = 1
+metadata/_edit_group_ = true
 
 [node name="TextureRect" type="TextureRect" parent="ButtonsContainer/btn_Left"]
 layout_mode = 1
@@ -149,7 +159,8 @@ anchor_top = 0.130435
 anchor_right = 0.893266
 anchor_bottom = 0.869565
 texture = ExtResource("3_p0bip")
-expand_mode = 2
+expand_mode = 3
+stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
 [node name="btn_Right" type="Button" parent="ButtonsContainer"]
@@ -161,6 +172,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_3atvm")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_epppj")
 theme_override_styles/normal = SubResource("StyleBoxFlat_s12rc")
 icon_alignment = 1
+metadata/_edit_group_ = true
 
 [node name="TextureRect" type="TextureRect" parent="ButtonsContainer/btn_Right"]
 layout_mode = 0
@@ -169,7 +181,8 @@ anchor_top = 0.130435
 anchor_right = 0.900169
 anchor_bottom = 0.869565
 texture = ExtResource("4_vieo3")
-expand_mode = 2
+expand_mode = 3
+stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
 [node name="btn_Clear" type="Button" parent="ButtonsContainer"]
@@ -180,6 +193,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_04exc")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ghui3")
 theme_override_styles/normal = SubResource("StyleBoxFlat_cjuu5")
 icon_alignment = 1
+metadata/_edit_group_ = true
 
 [node name="TextureRect" type="TextureRect" parent="ButtonsContainer/btn_Clear"]
 layout_mode = 0
@@ -188,5 +202,6 @@ anchor_top = 0.152174
 anchor_right = 0.791667
 anchor_bottom = 0.847826
 texture = ExtResource("3_x3ti0")
-expand_mode = 2
+expand_mode = 3
+stretch_mode = 5
 metadata/_edit_use_anchors_ = true
