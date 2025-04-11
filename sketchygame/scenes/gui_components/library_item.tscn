@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bqe4q4ta5d6lt"]
 
-[ext_resource type="Script" uid="uid://bnkugbhss5h3a" path="res://scenes/scripts/LibraryItem.cs" id="1_ca7xm"]
+[ext_resource type="Script" uid="uid://bnkugbhss5h3a" path="res://scenes/gui_components/LibraryItem.cs" id="1_ca7xm"]
 [ext_resource type="FontFile" uid="uid://d1028gp713hqs" path="res://Fonts/Inter_24pt-ExtraBold.ttf" id="1_fmu0b"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mfa01"]
