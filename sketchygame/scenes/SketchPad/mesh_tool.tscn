@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgby4lprf5ps6"]
+
+[ext_resource type="Script" uid="uid://bnyjvritxg5jp" path="res://scenes/SketchPad/mesh_tool.gd" id="1_hsglg"]
+
+[node name="MeshTool" type="Node"]
+script = ExtResource("1_hsglg")
