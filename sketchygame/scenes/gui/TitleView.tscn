@@ -90,9 +90,10 @@ offset_bottom = 395.0
 theme_override_font_sizes/font_size = 28
 text = "Start playground
 "
+_changeToSceneOnClick = "res://scenes/gui/main_view.tscn"
 
 [node name="LoadPlayground" parent="." instance=ExtResource("4_j3ai8")]
-layout_mode = 0
+layout_mode = 1
 offset_left = 478.0
 offset_top = 407.0
 offset_right = 728.0
@@ -100,6 +101,7 @@ offset_bottom = 487.0
 theme_override_font_sizes/font_size = 28
 text = "Load playground
 "
+_changeToSceneOnClick = "res://scenes/gui/save_view.tscn"
 
 [node name="Exit" parent="." instance=ExtResource("4_j3ai8")]
 layout_mode = 0
