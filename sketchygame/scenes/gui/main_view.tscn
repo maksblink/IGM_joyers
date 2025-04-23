@@ -1,7 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://boweirwxolhxx"]
+[gd_scene load_steps=18 format=3 uid="uid://boweirwxolhxx"]
 
+[ext_resource type="PackedScene" uid="uid://d3qfvfqhfh27b" path="res://scenes/SketchPad/sketch_pad.tscn" id="1_851f3"]
 [ext_resource type="PackedScene" uid="uid://3drt5n08y3k" path="res://scenes/gui_components/kit_item_buttons.tscn" id="1_w6kid"]
 [ext_resource type="FontFile" uid="uid://d1028gp713hqs" path="res://Fonts/Inter_24pt-ExtraBold.ttf" id="2_5akto"]
+[ext_resource type="PackedScene" uid="uid://bgby4lprf5ps6" path="res://scenes/SketchPad/mesh_tool.tscn" id="2_gh67i"]
+[ext_resource type="Script" uid="uid://bfdue51xbcnh5" path="res://scenes/SketchPad/sketch_pad_main_view.gd" id="2_yt47q"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5akto"]
 bg_color = Color(0.00784314, 0.188235, 0.278431, 1)
@@ -95,7 +98,27 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 3.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_851f3")
 
-[node name="Canvas" type="Node2D" parent="PanelContainer/DrawingPanel/DrawingPanelContainer/CanvasContainer"]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="PanelContainer/DrawingPanel/DrawingPanelContainer/CanvasContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SketchPad" parent="PanelContainer/DrawingPanel/DrawingPanelContainer/CanvasContainer/SubViewportContainer" node_paths=PackedStringArray("visible_layers", "unvisible_layers", "mesh_tool") instance=ExtResource("1_851f3")]
+size = Vector2i(348, 474)
+script = ExtResource("2_yt47q")
+visible_layers = NodePath("VisibleLayers")
+unvisible_layers = NodePath("HiddenLayers")
+mesh_tool = NodePath("MeshTool")
+
+[node name="VisibleLayers" type="Node" parent="PanelContainer/DrawingPanel/DrawingPanelContainer/CanvasContainer/SubViewportContainer/SketchPad"]
+
+[node name="HiddenLayers" type="Node" parent="PanelContainer/DrawingPanel/DrawingPanelContainer/CanvasContainer/SubViewportContainer/SketchPad"]
+
+[node name="MeshTool" parent="PanelContainer/DrawingPanel/DrawingPanelContainer/CanvasContainer/SubViewportContainer/SketchPad" instance=ExtResource("2_gh67i")]
 
 [node name="ButtonsContainer" type="Control" parent="PanelContainer/DrawingPanel/DrawingPanelContainer"]
 layout_mode = 2
@@ -213,3 +236,9 @@ anchor_bottom = 0.990741
 metadata/_edit_use_anchors_ = true
 
 [node name="GameWorld" type="Node2D" parent="PanelContainer/GamePanel/GameWorldContainer"]
+
+[connection signal="pressed" from="PanelContainer/DrawingPanel/DrawingPanelContainer/ButtonsContainer/VBoxContainer/KitButtonsPanel/KitItemButtons/ButtonsContainer/btn_Left" to="PanelContainer/DrawingPanel/DrawingPanelContainer/CanvasContainer/SubViewportContainer/SketchPad" method="_on_undo_btn_pressed"]
+[connection signal="pressed" from="PanelContainer/DrawingPanel/DrawingPanelContainer/ButtonsContainer/VBoxContainer/KitButtonsPanel/KitItemButtons/ButtonsContainer/btn_Right" to="PanelContainer/DrawingPanel/DrawingPanelContainer/CanvasContainer/SubViewportContainer/SketchPad" method="_on_redo_btn_pressed"]
+[connection signal="pressed" from="PanelContainer/DrawingPanel/DrawingPanelContainer/ButtonsContainer/VBoxContainer/KitButtonsPanel/KitItemButtons/ButtonsContainer/btn_Clear" to="PanelContainer/DrawingPanel/DrawingPanelContainer/CanvasContainer/SubViewportContainer/SketchPad" method="_on_clear_btn_pressed"]
+
+[editable path="PanelContainer/DrawingPanel/DrawingPanelContainer/ButtonsContainer/VBoxContainer/KitButtonsPanel/KitItemButtons"]

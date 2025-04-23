@@ -1,4 +1,3 @@
-@tool
 extends SubViewport
 class_name SketchPad
 
