@@ -153,7 +153,7 @@ layout_mode = 2
 [node name="LibraryItem13" parent="ScrollContainer/HFlowContainer" instance=ExtResource("4_8hkfk")]
 layout_mode = 2
 
-[node name="ButtonNoFocus" parent="." instance=ExtResource("5_po4jv")]
+[node name="BackToGameButton" parent="." instance=ExtResource("5_po4jv")]
 layout_mode = 0
 anchor_left = 0.0104167
 anchor_top = 0.864815
@@ -164,5 +164,5 @@ offset_bottom = 0.0
 pivot_offset = Vector2(179, 63)
 theme_override_font_sizes/font_size = 36
 text = "Exit"
-_changeToSceneOnClick = "res://scenes/gui/TitleView.tscn"
+_changeToSceneOnClick = "res://scenes/gui/main_view.tscn"
 metadata/_edit_use_anchors_ = true
