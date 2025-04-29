@@ -57,9 +57,14 @@ func clear_sketch() -> void:
 
 
 func undo_action() -> MeshInstance2D:
+	if visible_layers.get_children().is_empty():
+		push_warning("Nothing to undo.");
+		return null;
+	
 	var mesh: Node = visible_layers.get_children().back();
 	if mesh is not MeshInstance2D:
 		push_error("Visible layers are empty or are not of type MeshInstance2D.");
+		return null;
 	
 	mesh.reparent(unvisible_layers);
 	mesh.visible = false;
@@ -69,10 +74,15 @@ func undo_action() -> MeshInstance2D:
 
 
 func redo_action() -> MeshInstance2D:
-	var mesh: Node = unvisible_layers.get_children().front();
+	if unvisible_layers.get_children().is_empty():
+		push_warning("Nothing to undo.");
+		return null;
+		
+	var mesh: Node = unvisible_layers.get_children().back();
 	if mesh is not MeshInstance2D:
 		push_error("Unvisible layers are empty or are not of type MeshInstance2D.")
-	
+		return null;	
+
 	mesh.reparent(visible_layers);
 	mesh.visible = true;
 	
