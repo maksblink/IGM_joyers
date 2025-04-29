@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bgby4lprf5ps6" path="res://scenes/SketchPad/mesh_tool.tscn" id="2_gh67i"]
 [ext_resource type="Script" uid="uid://bfdue51xbcnh5" path="res://scenes/SketchPad/sketch_pad_main_view.gd" id="2_yt47q"]
 [ext_resource type="PackedScene" uid="uid://jepahwvj3hmy" path="res://scenes/gui_components/button_no_focus.tscn" id="5_4ywno"]
+[ext_resource type="PackedScene" uid="uid://b56fi06uicdqp" path="res://scenes/SketchPad/sketch_pad_export_tool.tscn" id="5_445mx"]
 [ext_resource type="Script" uid="uid://uf0vqi831qi5" path="res://scenes/trash/WorldView.cs" id="6_0yaee"]
 [ext_resource type="Texture2D" uid="uid://iw6y8qwx5h6y" path="res://assets/object base/Chair (1).png" id="7_4ywno"]
 [ext_resource type="Texture2D" uid="uid://b1oesbd458kwj" path="res://assets/object base/guitar (1).png" id="8_445mx"]
@@ -17,8 +18,6 @@ border_width_top = 10
 border_width_right = 10
 border_width_bottom = 10
 border_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5akto"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w6kid"]
 bg_color = Color(0.973535, 0.973535, 0.973535, 1)
@@ -61,29 +60,29 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="CanvasContainer" type="Panel" parent="PanelContainer/DrawingPanel/DrawingPanelContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/DrawingPanel/DrawingPanelContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 3.0
+size_flags_stretch_ratio = 2.0
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="PanelContainer/DrawingPanel/DrawingPanelContainer/CanvasContainer"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="SubViewportContainer" type="SubViewportContainer" parent="PanelContainer/DrawingPanel/DrawingPanelContainer/CenterContainer"]
+custom_minimum_size = Vector2(510, 510)
+layout_mode = 2
 stretch = true
+stretch_shrink = 2
 
-[node name="SketchPad" parent="PanelContainer/DrawingPanel/DrawingPanelContainer/CanvasContainer/SubViewportContainer" node_paths=PackedStringArray("visible_layers", "unvisible_layers", "mesh_tool") instance=ExtResource("1_851f3")]
-size = Vector2i(567, 786)
+[node name="SketchPad" parent="PanelContainer/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer" node_paths=PackedStringArray("visible_layers", "unvisible_layers", "mesh_tool", "export_tool") instance=ExtResource("1_851f3")]
+transparent_bg = true
+msaa_2d = 3
+canvas_item_default_texture_filter = 0
+size = Vector2i(255, 255)
 script = ExtResource("2_yt47q")
 visible_layers = NodePath("VisibleLayers")
 unvisible_layers = NodePath("HiddenLayers")
 mesh_tool = NodePath("MeshTool")
+export_tool = NodePath("SketchPadExportTool")
 
-[node name="ColorRect" type="ColorRect" parent="PanelContainer/DrawingPanel/DrawingPanelContainer/CanvasContainer/SubViewportContainer/SketchPad"]
+[node name="ColorRect" type="ColorRect" parent="PanelContainer/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -93,11 +92,14 @@ grow_vertical = 2
 mouse_filter = 1
 color = Color(0.0605303, 0.0605303, 0.0605303, 1)
 
-[node name="VisibleLayers" type="Node" parent="PanelContainer/DrawingPanel/DrawingPanelContainer/CanvasContainer/SubViewportContainer/SketchPad"]
+[node name="VisibleLayers" type="Node" parent="PanelContainer/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad"]
 
-[node name="HiddenLayers" type="Node" parent="PanelContainer/DrawingPanel/DrawingPanelContainer/CanvasContainer/SubViewportContainer/SketchPad"]
+[node name="HiddenLayers" type="Node" parent="PanelContainer/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad"]
 
-[node name="MeshTool" parent="PanelContainer/DrawingPanel/DrawingPanelContainer/CanvasContainer/SubViewportContainer/SketchPad" instance=ExtResource("2_gh67i")]
+[node name="MeshTool" parent="PanelContainer/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" instance=ExtResource("2_gh67i")]
+
+[node name="SketchPadExportTool" parent="PanelContainer/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" instance=ExtResource("5_445mx")]
+_savePath = "F:/IGM_joyers/sketchygame/assets/exported/"
 
 [node name="ButtonsContainer" type="Control" parent="PanelContainer/DrawingPanel/DrawingPanelContainer"]
 layout_mode = 2
@@ -112,28 +114,34 @@ offset_right = -0.0169983
 offset_bottom = -0.0749969
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 16
 
-[node name="KitButtonsPanel" type="Panel" parent="PanelContainer/DrawingPanel/DrawingPanelContainer/ButtonsContainer/VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/DrawingPanel/DrawingPanelContainer/ButtonsContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxEmpty_5akto")
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_right = 32
+
+[node name="ExportImageButton" parent="PanelContainer/DrawingPanel/DrawingPanelContainer/ButtonsContainer/VBoxContainer/MarginContainer2" instance=ExtResource("5_4ywno")]
+layout_mode = 2
+text = "Export Image"
+metadata/_edit_use_anchors_ = true
+
+[node name="KitButtonsPanel" type="MarginContainer" parent="PanelContainer/DrawingPanel/DrawingPanelContainer/ButtonsContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_right = 32
 
 [node name="KitItemButtons" parent="PanelContainer/DrawingPanel/DrawingPanelContainer/ButtonsContainer/VBoxContainer/KitButtonsPanel" instance=ExtResource("1_w6kid")]
-layout_mode = 1
-anchor_left = 0.0516351
-anchor_top = 0.146154
-anchor_right = 0.948365
-anchor_bottom = 0.853846
-size_flags_horizontal = 4
-size_flags_vertical = 4
+layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer/DrawingPanel/DrawingPanelContainer/ButtonsContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_right = 32
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/DrawingPanel/DrawingPanelContainer/ButtonsContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
@@ -177,7 +185,7 @@ size = Vector2i(1299, 1060)
 render_target_update_mode = 4
 script = ExtResource("6_0yaee")
 _timer = NodePath("Timer")
-_sprites = []
+_sprites = [NodePath("Chair"), NodePath("Guitar"), NodePath("Plant")]
 
 [node name="ColorRect" type="ColorRect" parent="PanelContainer/GamePanel/GameWorldContainer/WorldView"]
 anchors_preset = 15
@@ -209,9 +217,12 @@ texture = ExtResource("9_dmimy")
 wait_time = 2.0
 autostart = true
 
-[connection signal="pressed" from="PanelContainer/DrawingPanel/DrawingPanelContainer/ButtonsContainer/VBoxContainer/KitButtonsPanel/KitItemButtons/ButtonsContainer/btn_Left" to="PanelContainer/DrawingPanel/DrawingPanelContainer/CanvasContainer/SubViewportContainer/SketchPad" method="_on_undo_btn_pressed"]
-[connection signal="pressed" from="PanelContainer/DrawingPanel/DrawingPanelContainer/ButtonsContainer/VBoxContainer/KitButtonsPanel/KitItemButtons/ButtonsContainer/btn_Right" to="PanelContainer/DrawingPanel/DrawingPanelContainer/CanvasContainer/SubViewportContainer/SketchPad" method="_on_redo_btn_pressed"]
-[connection signal="pressed" from="PanelContainer/DrawingPanel/DrawingPanelContainer/ButtonsContainer/VBoxContainer/KitButtonsPanel/KitItemButtons/ButtonsContainer/btn_Clear" to="PanelContainer/DrawingPanel/DrawingPanelContainer/CanvasContainer/SubViewportContainer/SketchPad" method="_on_clear_btn_pressed"]
+[connection signal="pressed" from="PanelContainer/DrawingPanel/DrawingPanelContainer/ButtonsContainer/VBoxContainer/MarginContainer2/ExportImageButton" to="PanelContainer/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" method="_on_export_image_to_bmp"]
+[connection signal="pressed" from="PanelContainer/DrawingPanel/DrawingPanelContainer/ButtonsContainer/VBoxContainer/KitButtonsPanel/KitItemButtons/ButtonsContainer/btn_Draw" to="PanelContainer/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" method="_on_btn_draw_pressed"]
+[connection signal="pressed" from="PanelContainer/DrawingPanel/DrawingPanelContainer/ButtonsContainer/VBoxContainer/KitButtonsPanel/KitItemButtons/ButtonsContainer/btn_Erase" to="PanelContainer/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" method="_on_btn_erase_pressed"]
+[connection signal="pressed" from="PanelContainer/DrawingPanel/DrawingPanelContainer/ButtonsContainer/VBoxContainer/KitButtonsPanel/KitItemButtons/ButtonsContainer/btn_Left" to="PanelContainer/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" method="_on_undo_btn_pressed"]
+[connection signal="pressed" from="PanelContainer/DrawingPanel/DrawingPanelContainer/ButtonsContainer/VBoxContainer/KitButtonsPanel/KitItemButtons/ButtonsContainer/btn_Right" to="PanelContainer/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" method="_on_redo_btn_pressed"]
+[connection signal="pressed" from="PanelContainer/DrawingPanel/DrawingPanelContainer/ButtonsContainer/VBoxContainer/KitButtonsPanel/KitItemButtons/ButtonsContainer/btn_Clear" to="PanelContainer/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" method="_on_clear_btn_pressed"]
 [connection signal="timeout" from="PanelContainer/GamePanel/GameWorldContainer/WorldView/Timer" to="PanelContainer/GamePanel/GameWorldContainer/WorldView" method="_on_timer_timeout"]
 
 [editable path="PanelContainer/DrawingPanel/DrawingPanelContainer/ButtonsContainer/VBoxContainer/KitButtonsPanel/KitItemButtons"]

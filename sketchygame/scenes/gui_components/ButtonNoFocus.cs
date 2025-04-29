@@ -1,5 +1,6 @@
-using System;
 using Godot;
+
+namespace SketchyGame.scenes.gui_components;
 
 [GodotClassName(nameof(ButtonNoFocus))]
 public partial class ButtonNoFocus : Button {

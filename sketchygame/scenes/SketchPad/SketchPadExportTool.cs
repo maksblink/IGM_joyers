@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Godot;
@@ -5,49 +6,58 @@ using OpenCvSharp;
 
 namespace SketchyGame.scenes.SketchPad;
 
-public partial class SketchPadExportTool : Node
-{
+[GodotClassName("SketchPadExportTool")]
+public partial class SketchPadExportTool : Node {
     private MeshDataTool _mdt = new();
-    
-    public void ExportAsBitMap(Node meshContainer, Vector2I canvasSize)
-    {
-        var meshes = new List<MeshInstance2D>();
 
-        foreach (var mesh in meshContainer.GetChildren())
-        {
+    [Export]
+    private string _savePath = string.Empty;
+
+    public void ExportAsBitMap(Node meshContainer, Vector2I canvasSize) {
+        var meshInstance2Ds = new List<MeshInstance2D>();
+
+        foreach (var mesh in meshContainer.GetChildren()) {
             if (mesh is not MeshInstance2D mesh2D) continue;
-            meshes.Add(mesh2D);
+            meshInstance2Ds.Add(mesh2D);
         }
-        
+
         var image = CreateImage(canvasSize.X, canvasSize.Y);
 
-        foreach (var mesh in meshes.Select(meshInstance => meshInstance.Mesh))
-        {
+        foreach (var mesh in meshInstance2Ds.Select(meshInstance => meshInstance.Mesh)) {
             if (mesh is not ArrayMesh arrayMesh) continue;
 
-            _mdt.CreateFromSurface(arrayMesh, 0);
+            var surface = mesh.SurfaceGetArrays(0);
+            var vertices = (Godot.Collections.Array)surface[(int)Mesh.ArrayType.Vertex];
 
-            for (var i = 0; i < _mdt.GetVertexCount() - 1; ++i)
-            {
-                var thisVert = (Vector3I)_mdt.GetVertex(i);
-                var nextVert = (Vector3I)_mdt.GetVertex(i + 1);
-                
+            for (var i = 0; i < vertices.Count - 1; ++i) {
+                var thisVert = (Vector3I)vertices[i];
+                var nextVert = (Vector3I)vertices[i + 1];
+
                 image = LineGenerate.GenerateLine(image, thisVert, nextVert);
             }
         }
+
+        var path = CastPathToAbsolute(_savePath) + CreateFileName();
+        Cv2.ImWrite(path, image);
     }
 
-    private Mat CreateImage(int width, int height)
-    {
+    private static string CreateFileName() {
+        var date = DateTime.Now.ToString("yyyyMMdd_HHmmss");
+        return $"{date}_sketchy_draw.bmp";
+    }
+
+    private static string CastPathToAbsolute(string path) {
+        return ProjectSettings.GlobalizePath(path);
+    }
+
+    private static Mat CreateImage(int width, int height) {
         return new Mat(height, width, MatType.CV_8UC3); // uint8, 3 channels
     }
 }
 
-public static class LineGenerate
-{
-    public static Mat GenerateLine(Mat image, Vector3I start, Vector3I end)
-    {
-        Cv2.Line(image, start.X, start.Y, end.X, end.Y, Scalar.Black);
+public static class LineGenerate {
+    public static Mat GenerateLine(Mat image, Vector3I start, Vector3I end) {
+        Cv2.Line(image, start.X, start.Y, end.X, end.Y, Scalar.White);
         return image;
     }
 }
