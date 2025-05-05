@@ -18,4 +18,8 @@ public partial class WorldView : SubViewport {
         _sprites[_spriteIndex].Visible = !_sprites[_spriteIndex].Visible;
         _spriteIndex = (int)System.Random.Shared.NextInt64(0, 3);
     }
+
+    private void _on_export_image_button_pressed() {
+        
+    }
 }

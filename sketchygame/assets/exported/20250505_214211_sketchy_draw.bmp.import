@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpk6th5l3onja"
-path="res://.godot/imported/20250429_202516_sketchy_draw.bmp-0ca9a50d72574471fb7a586552f188e1.ctex"
+uid="uid://c7io8d18vc3so"
+path="res://.godot/imported/20250505_214211_sketchy_draw.bmp-624d65970ae3b1dd625c914522922a1f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/exported/20250429_202516_sketchy_draw.bmp"
-dest_files=["res://.godot/imported/20250429_202516_sketchy_draw.bmp-0ca9a50d72574471fb7a586552f188e1.ctex"]
+source_file="res://assets/exported/20250505_214211_sketchy_draw.bmp"
+dest_files=["res://.godot/imported/20250505_214211_sketchy_draw.bmp-624d65970ae3b1dd625c914522922a1f.ctex"]
 
 [params]
 

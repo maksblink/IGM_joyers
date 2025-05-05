@@ -1,11 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://boweirwxolhxx"]
+[gd_scene load_steps=15 format=3 uid="uid://boweirwxolhxx"]
 
 [ext_resource type="PackedScene" uid="uid://d3qfvfqhfh27b" path="res://scenes/SketchPad/sketch_pad.tscn" id="1_851f3"]
+[ext_resource type="Script" uid="uid://bbhhgubstq5at" path="res://scenes/gui/MainView.cs" id="1_dmimy"]
 [ext_resource type="PackedScene" uid="uid://3drt5n08y3k" path="res://scenes/gui_components/kit_item_buttons.tscn" id="1_w6kid"]
 [ext_resource type="PackedScene" uid="uid://bgby4lprf5ps6" path="res://scenes/SketchPad/mesh_tool.tscn" id="2_gh67i"]
 [ext_resource type="Script" uid="uid://bfdue51xbcnh5" path="res://scenes/SketchPad/sketch_pad_main_view.gd" id="2_yt47q"]
 [ext_resource type="PackedScene" uid="uid://jepahwvj3hmy" path="res://scenes/gui_components/button_no_focus.tscn" id="5_4ywno"]
 [ext_resource type="PackedScene" uid="uid://b56fi06uicdqp" path="res://scenes/SketchPad/sketch_pad_export_tool.tscn" id="5_445mx"]
+[ext_resource type="Theme" uid="uid://bqmeijdgg3vn7" path="res://assets/themes/button_theme.tres" id="5_dmimy"]
 [ext_resource type="Script" uid="uid://uf0vqi831qi5" path="res://scenes/trash/WorldView.cs" id="6_0yaee"]
 [ext_resource type="Texture2D" uid="uid://iw6y8qwx5h6y" path="res://assets/object base/Chair (1).png" id="7_4ywno"]
 [ext_resource type="Texture2D" uid="uid://b1oesbd458kwj" path="res://assets/object base/guitar (1).png" id="8_445mx"]
@@ -27,15 +29,19 @@ border_width_right = 10
 border_width_bottom = 10
 border_color = Color(0, 0, 0, 1)
 
-[node name="MainView" type="Control"]
+[node name="MainView" type="Control" node_paths=PackedStringArray("_gameView", "_menuView")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_dmimy")
+_gameView = NodePath("GameView")
+_menuView = NodePath("MenuView")
 
-[node name="PanelContainer" type="HBoxContainer" parent="."]
+[node name="GameView" type="HBoxContainer" parent="."]
+process_mode = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -44,34 +50,32 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
 
-[node name="DrawingPanel" type="Panel" parent="PanelContainer"]
+[node name="DrawingPanel" type="Panel" parent="GameView"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_5akto")
 
-[node name="DrawingPanelContainer" type="VBoxContainer" parent="PanelContainer/DrawingPanel"]
+[node name="DrawingPanelContainer" type="VBoxContainer" parent="GameView/DrawingPanel"]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.0277778
-anchor_top = 0.0154321
-anchor_right = 0.972222
-anchor_bottom = 0.990741
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-metadata/_edit_use_anchors_ = true
 
-[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/DrawingPanel/DrawingPanelContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="GameView/DrawingPanel/DrawingPanelContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="PanelContainer/DrawingPanel/DrawingPanelContainer/CenterContainer"]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="GameView/DrawingPanel/DrawingPanelContainer/CenterContainer"]
 custom_minimum_size = Vector2(510, 510)
 layout_mode = 2
 stretch = true
 stretch_shrink = 2
 
-[node name="SketchPad" parent="PanelContainer/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer" node_paths=PackedStringArray("visible_layers", "unvisible_layers", "mesh_tool", "export_tool") instance=ExtResource("1_851f3")]
+[node name="SketchPad" parent="GameView/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer" node_paths=PackedStringArray("visible_layers", "unvisible_layers", "mesh_tool", "export_tool") instance=ExtResource("1_851f3")]
 transparent_bg = true
 msaa_2d = 3
 canvas_item_default_texture_filter = 0
@@ -82,7 +86,7 @@ unvisible_layers = NodePath("HiddenLayers")
 mesh_tool = NodePath("MeshTool")
 export_tool = NodePath("SketchPadExportTool")
 
-[node name="ColorRect" type="ColorRect" parent="PanelContainer/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad"]
+[node name="ColorRect" type="ColorRect" parent="GameView/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -92,83 +96,69 @@ grow_vertical = 2
 mouse_filter = 1
 color = Color(0.0605303, 0.0605303, 0.0605303, 1)
 
-[node name="VisibleLayers" type="Node" parent="PanelContainer/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad"]
+[node name="VisibleLayers" type="Node" parent="GameView/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad"]
 
-[node name="HiddenLayers" type="Node" parent="PanelContainer/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad"]
+[node name="HiddenLayers" type="Node" parent="GameView/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad"]
 
-[node name="MeshTool" parent="PanelContainer/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" instance=ExtResource("2_gh67i")]
+[node name="MeshTool" parent="GameView/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" instance=ExtResource("2_gh67i")]
 
-[node name="SketchPadExportTool" parent="PanelContainer/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" instance=ExtResource("5_445mx")]
-_savePath = "F:/IGM_joyers/sketchygame/assets/exported/"
+[node name="SketchPadExportTool" parent="GameView/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" instance=ExtResource("5_445mx")]
+_savePath = "res://assets/exported/"
 
-[node name="ButtonsContainer" type="Control" parent="PanelContainer/DrawingPanel/DrawingPanelContainer"]
+[node name="ButtonsMarginContainer" type="MarginContainer" parent="GameView/DrawingPanel/DrawingPanelContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/DrawingPanel/DrawingPanelContainer/ButtonsContainer"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.003
-anchor_bottom = 0.975
-offset_right = -0.0169983
-offset_bottom = -0.0749969
-grow_horizontal = 2
-grow_vertical = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="GameView/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer"]
+layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/DrawingPanel/DrawingPanelContainer/ButtonsContainer/VBoxContainer"]
+[node name="Navigation" type="HBoxContainer" parent="GameView/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/margin_left = 32
-theme_override_constants/margin_right = 32
+theme_override_constants/separation = 16
 
-[node name="ExportImageButton" parent="PanelContainer/DrawingPanel/DrawingPanelContainer/ButtonsContainer/VBoxContainer/MarginContainer2" instance=ExtResource("5_4ywno")]
-layout_mode = 2
-text = "Export Image"
-metadata/_edit_use_anchors_ = true
-
-[node name="KitButtonsPanel" type="MarginContainer" parent="PanelContainer/DrawingPanel/DrawingPanelContainer/ButtonsContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/margin_left = 32
-theme_override_constants/margin_right = 32
-
-[node name="KitItemButtons" parent="PanelContainer/DrawingPanel/DrawingPanelContainer/ButtonsContainer/VBoxContainer/KitButtonsPanel" instance=ExtResource("1_w6kid")]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/DrawingPanel/DrawingPanelContainer/ButtonsContainer/VBoxContainer"]
+[node name="MenuButton" type="Button" parent="GameView/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/Navigation"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/margin_left = 32
-theme_override_constants/margin_right = 32
+size_flags_stretch_ratio = 0.5
+theme = ExtResource("5_dmimy")
+text = "Open Menu"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/DrawingPanel/DrawingPanelContainer/ButtonsContainer/VBoxContainer/MarginContainer"]
+[node name="ExportImageButton" parent="GameView/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/Navigation" instance=ExtResource("5_4ywno")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Add object"
+metadata/_edit_use_anchors_ = true
+
+[node name="KitItemButtons" parent="GameView/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer" instance=ExtResource("1_w6kid")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameView/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 16
 
-[node name="ViewLibraryButton" parent="PanelContainer/DrawingPanel/DrawingPanelContainer/ButtonsContainer/VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("5_4ywno")]
+[node name="ViewLibraryButton" parent="GameView/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("5_4ywno")]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "View object 
 library"
 _changeToSceneOnClick = "res://scenes/gui/library_view.tscn"
 
-[node name="AddObject" parent="PanelContainer/DrawingPanel/DrawingPanelContainer/ButtonsContainer/VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("5_4ywno")]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Add Object
-"
-_changeToSceneOnClick = "res://scenes/gui/library_view.tscn"
-
-[node name="GamePanel" type="Panel" parent="PanelContainer"]
+[node name="GamePanel" type="Panel" parent="GameView"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.2
 theme_override_styles/panel = SubResource("StyleBoxFlat_w6kid")
 
-[node name="GameWorldContainer" type="SubViewportContainer" parent="PanelContainer/GamePanel"]
+[node name="GameWorldContainer" type="SubViewportContainer" parent="GameView/GamePanel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.00757576
@@ -178,7 +168,7 @@ anchor_bottom = 0.990741
 stretch = true
 metadata/_edit_use_anchors_ = true
 
-[node name="WorldView" type="SubViewport" parent="PanelContainer/GamePanel/GameWorldContainer" node_paths=PackedStringArray("_timer", "_sprites")]
+[node name="WorldView" type="SubViewport" parent="GameView/GamePanel/GameWorldContainer" node_paths=PackedStringArray("_timer", "_sprites")]
 disable_3d = true
 handle_input_locally = false
 size = Vector2i(1299, 1060)
@@ -187,42 +177,89 @@ script = ExtResource("6_0yaee")
 _timer = NodePath("Timer")
 _sprites = [NodePath("Chair"), NodePath("Guitar"), NodePath("Plant")]
 
-[node name="ColorRect" type="ColorRect" parent="PanelContainer/GamePanel/GameWorldContainer/WorldView"]
+[node name="ColorRect" type="ColorRect" parent="GameView/GamePanel/GameWorldContainer/WorldView"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Chair" type="Sprite2D" parent="PanelContainer/GamePanel/GameWorldContainer/WorldView"]
+[node name="Chair" type="Sprite2D" parent="GameView/GamePanel/GameWorldContainer/WorldView"]
 visible = false
 position = Vector2(673, 509)
 scale = Vector2(0.193353, 0.193353)
 texture = ExtResource("7_4ywno")
 
-[node name="Guitar" type="Sprite2D" parent="PanelContainer/GamePanel/GameWorldContainer/WorldView"]
+[node name="Guitar" type="Sprite2D" parent="GameView/GamePanel/GameWorldContainer/WorldView"]
 visible = false
 position = Vector2(205, 189)
 rotation = 0.11997
 scale = Vector2(0.37875, 0.37875)
 texture = ExtResource("8_445mx")
 
-[node name="Plant" type="Sprite2D" parent="PanelContainer/GamePanel/GameWorldContainer/WorldView"]
+[node name="Plant" type="Sprite2D" parent="GameView/GamePanel/GameWorldContainer/WorldView"]
 visible = false
 position = Vector2(194, 530)
 scale = Vector2(0.20875, 0.20875)
 texture = ExtResource("9_dmimy")
 
-[node name="Timer" type="Timer" parent="PanelContainer/GamePanel/GameWorldContainer/WorldView"]
+[node name="Timer" type="Timer" parent="GameView/GamePanel/GameWorldContainer/WorldView"]
 wait_time = 2.0
 autostart = true
 
-[connection signal="pressed" from="PanelContainer/DrawingPanel/DrawingPanelContainer/ButtonsContainer/VBoxContainer/MarginContainer2/ExportImageButton" to="PanelContainer/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" method="_on_export_image_to_bmp"]
-[connection signal="pressed" from="PanelContainer/DrawingPanel/DrawingPanelContainer/ButtonsContainer/VBoxContainer/KitButtonsPanel/KitItemButtons/ButtonsContainer/btn_Draw" to="PanelContainer/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" method="_on_btn_draw_pressed"]
-[connection signal="pressed" from="PanelContainer/DrawingPanel/DrawingPanelContainer/ButtonsContainer/VBoxContainer/KitButtonsPanel/KitItemButtons/ButtonsContainer/btn_Erase" to="PanelContainer/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" method="_on_btn_erase_pressed"]
-[connection signal="pressed" from="PanelContainer/DrawingPanel/DrawingPanelContainer/ButtonsContainer/VBoxContainer/KitButtonsPanel/KitItemButtons/ButtonsContainer/btn_Left" to="PanelContainer/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" method="_on_undo_btn_pressed"]
-[connection signal="pressed" from="PanelContainer/DrawingPanel/DrawingPanelContainer/ButtonsContainer/VBoxContainer/KitButtonsPanel/KitItemButtons/ButtonsContainer/btn_Right" to="PanelContainer/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" method="_on_redo_btn_pressed"]
-[connection signal="pressed" from="PanelContainer/DrawingPanel/DrawingPanelContainer/ButtonsContainer/VBoxContainer/KitButtonsPanel/KitItemButtons/ButtonsContainer/btn_Clear" to="PanelContainer/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" method="_on_clear_btn_pressed"]
-[connection signal="timeout" from="PanelContainer/GamePanel/GameWorldContainer/WorldView/Timer" to="PanelContainer/GamePanel/GameWorldContainer/WorldView" method="_on_timer_timeout"]
+[node name="MenuView" type="ColorRect" parent="."]
+process_mode = 3
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.00784314, 0.00784314, 0.00784314, 0.588235)
 
-[editable path="PanelContainer/DrawingPanel/DrawingPanelContainer/ButtonsContainer/VBoxContainer/KitButtonsPanel/KitItemButtons"]
+[node name="MenuButtons" type="VBoxContainer" parent="MenuView"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -135.5
+offset_top = -89.5
+offset_right = 135.5
+offset_bottom = 89.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackToGameButton" type="Button" parent="MenuView/MenuButtons"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("5_dmimy")
+text = "Back to game"
+
+[node name="SaveGameButton" type="Button" parent="MenuView/MenuButtons"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("5_dmimy")
+disabled = true
+text = "Save Game"
+
+[node name="BackToMenuButton" parent="MenuView/MenuButtons" instance=ExtResource("5_4ywno")]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Back to menu"
+_changeToSceneOnClick = "res://scenes/gui/TitleView.tscn"
+
+[connection signal="pressed" from="GameView/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/Navigation/MenuButton" to="." method="_onOpenMenuButtonPressed"]
+[connection signal="pressed" from="GameView/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/Navigation/ExportImageButton" to="GameView/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" method="_on_export_image_to_bmp"]
+[connection signal="pressed" from="GameView/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/Navigation/ExportImageButton" to="GameView/GamePanel/GameWorldContainer/WorldView" method="_on_export_image_button_pressed"]
+[connection signal="pressed" from="GameView/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/KitItemButtons/ButtonsContainer/btn_Draw" to="GameView/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" method="_on_btn_draw_pressed"]
+[connection signal="pressed" from="GameView/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/KitItemButtons/ButtonsContainer/btn_Erase" to="GameView/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" method="_on_btn_erase_pressed"]
+[connection signal="pressed" from="GameView/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/KitItemButtons/ButtonsContainer/btn_Left" to="GameView/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" method="_on_undo_btn_pressed"]
+[connection signal="pressed" from="GameView/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/KitItemButtons/ButtonsContainer/btn_Right" to="GameView/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" method="_on_redo_btn_pressed"]
+[connection signal="pressed" from="GameView/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/KitItemButtons/ButtonsContainer/btn_Clear" to="GameView/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" method="_on_clear_btn_pressed"]
+[connection signal="timeout" from="GameView/GamePanel/GameWorldContainer/WorldView/Timer" to="GameView/GamePanel/GameWorldContainer/WorldView" method="_on_timer_timeout"]
+[connection signal="pressed" from="MenuView/MenuButtons/BackToGameButton" to="." method="_onOpenMenuButtonPressed"]
+
+[editable path="GameView/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/KitItemButtons"]

@@ -13,7 +13,7 @@ public partial class SketchPadExportTool : Node {
     [Export]
     private string _savePath = string.Empty;
 
-    public void ExportAsBitMap(Node meshContainer, Vector2I canvasSize) {
+    public string ExportAsBitMap(Node meshContainer, Vector2I canvasSize) {
         var meshInstance2Ds = new List<MeshInstance2D>();
 
         foreach (var mesh in meshContainer.GetChildren()) {
@@ -39,6 +39,8 @@ public partial class SketchPadExportTool : Node {
 
         var path = CastPathToAbsolute(_savePath) + CreateFileName();
         Cv2.ImWrite(path, image);
+        
+        return path;
     }
 
     private static string CreateFileName() {
