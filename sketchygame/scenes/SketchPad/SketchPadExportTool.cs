@@ -37,9 +37,12 @@ public partial class SketchPadExportTool : Node {
             }
         }
 
-        var path = CastPathToAbsolute(_savePath) + CreateFileName();
+        // In release mode (standalone exe) image will be saved in same folder as exe,
+        // otherwise res://assets/exported
+        var path = (OS.IsDebugBuild() ? CastPathToAbsolute(_savePath) : GetExecutablePath()) + CreateFileName();
+        GD.Print(path);
         Cv2.ImWrite(path, image);
-        
+
         return path;
     }
 
@@ -50,6 +53,10 @@ public partial class SketchPadExportTool : Node {
 
     private static string CastPathToAbsolute(string path) {
         return ProjectSettings.GlobalizePath(path);
+    }
+
+    private static string GetExecutablePath() {
+        return OS.GetExecutablePath().GetBaseDir() + '\\';
     }
 
     private static Mat CreateImage(int width, int height) {
