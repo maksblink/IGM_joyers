@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bagsxl44j55qg"
-path="res://.godot/imported/shield-half (1).png-de7fb6e839b2f93e4bcb3b0210c3b642.ctex"
+uid="uid://xpsjusc3c2c4"
+path="res://.godot/imported/Door.png-d85adff62143827177a51bf1fdeb1727.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/object base/shield-half (1).png"
-dest_files=["res://.godot/imported/shield-half (1).png-de7fb6e839b2f93e4bcb3b0210c3b642.ctex"]
+source_file="res://assets/object base/Door.png"
+dest_files=["res://.godot/imported/Door.png-d85adff62143827177a51bf1fdeb1727.ctex"]
 
 [params]
 

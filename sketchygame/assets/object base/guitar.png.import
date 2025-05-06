@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0qehlqtneact"
-path="res://.godot/imported/plant (1).png-055939f97387b428f505f7cc8cf5c05b.ctex"
+uid="uid://b1oesbd458kwj"
+path="res://.godot/imported/guitar.png-bdda20a72fb322e958cd4af1c3697f47.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/object base/plant (1).png"
-dest_files=["res://.godot/imported/plant (1).png-055939f97387b428f505f7cc8cf5c05b.ctex"]
+source_file="res://assets/object base/guitar.png"
+dest_files=["res://.godot/imported/guitar.png-bdda20a72fb322e958cd4af1c3697f47.ctex"]
 
 [params]
 

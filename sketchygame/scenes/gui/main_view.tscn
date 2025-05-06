@@ -9,9 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://b56fi06uicdqp" path="res://scenes/SketchPad/sketch_pad_export_tool.tscn" id="5_445mx"]
 [ext_resource type="Theme" uid="uid://bqmeijdgg3vn7" path="res://assets/themes/button_theme.tres" id="5_dmimy"]
 [ext_resource type="Script" uid="uid://uf0vqi831qi5" path="res://scenes/trash/WorldView.cs" id="6_0yaee"]
-[ext_resource type="Texture2D" uid="uid://iw6y8qwx5h6y" path="res://assets/object base/Chair (1).png" id="7_4ywno"]
-[ext_resource type="Texture2D" uid="uid://b1oesbd458kwj" path="res://assets/object base/guitar (1).png" id="8_445mx"]
-[ext_resource type="Texture2D" uid="uid://b0qehlqtneact" path="res://assets/object base/plant (1).png" id="9_dmimy"]
+[ext_resource type="Texture2D" uid="uid://iw6y8qwx5h6y" path="res://assets/object base/Chair.png" id="7_4ywno"]
+[ext_resource type="Texture2D" uid="uid://b1oesbd458kwj" path="res://assets/object base/guitar.png" id="8_445mx"]
+[ext_resource type="Texture2D" uid="uid://b0qehlqtneact" path="res://assets/object base/plant.png" id="9_dmimy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5akto"]
 bg_color = Color(0.00784314, 0.188235, 0.278431, 1)
@@ -29,7 +29,7 @@ border_width_right = 10
 border_width_bottom = 10
 border_color = Color(0, 0, 0, 1)
 
-[node name="MainView" type="Control" node_paths=PackedStringArray("_gameView", "_menuView")]
+[node name="MainView" type="Control" node_paths=PackedStringArray("_gameView", "_menuView", "_worldView")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -39,6 +39,7 @@ grow_vertical = 2
 script = ExtResource("1_dmimy")
 _gameView = NodePath("GameView")
 _menuView = NodePath("MenuView")
+_worldView = NodePath("GameView/GamePanel/GameWorldContainer/WorldView")
 
 [node name="GameView" type="HBoxContainer" parent="."]
 process_mode = 1

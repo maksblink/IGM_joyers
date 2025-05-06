@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://do2hvymsicg08"
-path="res://.godot/imported/volleyball-2 (1).png-25852f8bbfd89dd1a78cf305dad8bca9.ctex"
+uid="uid://iw6y8qwx5h6y"
+path="res://.godot/imported/Chair.png-48a57c2e301ab8e7bb4d8ce9991f31fc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/object base/volleyball-2 (1).png"
-dest_files=["res://.godot/imported/volleyball-2 (1).png-25852f8bbfd89dd1a78cf305dad8bca9.ctex"]
+source_file="res://assets/object base/Chair.png"
+dest_files=["res://.godot/imported/Chair.png-48a57c2e301ab8e7bb4d8ce9991f31fc.ctex"]
 
 [params]
 

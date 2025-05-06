@@ -115,6 +115,7 @@ _changeToSceneOnClick = "res://scenes/gui/main_view.tscn"
 [node name="LibraryViewButton" parent="VBoxContainer" instance=ExtResource("4_j3ai8")]
 layout_mode = 2
 size_flags_vertical = 3
+disabled = true
 text = "Load game"
 _changeToSceneOnClick = "res://scenes/gui/save_view.tscn"
 

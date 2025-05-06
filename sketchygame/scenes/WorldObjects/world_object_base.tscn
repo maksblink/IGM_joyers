@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://d064q02m5573v"]
+
+[ext_resource type="Script" uid="uid://8q6cyila3bed" path="res://scenes/WorldObjects/WorldObjectBase.cs" id="1_vqv66"]
+[ext_resource type="Texture2D" uid="uid://cma8ow7pq33ya" path="res://icon.svg" id="2_flm8u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7dmjb"]
+size = Vector2(128, 128)
+
+[node name="WorldObjectBase" type="RigidBody2D"]
+input_pickable = true
+script = ExtResource("1_vqv66")
+
+[node name="Texture" type="Sprite2D" parent="."]
+texture = ExtResource("2_flm8u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7dmjb")
