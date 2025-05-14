@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://boweirwxolhxx"]
+[gd_scene load_steps=16 format=3 uid="uid://boweirwxolhxx"]
 
 [ext_resource type="PackedScene" uid="uid://d3qfvfqhfh27b" path="res://scenes/SketchPad/sketch_pad.tscn" id="1_851f3"]
 [ext_resource type="Script" uid="uid://bbhhgubstq5at" path="res://scenes/gui/MainView.cs" id="1_dmimy"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://iw6y8qwx5h6y" path="res://assets/object base/Chair.png" id="7_4ywno"]
 [ext_resource type="Texture2D" uid="uid://b1oesbd458kwj" path="res://assets/object base/guitar.png" id="8_445mx"]
 [ext_resource type="Texture2D" uid="uid://b0qehlqtneact" path="res://assets/object base/plant.png" id="9_dmimy"]
+[ext_resource type="Script" uid="uid://dnr2gfqf3ymqv" path="res://scenes/gui_components/ViewLibraryButton.cs" id="9_w2gdx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5akto"]
 bg_color = Color(0.00784314, 0.188235, 0.278431, 1)
@@ -146,12 +147,14 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 16
 
-[node name="ViewLibraryButton" parent="GameView/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("5_4ywno")]
+[node name="ViewLibraryButton" type="Button" parent="GameView/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
+theme = ExtResource("5_dmimy")
 text = "View object 
 library"
-_changeToSceneOnClick = "res://scenes/gui/library_view.tscn"
+script = ExtResource("9_w2gdx")
 
 [node name="GamePanel" type="Panel" parent="GameView"]
 layout_mode = 2
@@ -260,6 +263,7 @@ _changeToSceneOnClick = "res://scenes/gui/TitleView.tscn"
 [connection signal="pressed" from="GameView/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/KitItemButtons/ButtonsContainer/btn_Left" to="GameView/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" method="_on_undo_btn_pressed"]
 [connection signal="pressed" from="GameView/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/KitItemButtons/ButtonsContainer/btn_Right" to="GameView/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" method="_on_redo_btn_pressed"]
 [connection signal="pressed" from="GameView/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/KitItemButtons/ButtonsContainer/btn_Clear" to="GameView/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" method="_on_clear_btn_pressed"]
+[connection signal="pressed" from="GameView/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/HBoxContainer/ViewLibraryButton" to="GameView/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/HBoxContainer/ViewLibraryButton" method="_on_pressed"]
 [connection signal="timeout" from="GameView/GamePanel/GameWorldContainer/WorldView/Timer" to="GameView/GamePanel/GameWorldContainer/WorldView" method="_on_timer_timeout"]
 [connection signal="pressed" from="MenuView/MenuButtons/BackToGameButton" to="." method="_onOpenMenuButtonPressed"]
 
