@@ -55,6 +55,7 @@ theme_override_constants/separation = 0
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+size_flags_stretch_ratio = 1.15
 theme_override_styles/panel = SubResource("StyleBoxFlat_5akto")
 
 [node name="DrawingPanelContainer" type="VBoxContainer" parent="GameView/DrawingPanel"]
@@ -74,13 +75,12 @@ size_flags_stretch_ratio = 2.0
 custom_minimum_size = Vector2(510, 510)
 layout_mode = 2
 stretch = true
-stretch_shrink = 2
 
 [node name="SketchPad" parent="GameView/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer" node_paths=PackedStringArray("visible_layers", "unvisible_layers", "mesh_tool", "export_tool") instance=ExtResource("1_851f3")]
 transparent_bg = true
 msaa_2d = 3
 canvas_item_default_texture_filter = 0
-size = Vector2i(255, 255)
+size = Vector2i(510, 510)
 script = ExtResource("2_yt47q")
 visible_layers = NodePath("VisibleLayers")
 unvisible_layers = NodePath("HiddenLayers")
@@ -172,7 +172,7 @@ metadata/_edit_use_anchors_ = true
 [node name="WorldView" type="SubViewport" parent="GameView/GamePanel/GameWorldContainer" node_paths=PackedStringArray("_timer", "_sprites")]
 disable_3d = true
 handle_input_locally = false
-size = Vector2i(1299, 1060)
+size = Vector2i(1035, 883)
 render_target_update_mode = 4
 script = ExtResource("6_0yaee")
 _timer = NodePath("Timer")

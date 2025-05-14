@@ -13,7 +13,7 @@ func _on_clear_btn_pressed() -> void:
 
 
 func _on_export_image_to_bmp() -> void:
-	var export_path = export_tool.ExportAsBitMap(visible_layers, size)
+	var _export_path = export_tool.ExportAsBitMap(visible_layers, size)
 	
 
 func _on_btn_draw_pressed() -> void:
