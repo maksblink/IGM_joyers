@@ -9,7 +9,7 @@ public partial class TitleView : Control {
         base._EnterTree();
     }
 
-    private void _on_game_exit() {
-        GetTree().Quit();
-    }
+	private void _on_game_exit() {
+		GetTree().Quit();
+	}
 }

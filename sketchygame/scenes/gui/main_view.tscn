@@ -1,4 +1,5 @@
-[gd_scene load_steps=17 format=3 uid="uid://boweirwxolhxx"]
+[gd_scene load_steps=16 format=3 uid="uid://boweirwxolhxx"]
+
 
 [ext_resource type="PackedScene" uid="uid://d3qfvfqhfh27b" path="res://scenes/SketchPad/sketch_pad.tscn" id="1_851f3"]
 [ext_resource type="Script" uid="uid://bbhhgubstq5at" path="res://scenes/gui/MainView.cs" id="1_dmimy"]
@@ -13,6 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://b1oesbd458kwj" path="res://assets/object base/guitar.png" id="8_445mx"]
 [ext_resource type="Texture2D" uid="uid://b0qehlqtneact" path="res://assets/object base/plant.png" id="9_dmimy"]
 [ext_resource type="PackedScene" uid="uid://fngdeni12nub" path="res://scenes/WorldObjectComponents/clickable_component.tscn" id="13_w2gdx"]
+[ext_resource type="Script" uid="uid://dnr2gfqf3ymqv" path="res://scenes/gui_components/ViewLibraryButton.cs" id="9_w2gdx"]
+
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5akto"]
 bg_color = Color(0.00784314, 0.188235, 0.278431, 1)
@@ -144,11 +147,14 @@ size_flags_vertical = 3
 theme_override_constants/separation = 16
 
 [node name="ViewLibraryButton" parent="DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("5_4ywno")]
+[node name="ViewLibraryButton" type="Button" parent="GameView/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
+theme = ExtResource("5_dmimy")
 text = "View object 
 library"
-_changeToSceneOnClick = "res://scenes/gui/library_view.tscn"
+script = ExtResource("9_w2gdx")
 
 [node name="GameView" type="HBoxContainer" parent="."]
 process_mode = 1
@@ -184,6 +190,7 @@ disable_3d = true
 handle_input_locally = false
 physics_object_picking = true
 size = Vector2i(1285, 1060)
+size = Vector2i(1219, 883)
 render_target_update_mode = 4
 script = ExtResource("6_0yaee")
 _timer = NodePath("Timer")
@@ -266,14 +273,16 @@ size_flags_vertical = 3
 text = "Back to menu"
 _changeToSceneOnClick = "res://scenes/gui/TitleView.tscn"
 
-[connection signal="pressed" from="DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/Navigation/MenuButton" to="." method="_onOpenMenuButtonPressed"]
-[connection signal="pressed" from="DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/Navigation/ExportImageButton" to="DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" method="_on_export_image_to_bmp"]
-[connection signal="pressed" from="DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/Navigation/ExportImageButton" to="GameView/GamePanel/GameWorldContainer/WorldView" method="_on_export_image_button_pressed"]
-[connection signal="pressed" from="DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/KitItemButtons/ButtonsContainer/btn_Draw" to="DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" method="_on_btn_draw_pressed"]
-[connection signal="pressed" from="DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/KitItemButtons/ButtonsContainer/btn_Erase" to="DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" method="_on_btn_erase_pressed"]
-[connection signal="pressed" from="DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/KitItemButtons/ButtonsContainer/btn_Left" to="DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" method="_on_undo_btn_pressed"]
-[connection signal="pressed" from="DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/KitItemButtons/ButtonsContainer/btn_Right" to="DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" method="_on_redo_btn_pressed"]
-[connection signal="pressed" from="DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/KitItemButtons/ButtonsContainer/btn_Clear" to="DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" method="_on_clear_btn_pressed"]
+
+[connection signal="pressed" from="GameView/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/Navigation/MenuButton" to="." method="_onOpenMenuButtonPressed"]
+[connection signal="pressed" from="GameView/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/Navigation/ExportImageButton" to="GameView/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" method="_on_export_image_to_bmp"]
+[connection signal="pressed" from="GameView/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/Navigation/ExportImageButton" to="GameView/GamePanel/GameWorldContainer/WorldView" method="_on_export_image_button_pressed"]
+[connection signal="pressed" from="GameView/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/KitItemButtons/ButtonsContainer/btn_Draw" to="GameView/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" method="_on_btn_draw_pressed"]
+[connection signal="pressed" from="GameView/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/KitItemButtons/ButtonsContainer/btn_Erase" to="GameView/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" method="_on_btn_erase_pressed"]
+[connection signal="pressed" from="GameView/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/KitItemButtons/ButtonsContainer/btn_Left" to="GameView/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" method="_on_undo_btn_pressed"]
+[connection signal="pressed" from="GameView/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/KitItemButtons/ButtonsContainer/btn_Right" to="GameView/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" method="_on_redo_btn_pressed"]
+[connection signal="pressed" from="GameView/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/KitItemButtons/ButtonsContainer/btn_Clear" to="GameView/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" method="_on_clear_btn_pressed"]
+[connection signal="pressed" from="GameView/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/HBoxContainer/ViewLibraryButton" to="GameView/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/HBoxContainer/ViewLibraryButton" method="_on_pressed"]
 [connection signal="timeout" from="GameView/GamePanel/GameWorldContainer/WorldView/Timer" to="GameView/GamePanel/GameWorldContainer/WorldView" method="_on_timer_timeout"]
 [connection signal="pressed" from="MenuView/MenuButtons/BackToGameButton" to="." method="_onOpenMenuButtonPressed"]
 
