@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2stretinktoc"]
+
+[ext_resource type="Script" uid="uid://bdpf1h3eb2xrm" path="res://scenes/WorldObjectComponents/WorldObjectComponentBase.cs" id="1_1h5g1"]
+
+[node name="WorldObjectComponentBase" type="Node2D"]
+script = ExtResource("1_1h5g1")
