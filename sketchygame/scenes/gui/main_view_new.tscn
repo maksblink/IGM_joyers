@@ -184,11 +184,40 @@ position = Vector2(468, 908)
 collision_layer = 1
 collision_mask = 1
 
-[node name="StaticBody2D" type="StaticBody2D" parent="WorldView"]
-position = Vector2(660, 1046)
+[node name="Border" type="Node2D" parent="WorldView"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="WorldView/Border"]
+position = Vector2(445, 1)
+scale = Vector2(0.84, 0.032)
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldView/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldView/Border/StaticBody2D"]
+shape = SubResource("RectangleShape2D_mbjkp")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="WorldView/Border"]
+position = Vector2(445, 899)
+scale = Vector2(0.840002, 0.0324804)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldView/Border/StaticBody2D2"]
+shape = SubResource("RectangleShape2D_mbjkp")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="WorldView/Border"]
+position = Vector2(1001, 451)
+rotation = 1.5708
+scale = Vector2(0.68, 0.032)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldView/Border/StaticBody2D3"]
+shape = SubResource("RectangleShape2D_mbjkp")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="WorldView/Border"]
+position = Vector2(-90, 453)
+rotation = 1.5708
+scale = Vector2(0.68, 0.032)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldView/Border/StaticBody2D4"]
 shape = SubResource("RectangleShape2D_mbjkp")
 
 [connection signal="pressed" from="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/Navigation/MenuButton" to="." method="_onOpenMenuButtonPressed"]
