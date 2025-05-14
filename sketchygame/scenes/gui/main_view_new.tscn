@@ -8,7 +8,7 @@
 [ext_resource type="Theme" uid="uid://bqmeijdgg3vn7" path="res://assets/themes/button_theme.tres" id="5_ynwsr"]
 [ext_resource type="PackedScene" uid="uid://jepahwvj3hmy" path="res://scenes/gui_components/button_no_focus.tscn" id="6_537f8"]
 [ext_resource type="PackedScene" uid="uid://3drt5n08y3k" path="res://scenes/gui_components/kit_item_buttons.tscn" id="7_f58n2"]
-[ext_resource type="PackedScene" uid="uid://bobmft2hp5g1f" path="res://scenes/WorldObjects/clickable_object.tscn" id="14_nqdu8"]
+[ext_resource type="Script" uid="uid://28r5qnn3dmld" path="res://scenes/gui_components/ViewLibraryButton.cs" id="9_ygj05"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5akto"]
 bg_color = Color(0.00784314, 0.188235, 0.278431, 1)
@@ -19,29 +19,29 @@ border_width_bottom = 10
 border_color = Color(0, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mbjkp"]
-size = Vector2(900, 0.250031)
+size = Vector2(137, 1094)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eusrg"]
-size = Vector2(900, 0.25)
+size = Vector2(137, 1094)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ygj05"]
-size = Vector2(1095, 0.25)
+size = Vector2(1094, 137)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h5iah"]
-size = Vector2(1095, 0.25)
+size = Vector2(1094, 137)
 
-[node name="MainViewNew" type="Node2D" node_paths=PackedStringArray("_menuView", "_worldView")]
+[node name="MainViewNew" type="Node2D" node_paths=PackedStringArray("_menuView", "_worldObjectContainer")]
 script = ExtResource("1_eusrg")
 _menuView = NodePath("CanvasLayer/MenuView")
-_worldView = NodePath("WorldView")
+_worldObjectContainer = NodePath("WorldView/ObjectContainer")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="DrawingPanel" type="Panel" parent="CanvasLayer"]
 anchors_preset = -1
-anchor_right = 0.312
+anchor_right = 0.352
 anchor_bottom = 1.0
-offset_right = 0.959961
+offset_right = -0.200073
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_5akto")
@@ -123,6 +123,7 @@ text = "Open Menu"
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+disabled = true
 text = "Add object"
 metadata/_edit_use_anchors_ = true
 
@@ -130,16 +131,13 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 16
-
-[node name="ViewLibraryButton" parent="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("6_537f8")]
+[node name="ViewLibraryButton" parent="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer" instance=ExtResource("6_537f8")]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 text = "View object 
 library"
+script = ExtResource("9_ygj05")
 _changeToSceneOnClick = "res://scenes/gui/library_view.tscn"
 
 [node name="MenuView" type="ColorRect" parent="CanvasLayer"]
@@ -188,48 +186,41 @@ _changeToSceneOnClick = "res://scenes/gui/TitleView.tscn"
 [node name="WorldView" type="Node2D" parent="."]
 position = Vector2(600, 0)
 
-[node name="WorldObjectBase" parent="WorldView" instance=ExtResource("14_nqdu8")]
-position = Vector2(468, 908)
-collision_layer = 1
-collision_mask = 1
-
 [node name="Border" type="Node2D" parent="WorldView"]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="WorldView/Border"]
-position = Vector2(-95, 450)
+[node name="BorderLeft" type="StaticBody2D" parent="WorldView/Border"]
+position = Vector2(-105, 450)
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldView/Border/StaticBody2D"]
-rotation = 1.5708
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldView/Border/BorderLeft"]
 shape = SubResource("RectangleShape2D_mbjkp")
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="WorldView/Border"]
-position = Vector2(999.8, 450)
+[node name="BorderRight" type="StaticBody2D" parent="WorldView/Border"]
+position = Vector2(1068.5, 450.018)
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldView/Border/StaticBody2D2"]
-rotation = 1.5708
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldView/Border/BorderRight"]
 shape = SubResource("RectangleShape2D_eusrg")
 
-[node name="StaticBody2D3" type="StaticBody2D" parent="WorldView/Border"]
-position = Vector2(0, 450)
+[node name="BorderUp" type="StaticBody2D" parent="WorldView/Border"]
+position = Vector2(453, -68)
 rotation = 1.5708
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldView/Border/StaticBody2D3"]
-position = Vector2(449.8, -452.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldView/Border/BorderUp"]
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_ygj05")
 
-[node name="StaticBody2D4" type="StaticBody2D" parent="WorldView/Border"]
-position = Vector2(0, 450)
+[node name="BorderDown" type="StaticBody2D" parent="WorldView/Border"]
+position = Vector2(453, 968)
 rotation = 1.5708
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldView/Border/StaticBody2D4"]
-position = Vector2(-449.8, -452.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldView/Border/BorderDown"]
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_h5iah")
+
+[node name="ObjectContainer" type="Node2D" parent="WorldView"]
 
 [connection signal="pressed" from="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/Navigation/MenuButton" to="." method="_onOpenMenuButtonPressed"]
 [connection signal="pressed" from="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/Navigation/ExportImageButton" to="CanvasLayer/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" method="_on_export_image_to_bmp"]
@@ -238,6 +229,7 @@ shape = SubResource("RectangleShape2D_h5iah")
 [connection signal="pressed" from="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/KitItemButtons/ButtonsContainer/btn_Left" to="CanvasLayer/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" method="_on_undo_btn_pressed"]
 [connection signal="pressed" from="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/KitItemButtons/ButtonsContainer/btn_Right" to="CanvasLayer/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" method="_on_redo_btn_pressed"]
 [connection signal="pressed" from="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/KitItemButtons/ButtonsContainer/btn_Clear" to="CanvasLayer/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" method="_on_clear_btn_pressed"]
+[connection signal="ViewLibraryButtonPressed" from="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/ViewLibraryButton" to="." method="SaveGameState"]
 [connection signal="pressed" from="CanvasLayer/MenuView/MenuButtons/BackToGameButton" to="." method="_onOpenMenuButtonPressed"]
 
 [editable path="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/KitItemButtons"]

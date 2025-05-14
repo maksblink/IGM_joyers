@@ -5,9 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://bbw8smaso3vmt" path="res://assets/images/Stickman Running.png" id="2_8hkfk"]
 [ext_resource type="Texture2D" uid="uid://btna6eba8fmk8" path="res://assets/images/Stickman Ball.png" id="3_po4jv"]
 [ext_resource type="PackedScene" uid="uid://bqe4q4ta5d6lt" path="res://scenes/gui_components/library_item.tscn" id="4_8hkfk"]
-[ext_resource type="Texture2D" uid="uid://iw6y8qwx5h6y" path="res://assets/object base/Chair.png" id="5_7m3vb"]
 [ext_resource type="PackedScene" uid="uid://jepahwvj3hmy" path="res://scenes/gui_components/button_no_focus.tscn" id="5_po4jv"]
 [ext_resource type="Texture2D" uid="uid://xpsjusc3c2c4" path="res://assets/object base/Door.png" id="6_byiss"]
+[ext_resource type="Texture2D" uid="uid://cma8ow7pq33ya" path="res://icon.svg" id="6_tr1en"]
 [ext_resource type="Texture2D" uid="uid://b1oesbd458kwj" path="res://assets/object base/guitar.png" id="7_tr1en"]
 [ext_resource type="Texture2D" uid="uid://bb2oxpk1xlp74" path="res://assets/object base/key.png" id="8_nb6nl"]
 [ext_resource type="Texture2D" uid="uid://trxusy86tgp" path="res://assets/object base/lamp.png" id="9_cij4t"]
@@ -132,51 +132,60 @@ alignment = 1
 
 [node name="DummyItem" parent="ScrollContainer/HFlowContainer" instance=ExtResource("4_8hkfk")]
 layout_mode = 2
-_worldObjectPath = "res://scenes/WorldObjects/world_object_base.tscn"
-_thumbnail = ExtResource("5_7m3vb")
-_itemName = "Chair"
+_worldObjectPath = "res://scenes/WorldObjects/clickable_object.tscn"
+_thumbnail = ExtResource("6_tr1en")
+_itemName = "Example Object"
 
 [node name="DummyItem2" parent="ScrollContainer/HFlowContainer" instance=ExtResource("4_8hkfk")]
+visible = false
 layout_mode = 2
 _thumbnail = ExtResource("6_byiss")
 _itemName = "Door"
 
 [node name="DummyItem3" parent="ScrollContainer/HFlowContainer" instance=ExtResource("4_8hkfk")]
+visible = false
 layout_mode = 2
 _thumbnail = ExtResource("7_tr1en")
 _itemName = "Guitar"
 
 [node name="DummyItem4" parent="ScrollContainer/HFlowContainer" instance=ExtResource("4_8hkfk")]
+visible = false
 layout_mode = 2
 _thumbnail = ExtResource("8_nb6nl")
 _itemName = "Key"
 
 [node name="DummyItem5" parent="ScrollContainer/HFlowContainer" instance=ExtResource("4_8hkfk")]
+visible = false
 layout_mode = 2
 _thumbnail = ExtResource("9_cij4t")
 _itemName = "Lamp"
 
 [node name="DummyItem6" parent="ScrollContainer/HFlowContainer" instance=ExtResource("4_8hkfk")]
+visible = false
 layout_mode = 2
 _thumbnail = ExtResource("10_tnart")
 _itemName = "Pencil"
 
 [node name="DummyItem7" parent="ScrollContainer/HFlowContainer" instance=ExtResource("4_8hkfk")]
+visible = false
 layout_mode = 2
 _thumbnail = ExtResource("11_i4mp3")
 _itemName = "Plant"
 
 [node name="DummyItem8" parent="ScrollContainer/HFlowContainer" instance=ExtResource("4_8hkfk")]
+visible = false
 layout_mode = 2
 _thumbnail = ExtResource("12_xkeql")
 _itemName = "Shield"
 
 [node name="DummyItem9" parent="ScrollContainer/HFlowContainer" instance=ExtResource("4_8hkfk")]
+visible = false
 layout_mode = 2
 _thumbnail = ExtResource("13_4m0fr")
 _itemName = "Sword"
 
 [node name="DummyItem10" parent="ScrollContainer/HFlowContainer" instance=ExtResource("4_8hkfk")]
+visible = false
 layout_mode = 2
 _thumbnail = ExtResource("14_84v17")
 _itemName = "Volleyball"

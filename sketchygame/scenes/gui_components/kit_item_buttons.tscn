@@ -1,6 +1,7 @@
-[gd_scene load_steps=23 format=3 uid="uid://3drt5n08y3k"]
+[gd_scene load_steps=24 format=3 uid="uid://3drt5n08y3k"]
 
 [ext_resource type="Texture2D" uid="uid://dn5ffwne84lk8" path="res://assets/icon_btn_Draw.png" id="1_61ugi"]
+[ext_resource type="Script" uid="uid://b5rxeh0ups8b0" path="res://scenes/gui_components/KitItemButtons.cs" id="1_vieo3"]
 [ext_resource type="Texture2D" uid="uid://b0calmi4c8ehg" path="res://assets/icon_btn_Erase.png" id="2_of5xm"]
 [ext_resource type="Texture2D" uid="uid://cx1sr4j2jcfhf" path="res://assets/icon_btn_Left.png" id="3_p0bip"]
 [ext_resource type="Texture2D" uid="uid://6v05illmehwg" path="res://assets/icon_btn_Clear.png" id="3_x3ti0"]
@@ -72,6 +73,7 @@ anchor_bottom = 0.0851852
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_huvpp")
+script = ExtResource("1_vieo3")
 metadata/_edit_use_anchors_ = true
 
 [node name="ButtonsContainer" type="HBoxContainer" parent="."]
@@ -87,6 +89,8 @@ alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="btn_Draw" type="Button" parent="ButtonsContainer"]
+unique_name_in_owner = true
+modulate = Color(0.129412, 0.619608, 0.737255, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
@@ -110,6 +114,7 @@ expand_mode = 3
 stretch_mode = 5
 
 [node name="btn_Erase" type="Button" parent="ButtonsContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
@@ -205,3 +210,6 @@ texture = ExtResource("3_x3ti0")
 expand_mode = 3
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="ButtonsContainer/btn_Draw" to="." method="_onBrushButtonPressed"]
+[connection signal="pressed" from="ButtonsContainer/btn_Erase" to="." method="_onEraseButtonPressed"]

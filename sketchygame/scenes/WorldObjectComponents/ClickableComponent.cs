@@ -50,6 +50,16 @@ public partial class ClickableComponent : WorldObjectComponentBase {
         _mouseButton = mouseEvent.ButtonIndex;
     }
 
+    private void _onInputEventDragged(Node viewport, InputEvent inputEvent, int shapeIdx) {
+        if (inputEvent is not InputEventMouseMotion mouseEvent) return;
+        if (!_isHolding) return;
+
+        
+        WorldObject.Freeze = true;
+        WorldObject.Modulate = Colors.Orange;
+        WorldObject.GlobalPosition = mouseEvent.GlobalPosition;
+    }
+
     private void HandleOnClick(MouseButton button) {
         GD.Print("HandleOnClick");
         foreach (var action in _onClickActions) {
@@ -57,6 +67,9 @@ public partial class ClickableComponent : WorldObjectComponentBase {
             
             action.ClickAction(WorldObject);
         }
+        
+        WorldObject.Freeze = false;
+        WorldObject.Modulate = Colors.White;
     }
 
     private void HandleClickAndHold(MouseButton button) {
@@ -82,5 +95,6 @@ public partial class ClickableComponent : WorldObjectComponentBase {
         _mouseButton = MouseButton.None;
         _holdTimer.Stop();
         _isHolding = false;
+        WorldObject.Freeze = false;
     }
 }

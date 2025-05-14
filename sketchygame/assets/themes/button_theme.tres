@@ -3,7 +3,7 @@
 [ext_resource type="FontFile" uid="uid://c606s7dyeqrsl" path="res://assets/fonts/Inter-VariableFont_opsz,wght.ttf" id="1_xbnij"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tv5yy"]
-bg_color = Color(0.00784314, 0.188235, 0.278431, 0.745098)
+bg_color = Color(0.129412, 0.619608, 0.737255, 0.415686)
 corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
