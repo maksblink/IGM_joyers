@@ -4,10 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://fngdeni12nub" path="res://scenes/WorldObjectComponents/clickable_component.tscn" id="2_6im80"]
 
 [node name="WorldObjectBase" instance=ExtResource("1_ecg83")]
+position = Vector2(385, 73)
 collision_layer = 0
 collision_mask = 0
 input_pickable = false
-gravity_scale = 0.2
 
 [node name="CollisionShape2D" parent="." index="1"]
 disabled = true
