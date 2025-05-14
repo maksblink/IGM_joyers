@@ -1,17 +1,32 @@
-[gd_scene load_steps=4 format=3 uid="uid://fngdeni12nub"]
+[gd_scene load_steps=6 format=3 uid="uid://fngdeni12nub"]
 
 [ext_resource type="PackedScene" uid="uid://c2stretinktoc" path="res://scenes/WorldObjectComponents/world_object_component_base.tscn" id="1_alujl"]
 [ext_resource type="Script" uid="uid://b18luw722gp8e" path="res://scenes/WorldObjectComponents/ClickableComponent.cs" id="2_u2416"]
+[ext_resource type="Script" uid="uid://dbmpks8hac4mt" path="res://scenes/WorldObjectComponents/ClickActions/ClickActionResource.cs" id="3_uc4sk"]
+[ext_resource type="Resource" uid="uid://crn8sao4yhx33" path="res://scenes/WorldObjectComponents/ClickActions/test_click.tres" id="4_n5wh4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u2416"]
-size = Vector2(84, 62)
+size = Vector2(128, 128)
 
 [node name="ClickableComponent" instance=ExtResource("1_alujl")]
 script = ExtResource("2_u2416")
+_holdThreshold = 0.2
+_onClickActions = Array[ExtResource("3_uc4sk")]([ExtResource("4_n5wh4")])
+_onClickAndHoldActions = Array[ExtResource("3_uc4sk")]([ExtResource("4_n5wh4")])
+_onClickAndDragActions = Array[ExtResource("3_uc4sk")]([])
 
 [node name="ClickDetectionZone" type="Area2D" parent="." index="0"]
+collision_layer = 2
+collision_mask = 0
+priority = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClickDetectionZone" index="0"]
 shape = SubResource("RectangleShape2D_u2416")
 
-[connection signal="input_event" from="ClickDetectionZone" to="." method="_onClickDetectionZoneInputEvent"]
+[node name="HoldTimer" type="Timer" parent="." index="1"]
+unique_name_in_owner = true
+one_shot = true
+
+[connection signal="input_event" from="ClickDetectionZone" to="." method="_onInputEventReceived"]
+[connection signal="mouse_exited" from="ClickDetectionZone" to="." method="_resetMouseState"]
+[connection signal="timeout" from="HoldTimer" to="." method="_onHoldTimerTimeOut"]

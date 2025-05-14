@@ -22,7 +22,7 @@ GameState="*res://scenes/Autoloads/GameState.cs"
 
 [display]
 
-window/size/viewport_width=1800
+window/size/viewport_width=1600
 window/size/viewport_height=900
 
 [dotnet]

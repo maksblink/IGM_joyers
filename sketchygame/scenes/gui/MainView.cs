@@ -15,6 +15,7 @@ public partial class MainView : Control {
 	[Export]
 	private SubViewport _worldView = null!;
 	
+
 	[Export]
 	 private Node _tempStorage = null!;
 	
@@ -24,8 +25,8 @@ public partial class MainView : Control {
 
 	public override void _Ready() {
 		_renderQueue = ObjectRenderQueue.Instance;
-
-		RenderObjects();
+		
+    RenderObjects();
 		if(_tempStorage != null)
 		{
 			GameState.Instance.RestoreWorld(_tempStorage, _worldView);
@@ -44,6 +45,7 @@ public partial class MainView : Control {
 			item = _renderQueue.GetNextRenderItem();
 		}
 	}
+
 
 	private void _onOpenMenuButtonPressed()
 	{
