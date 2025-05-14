@@ -172,7 +172,7 @@ metadata/_edit_use_anchors_ = true
 [node name="WorldView" type="SubViewport" parent="GameView/GamePanel/GameWorldContainer" node_paths=PackedStringArray("_timer", "_sprites")]
 disable_3d = true
 handle_input_locally = false
-size = Vector2i(1299, 1060)
+size = Vector2i(1219, 883)
 render_target_update_mode = 4
 script = ExtResource("6_0yaee")
 _timer = NodePath("Timer")

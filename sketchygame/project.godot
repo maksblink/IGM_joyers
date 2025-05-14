@@ -18,11 +18,12 @@ config/icon="res://icon.svg"
 [autoload]
 
 ObjectRenderQueue="*res://scenes/Autoloads/object_render_queue.tscn"
+GameState="*res://scenes/Autoloads/GameState.cs"
 
 [display]
 
-window/size/viewport_width=1920
-window/size/viewport_height=1080
+window/size/viewport_width=1800
+window/size/viewport_height=900
 
 [dotnet]
 
