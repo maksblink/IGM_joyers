@@ -110,7 +110,7 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 2
 size_flags_vertical = 3
 text = "New game"
-_changeToSceneOnClick = "res://scenes/gui/main_view.tscn"
+_changeToSceneOnClick = "res://scenes/gui/main_view_new.tscn"
 
 [node name="LibraryViewButton" parent="VBoxContainer" instance=ExtResource("4_j3ai8")]
 layout_mode = 2
