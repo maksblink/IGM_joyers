@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dj1trr2o1xcwm"]
+[gd_scene load_steps=15 format=3 uid="uid://dj1trr2o1xcwm"]
 
 [ext_resource type="Script" uid="uid://c24dxhjt6usx0" path="res://scenes/gui/MainViewNew.cs" id="1_eusrg"]
 [ext_resource type="PackedScene" uid="uid://d3qfvfqhfh27b" path="res://scenes/SketchPad/sketch_pad.tscn" id="1_shjlp"]
@@ -19,7 +19,16 @@ border_width_bottom = 10
 border_color = Color(0, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mbjkp"]
-size = Vector2(1320, 68)
+size = Vector2(900, 0.250031)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eusrg"]
+size = Vector2(900, 0.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ygj05"]
+size = Vector2(1095, 0.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h5iah"]
+size = Vector2(1095, 0.25)
 
 [node name="MainViewNew" type="Node2D" node_paths=PackedStringArray("_menuView", "_worldView")]
 script = ExtResource("1_eusrg")
@@ -187,38 +196,40 @@ collision_mask = 1
 [node name="Border" type="Node2D" parent="WorldView"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="WorldView/Border"]
-position = Vector2(445, 1)
-scale = Vector2(0.84, 0.032)
+position = Vector2(-95, 450)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldView/Border/StaticBody2D"]
+rotation = 1.5708
 shape = SubResource("RectangleShape2D_mbjkp")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="WorldView/Border"]
-position = Vector2(445, 899)
-scale = Vector2(0.840002, 0.0324804)
+position = Vector2(999.8, 450)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldView/Border/StaticBody2D2"]
-shape = SubResource("RectangleShape2D_mbjkp")
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_eusrg")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="WorldView/Border"]
-position = Vector2(1001, 451)
+position = Vector2(0, 450)
 rotation = 1.5708
-scale = Vector2(0.68, 0.032)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldView/Border/StaticBody2D3"]
-shape = SubResource("RectangleShape2D_mbjkp")
+position = Vector2(449.8, -452.5)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_ygj05")
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="WorldView/Border"]
-position = Vector2(-90, 453)
+position = Vector2(0, 450)
 rotation = 1.5708
-scale = Vector2(0.68, 0.032)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldView/Border/StaticBody2D4"]
-shape = SubResource("RectangleShape2D_mbjkp")
+position = Vector2(-449.8, -452.5)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_h5iah")
 
 [connection signal="pressed" from="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/Navigation/MenuButton" to="." method="_onOpenMenuButtonPressed"]
 [connection signal="pressed" from="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/Navigation/ExportImageButton" to="CanvasLayer/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" method="_on_export_image_to_bmp"]
