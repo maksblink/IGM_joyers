@@ -54,10 +54,11 @@ color = Color(0.85098, 0.85098, 0.85098, 0.45098)
 [node name="Sticker" type="TextureRect" parent="BackgroundContainer"]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.549074
-anchor_right = 0.243229
+anchor_top = 0.323611
+anchor_right = 0.364844
 anchor_bottom = 1.0
 texture = ExtResource("3_gktf5")
+expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="StickmanRunning" type="TextureRect" parent="BackgroundContainer"]
@@ -67,6 +68,7 @@ anchor_left = 0.336458
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource("2_mww6x")
+expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="StickmanBall" type="TextureRect" parent="BackgroundContainer"]
@@ -79,6 +81,7 @@ anchor_bottom = 0.959259
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_uqhjv")
+expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect" type="TextureRect" parent="BackgroundContainer"]
@@ -91,6 +94,7 @@ anchor_bottom = 0.335185
 offset_bottom = -3.05176e-05
 grow_horizontal = 2
 texture = ExtResource("1_leq6m")
+expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
