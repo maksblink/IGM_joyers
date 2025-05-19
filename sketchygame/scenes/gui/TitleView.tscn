@@ -111,21 +111,25 @@ theme_override_constants/separation = 16
 metadata/_edit_use_anchors_ = true
 
 [node name="MainViewButton" parent="VBoxContainer" instance=ExtResource("4_j3ai8")]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-text = "New game"
+text = "NEW_GAME"
 _changeToSceneOnClick = "res://scenes/gui/main_view_new.tscn"
 
 [node name="LibraryViewButton" parent="VBoxContainer" instance=ExtResource("4_j3ai8")]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 disabled = true
-text = "Load game"
+text = "LOAD_GAME"
 _changeToSceneOnClick = "res://scenes/gui/save_view.tscn"
 
 [node name="ExitButton" parent="VBoxContainer" instance=ExtResource("4_j3ai8")]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-text = "Exit"
+text = "EXIT"
+language = "pl,"
 
 [connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_game_exit"]

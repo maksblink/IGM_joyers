@@ -1,0 +1,13 @@
+﻿keys;en;pl
+NEW_GAME;"New game";"Nowa gra"
+LOAD_GAME;"Load Game";"Wczytaj grę"
+EXIT;"Exit";"Wyjście z gry"
+OPEN_MENU;"Open menu";"Otwórz menu"
+ADD_OBJECT;"Add object";"Dodaj rysunek do gry"
+BRUSH;"Brush";"Pędzel"
+ERASE;"Eraser";"Gumka"
+UNDO;"Undo";"Cofnij"
+REDO;"Redo";"Ponów"
+CLEAR;"Clear sketch";"Wyczyść kanwę"
+VIEW_LIBRARY;"View object library";"Pokaż bibliotekę obiektów"
+BACK;"Exit";"Powrót"

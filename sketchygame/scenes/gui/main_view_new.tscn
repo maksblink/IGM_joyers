@@ -117,26 +117,41 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.5
 theme = ExtResource("5_ynwsr")
-text = "Open Menu"
+text = "OPEN_MENU"
 
 [node name="ExportImageButton" parent="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/Navigation" instance=ExtResource("6_537f8")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 disabled = true
-text = "Add object"
+text = "ADD_OBJECT"
 metadata/_edit_use_anchors_ = true
 
 [node name="KitItemButtons" parent="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer" instance=ExtResource("7_f58n2")]
 layout_mode = 2
 size_flags_vertical = 3
 
+[node name="btn_Draw" parent="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/KitItemButtons/ButtonsContainer" index="0"]
+tooltip_text = "BRUSH"
+
+[node name="btn_Erase" parent="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/KitItemButtons/ButtonsContainer" index="1"]
+tooltip_text = "ERASE"
+
+[node name="btn_Left" parent="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/KitItemButtons/ButtonsContainer" index="3"]
+tooltip_text = "UNDO"
+
+[node name="btn_Right" parent="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/KitItemButtons/ButtonsContainer" index="4"]
+tooltip_text = "REDO"
+
+[node name="btn_Clear" parent="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/KitItemButtons/ButtonsContainer" index="5"]
+tooltip_text = "CLEAR"
+
 [node name="ViewLibraryButton" parent="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer" instance=ExtResource("6_537f8")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "View object 
-library"
+text = "VIEW_LIBRARY"
+autowrap_mode = 2
 script = ExtResource("9_ygj05")
 _changeToSceneOnClick = "res://scenes/gui/library_view.tscn"
 
