@@ -1,0 +1,7 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://jrg3xhdhc6wr"]
+
+[ext_resource type="Script" uid="uid://ck10wlka4ov7g" path="res://scenes/WorldObjectComponents/ClickActions/DeleteOnClick.cs" id="1_va2u4"]
+
+[resource]
+script = ExtResource("1_va2u4")
+_mouseButton = 2

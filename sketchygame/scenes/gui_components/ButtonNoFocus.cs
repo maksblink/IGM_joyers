@@ -13,6 +13,6 @@ public partial class ButtonNoFocus : Button {
 			return;
 		}
 
-		var err = GetTree().ChangeSceneToFile(_changeToSceneOnClick);
+		GetTree().ChangeSceneToFile(_changeToSceneOnClick);
 	}
 }

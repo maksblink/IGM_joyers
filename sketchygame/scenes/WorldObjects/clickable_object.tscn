@@ -1,15 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bobmft2hp5g1f"]
+[gd_scene load_steps=3 format=3 uid="uid://bobmft2hp5g1f"]
 
 [ext_resource type="PackedScene" uid="uid://d064q02m5573v" path="res://scenes/WorldObjects/world_object_base.tscn" id="1_ecg83"]
 [ext_resource type="PackedScene" uid="uid://fngdeni12nub" path="res://scenes/WorldObjectComponents/clickable_component.tscn" id="2_6im80"]
-[ext_resource type="Script" uid="uid://dbmpks8hac4mt" path="res://scenes/WorldObjectComponents/ClickActions/ClickActionResource.cs" id="3_6im80"]
-[ext_resource type="Resource" uid="uid://bckndj16fv3pb" path="res://scenes/WorldObjectComponents/ClickActions/test_push.tres" id="4_k205s"]
 
 [node name="ClickableObject" instance=ExtResource("1_ecg83")]
-collision_layer = 0
-collision_mask = 0
-gravity_scale = 0.2
 
 [node name="ClickableComponent" parent="." index="0" instance=ExtResource("2_6im80")]
-_onClickActions = Array[ExtResource("3_6im80")]([ExtResource("4_k205s")])
-_onClickAndHoldActions = Array[ExtResource("3_6im80")]([])

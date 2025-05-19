@@ -33,8 +33,6 @@ public partial class ObjectRenderQueue : Node {
 	}
 
 	public void PushNodeToRenderQueue(WorldObjectBase node) {
-		// TODO: Check if object is world object
-
 		_renderQueue.Enqueue(node);
 	}
 

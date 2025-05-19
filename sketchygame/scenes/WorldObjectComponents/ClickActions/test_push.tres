@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_x4rt8")
-_velocityAdded = 50.0
+_velocityAdded = 1000.0
 _mouseButton = 1

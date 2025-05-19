@@ -1,42 +1,35 @@
 using Godot;
-using System;
 using SketchyGame.scenes.WorldObjects;
 
-public partial class GameState : Node
-{
-	public static GameState Instance;
+namespace SketchyGame.scenes.Autoloads;
 
-	public override void _Ready()
-	{
-		Instance = this;
-	}
+public partial class GameState : Node {
+    public static GameState Instance { get; private set; } = null!;
 
-	public void SaveWorld(Node worldView, Node tempStorage)
-	{
-		GD.Print("\n=== Zapisywanie stanu MainView ===");
+    [Export]
+    private Node _tempStorage = null!;
 
-		var children = worldView.GetChildren();
+    public override void _Ready() {
+        Instance ??= this;
 
-		foreach(Node child in children)
-		{
-			child.Reparent(tempStorage);
-		}
+        base._Ready();
+    }
 
-		GD.Print("=== Zapisywanie zakończone ===\n");
-	}
+    public void SaveWorld(Node objectContainer) {
+        foreach (var child in objectContainer.GetChildren()) {
+            if (child is not WorldObjectBase worldObjectBase) continue;
 
-	public void RestoreWorld(Node tempStorage, Node worldView)
-	{
-		GD.Print("\n=== Przywracanie stanu gry ===");
+            worldObjectBase.Freeze = true;
+            worldObjectBase.Reparent(_tempStorage);
+        }
+    }
 
-		var children = tempStorage.GetChildren();
-		GD.Print("Obiektów w tempStorage: ", children.Count);
+    public void RestoreWorld(Node objectContainer) {
+        foreach (var child in _tempStorage.GetChildren()) {
+            if (child is not WorldObjectBase worldObjectBase) continue;
 
-		foreach (Node child in children)
-		{
-			child.Reparent(worldView);
-		}
-
-		GD.Print("=== Zakończono przywracanie ===\n");
-	}
+            worldObjectBase.Freeze = false;
+            worldObjectBase.Reparent(objectContainer);
+        }
+    }
 }
