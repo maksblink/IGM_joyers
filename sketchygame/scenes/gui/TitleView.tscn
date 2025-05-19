@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bkgv6d2xmtlie"]
+[gd_scene load_steps=9 format=3 uid="uid://bkgv6d2xmtlie"]
 
 [ext_resource type="Script" uid="uid://bbymyqrpbpctf" path="res://scenes/gui/TitleView.cs" id="1_a1deo"]
 [ext_resource type="Texture2D" uid="uid://rvlv5xilt4eq" path="res://assets/images/Sketchy Game.png" id="1_leq6m"]
@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://bbw8smaso3vmt" path="res://assets/images/Stickman Running.png" id="2_mww6x"]
 [ext_resource type="Texture2D" uid="uid://gqlkqct8gg6b" path="res://assets/images/sticker.png" id="3_gktf5"]
 [ext_resource type="PackedScene" uid="uid://jepahwvj3hmy" path="res://scenes/gui_components/button_no_focus.tscn" id="4_j3ai8"]
+[ext_resource type="FontFile" uid="uid://c606s7dyeqrsl" path="res://assets/fonts/Inter-VariableFont_opsz,wght.ttf" id="7_gktf5"]
+
+[sub_resource type="Theme" id="Theme_y6nlm"]
 
 [node name="TitleView" type="Control"]
 layout_mode = 3
@@ -97,6 +100,23 @@ texture = ExtResource("1_leq6m")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
+[node name="AboutButton" parent="BackgroundContainer" instance=ExtResource("4_j3ai8")]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -149.0
+offset_top = -80.0
+offset_right = -4.0
+offset_bottom = -10.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_vertical = 3
+text = "About"
+script = null
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
@@ -128,4 +148,77 @@ layout_mode = 2
 size_flags_vertical = 3
 text = "Exit"
 
+[node name="About" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -300.0
+offset_right = 500.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_y6nlm")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="About"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="About/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("7_gktf5")
+theme_override_font_sizes/font_size = 32
+text = "About Sketchy Game"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="Label" parent="About/VBoxContainer"]
+custom_minimum_size = Vector2(1000, 200)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("7_gktf5")
+theme_override_font_sizes/font_size = 24
+text = "This interactive game brings drawings to life using AI and procedural animations. Players sketch objects, which are then transformed into animated elements with unique behaviors, allowing interaction within a dynamic ecosystem. The game fosters creativity by adapting the player's creations to the world's physics and rules, creating an immersive and responsive experience."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Leader" type="Label" parent="About/VBoxContainer"]
+custom_minimum_size = Vector2(1000, 35)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_gktf5")
+theme_override_font_sizes/font_size = 24
+text = "Team Leader: Maksymilian Moskwytyn"
+horizontal_alignment = 1
+
+[node name="Authors" type="Label" parent="About/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_gktf5")
+theme_override_font_sizes/font_size = 24
+text = "Authors: 
+Maksymilian Moskwytyn [272298@student.pwr.pl] 
+ Alicja Fuks [276225@student.pwr.edu.pl]
+Adrian Czubaty [272756@student.pwr.edu.pl] 
+Jakub Lipka [272993@student.pwr.edu.pl]
+Kuba Kędzia [264281@student.pwr.edu.pl]
+Kuba Gonczarek [263999@student.pwr.edu.pl]"
+horizontal_alignment = 1
+
+[node name="Release Date" type="Label" parent="About/VBoxContainer"]
+custom_minimum_size = Vector2(1000, 25)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("7_gktf5")
+theme_override_font_sizes/font_size = 24
+text = "© 2025 IGM Enjoyers. All rights reserved.
+"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[connection signal="pressed" from="BackgroundContainer/AboutButton" to="." method="_on_about"]
 [connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_game_exit"]
