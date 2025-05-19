@@ -183,19 +183,19 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("5_ynwsr")
-text = "Back to game"
+text = "BACK_TO_GAME"
 
 [node name="SaveGameButton" type="Button" parent="CanvasLayer/MenuView/MenuButtons"]
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("5_ynwsr")
 disabled = true
-text = "Save Game"
+text = "SAVE_GAME"
 
 [node name="BackToMenuButton" parent="CanvasLayer/MenuView/MenuButtons" instance=ExtResource("6_537f8")]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Back to menu"
+text = "BACK_TO_MENU"
 _changeToSceneOnClick = "res://scenes/gui/TitleView.tscn"
 
 [node name="WorldView" type="Node2D" parent="."]

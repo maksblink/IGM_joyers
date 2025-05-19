@@ -43,4 +43,5 @@ csv_translation={
 locale/translations=PackedStringArray("res://assets/translations/translations.en.translation", "res://assets/translations/translations.pl.translation")
 locale/include_text_server_data=true
 locale/test="pl"
+locale/fallback="pl,en"
 rendering/text_driver="ICU / HarfBuzz / Graphite (Built-in)"
