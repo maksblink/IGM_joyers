@@ -3,15 +3,16 @@ using Godot;
 namespace SketchyGame.scenes.gui;
 
 public partial class TitleView : Control {
-	public override void _EnterTree()
-	{
-		GetTree().Paused = false;
-		
-		base._EnterTree();
-	}
-	
-	private void _on_about()
-	{
+   private string _lang = "pl";
+  
+   public override void _EnterTree() {
+        GetTree().Paused = false;
+        GetNode<Button>("%LocaleButton").Text = TranslationServer.GetLocale().ToUpper();
+
+     base._EnterTree();
+   }
+  
+  private void _on_about() {
 		Control aboutPanel = GetNode<Control>("%About");
 		aboutPanel.Visible = true;
 	}
@@ -29,4 +30,12 @@ public partial class TitleView : Control {
 			aboutPanel.Visible = false;
 		}
 	}
+  
+    private void _onLocaleButtonPressed() {
+        var localeButton = GetNode<Button>("%LocaleButton");
+        _lang = _lang == "pl" ? "en" : "pl";
+        
+        TranslationServer.SetLocale(_lang);
+        localeButton.Text = _lang.ToUpper();
+    }
 }
