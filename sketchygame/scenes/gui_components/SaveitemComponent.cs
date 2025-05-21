@@ -11,15 +11,20 @@ public partial class SaveitemComponent : Button
 	public override void _Ready()
 	{
 		GD.Print("SaveItemComponent został utworzony!");
-		TextureRect thumbnailRect = GetNode<TextureRect>("%ThumbnailRect");
+		// TextureRect thumbnailRect = GetNode<TextureRect>("%ThumbnailRect");
 		Label description = GetNode<Label>("%Description");
-		
-		description.Text = $"Save {Model.SaveIdFormatted} {Model.LastUsageDate.ToString("dd.MM.YYYY")}";
-		thumbnailRect.Texture = Model.Thumbnail;
+	
+		// thumbnailRect.Texture = Model.Thumbnail;
+		description.Text = "Save  " + Model.formattedDate;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+	}
+	
+	private void _on_pressed() 
+	{
+		GetTree().ChangeSceneToFile("user://saves/" + Model.fileName);
 	}
 }

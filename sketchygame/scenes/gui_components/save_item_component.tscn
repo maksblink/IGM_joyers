@@ -46,3 +46,5 @@ layout_mode = 2
 size_flags_stretch_ratio = 0.0
 texture = ExtResource("1_no8ku")
 expand_mode = 2
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

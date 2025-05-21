@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 using SketchyGame.scenes.gui_components;
 
@@ -12,35 +13,32 @@ public partial class SaveView : Control
 
 		var dir = DirAccess.Open(savePath);
 
-		if(dir == null)
-		{
-			scrollContainer.Visible = false;
-			return;
-		}
+		List<string> files = new List<string>();
 
 		dir.ListDirBegin();
 		string fileName = dir.GetNext();
-		
-		bool hasAnySave = false;
-		
+
 		while(!string.IsNullOrEmpty(fileName))
 		{
 			if(!dir.CurrentIsDir() && fileName.EndsWith(".tscn"))
-			{
-				hasAnySave = true;
-				GD.Print("Znaleziono zapis: " + fileName);
-				
-				var saveItem = new SaveitemComponent();
-				GetNode<Container>("ScrollContainer/HFlowContainer").AddChild(saveItem);
-			}
+				files.Add(fileName);
+
 			fileName = dir.GetNext();
 		}
-
 		dir.ListDirEnd();
-		
-		// jak nie było żadnych zapisów to zostawał scroll i dodatkowo
-		// przemieszczał się na górę ekranu, więc dałem flagę by robił
-		// !visible lub visible w zależności czy coś w nim jest czy nie
-		scrollContainer.Visible = hasAnySave;
+
+		files.Reverse(); // najnowsze będą na początku
+
+		foreach(var file in files)
+		{
+			var model = new SaveItem
+			{
+				fileName = file
+			};
+
+			var saveItem = GD.Load<PackedScene>("res://scenes/gui_components/save_item_component.tscn").Instantiate<SaveitemComponent>();
+			saveItem.Model = model;
+			GetNode<Container>("ScrollContainer/HFlowContainer").AddChild(saveItem);
+		}
 	}
 }
