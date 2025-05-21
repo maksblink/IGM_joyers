@@ -15,7 +15,7 @@ public partial class SaveitemComponent : Button
 		Label description = GetNode<Label>("%Description");
 	
 		// thumbnailRect.Texture = Model.Thumbnail;
-		description.Text = "Save  " + Model.formattedDate;
+		description.Text = Tr("SAVE_ITEM") + " " + Model.formattedDate;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
