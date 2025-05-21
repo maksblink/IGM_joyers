@@ -31,6 +31,7 @@ public partial class MainViewNew : Node2D {
 		while (item is not null) {
 			item.Position = new Vector2(Random.Shared.Next(500), Random.Shared.Next(500));
 			_worldObjectContainer.AddChild(item);
+			item.Owner = _worldObjectContainer.Owner;
 			
 			item = _renderQueue.GetNextRenderItem();
 		}
@@ -82,7 +83,7 @@ public partial class MainViewNew : Node2D {
 			
 			var popup = GetNode<AcceptDialog>("SaveSuccessPopup");
 			popup.Visible = true;
-			GetTree().CreateTimer(2.0).Timeout += () => popup.Hide();
+			GetTree().CreateTimer(1.0).Timeout += () => popup.Hide();
 		}
 		else
 		{
