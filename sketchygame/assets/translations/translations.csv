@@ -11,6 +11,8 @@ REDO;Ponów;Redo
 CLEAR;Wyczyść kanwę;Clear sketch
 VIEW_LIBRARY;Pokaż bibliotekę obiektów;View object library
 BACK;Powrót;Exit
-BACK_TO_GAME;"Powrót do gry";"Back to game"
-SAVE_GAME;"Zapisz grę";"Save game"
-BACK_TO_MENU;"Powrót do menu";"Back to menu"
+BACK_TO_GAME;Powrót do gry;Back to game
+SAVE_GAME;Zapisz grę;Save game
+BACK_TO_MENU;Powrót do menu;Back to menu
+SAVE_POPUP_TITLE;Sukces!;Success!
+SAVE_POPUP_TEXT;Pomyślnie zapisałeś grę!;You have successfully saved the game!

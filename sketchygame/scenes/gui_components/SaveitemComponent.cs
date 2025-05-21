@@ -1,6 +1,8 @@
 using Godot;
 using System;
 
+using SketchyGame.scenes.gui_components;
+
 public partial class SaveitemComponent : Button
 {
 	public SaveItem Model { get; set; }
@@ -8,6 +10,7 @@ public partial class SaveitemComponent : Button
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		GD.Print("SaveItemComponent został utworzony!");
 		TextureRect thumbnailRect = GetNode<TextureRect>("%ThumbnailRect");
 		Label description = GetNode<Label>("%Description");
 		

@@ -125,7 +125,6 @@ _changeToSceneOnClick = "res://scenes/gui/main_view_new.tscn"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-disabled = true
 text = "LOAD_GAME"
 _changeToSceneOnClick = "res://scenes/gui/save_view.tscn"
 
