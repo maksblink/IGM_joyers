@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://cbqsky5riisdf"]
 
+[ext_resource type="Script" uid="uid://dkhdua2lomso0" path="res://scenes/gui/SaveView.cs" id="1_sr50d"]
 [ext_resource type="Texture2D" uid="uid://gqlkqct8gg6b" path="res://assets/images/sticker.png" id="1_yl1b6"]
 [ext_resource type="Texture2D" uid="uid://bbw8smaso3vmt" path="res://assets/images/Stickman Running.png" id="2_sr50d"]
 [ext_resource type="Texture2D" uid="uid://btna6eba8fmk8" path="res://assets/images/Stickman Ball.png" id="3_cm371"]
-[ext_resource type="PackedScene" uid="uid://yuc0gpd5yr0l" path="res://scenes/gui_components/save_item_component.tscn" id="4_djv12"]
 [ext_resource type="PackedScene" uid="uid://jepahwvj3hmy" path="res://scenes/gui_components/button_no_focus.tscn" id="5_bqxmu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l5y5h"]
@@ -24,6 +24,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_sr50d")
 
 [node name="BackgroundContainer" type="Control" parent="."]
 layout_mode = 1
@@ -110,36 +111,6 @@ metadata/_edit_group_ = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-
-[node name="SaveItemComponent" parent="ScrollContainer/HFlowContainer" instance=ExtResource("4_djv12")]
-layout_mode = 2
-
-[node name="SaveItemComponent2" parent="ScrollContainer/HFlowContainer" instance=ExtResource("4_djv12")]
-layout_mode = 2
-
-[node name="SaveItemComponent3" parent="ScrollContainer/HFlowContainer" instance=ExtResource("4_djv12")]
-layout_mode = 2
-
-[node name="SaveItemComponent4" parent="ScrollContainer/HFlowContainer" instance=ExtResource("4_djv12")]
-layout_mode = 2
-
-[node name="SaveItemComponent5" parent="ScrollContainer/HFlowContainer" instance=ExtResource("4_djv12")]
-layout_mode = 2
-
-[node name="SaveItemComponent6" parent="ScrollContainer/HFlowContainer" instance=ExtResource("4_djv12")]
-layout_mode = 2
-
-[node name="SaveItemComponent7" parent="ScrollContainer/HFlowContainer" instance=ExtResource("4_djv12")]
-layout_mode = 2
-
-[node name="SaveItemComponent8" parent="ScrollContainer/HFlowContainer" instance=ExtResource("4_djv12")]
-layout_mode = 2
-
-[node name="SaveItemComponent9" parent="ScrollContainer/HFlowContainer" instance=ExtResource("4_djv12")]
-layout_mode = 2
-
-[node name="SaveItemComponent10" parent="ScrollContainer/HFlowContainer" instance=ExtResource("4_djv12")]
-layout_mode = 2
 
 [node name="ButtonNoFocus" parent="." instance=ExtResource("5_bqxmu")]
 layout_mode = 1

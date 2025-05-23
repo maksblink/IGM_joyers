@@ -6,10 +6,10 @@ public partial class TitleView : Control {
    private string _lang = "pl";
   
    public override void _EnterTree() {
-        GetTree().Paused = false;
-        GetNode<Button>("%LocaleButton").Text = TranslationServer.GetLocale().ToUpper();
+		GetTree().Paused = false;
+		GetNode<Button>("%LocaleButton").Text = TranslationServer.GetLocale().ToUpper();
 
-     base._EnterTree();
+	 base._EnterTree();
    }
   
   private void _on_about() {
@@ -31,11 +31,11 @@ public partial class TitleView : Control {
 		}
 	}
   
-    private void _onLocaleButtonPressed() {
-        var localeButton = GetNode<Button>("%LocaleButton");
-        _lang = _lang == "pl" ? "en" : "pl";
-        
-        TranslationServer.SetLocale(_lang);
-        localeButton.Text = _lang.ToUpper();
-    }
+	private void _onLocaleButtonPressed() {
+		var localeButton = GetNode<Button>("%LocaleButton");
+		_lang = _lang == "pl" ? "en" : "pl";
+		
+		TranslationServer.SetLocale(_lang);
+		localeButton.Text = _lang.ToUpper();
+	}
 }
