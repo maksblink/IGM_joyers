@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public partial class EdgeDetectionGui : Control
 {
@@ -25,7 +26,7 @@ public partial class EdgeDetectionGui : Control
 	{
 		string path = "res://assets/object base";
 
-        foreach (string fileName in ResourceLoader.ListDirectory(path))
+        foreach (string fileName in ResourceLoader.ListDirectory(path).Where(file => file.EndsWith(".png")))
 		{
 			ImagePaths.Add(path + "/" + fileName);
 			ImageSelector.AddItem(fileName);
