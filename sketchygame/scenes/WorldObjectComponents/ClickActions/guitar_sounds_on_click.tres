@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://b0fwchm55g732"]
+
+[ext_resource type="AudioStream" uid="uid://0b3pk4njnabl" path="res://assets/sounds/guitar/funky-guitar-shot-groovy.wav" id="1_4tsp7"]
+[ext_resource type="AudioStream" uid="uid://nmtw2hu5hsrm" path="res://assets/sounds/guitar/funky-guitar-shot-low.wav" id="2_d4ufy"]
+[ext_resource type="AudioStream" uid="uid://boftftg74ympf" path="res://assets/sounds/guitar/guitar-shot-riff-note_D.wav" id="3_vltlx"]
+[ext_resource type="Script" uid="uid://bcsfk3vancqy3" path="res://scenes/WorldObjectComponents/ClickActions/SoundOnClick.cs" id="4_0h0g3"]
+
+[resource]
+script = ExtResource("4_0h0g3")
+_audioStreamPlayer2DPath = "GuitarSoundFx"
+_audioStreamWavs = Array[AudioStreamWAV]([ExtResource("1_4tsp7"), ExtResource("2_d4ufy"), ExtResource("3_vltlx")])
+_mouseButton = 1

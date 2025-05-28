@@ -1,0 +1,41 @@
+[gd_scene load_steps=9 format=3 uid="uid://cil21yp6edptx"]
+
+[ext_resource type="PackedScene" uid="uid://d064q02m5573v" path="res://scenes/WorldObjects/world_object_base.tscn" id="1_vyfv1"]
+[ext_resource type="Texture2D" uid="uid://b1oesbd458kwj" path="res://assets/object base/guitar.png" id="2_pi3pe"]
+[ext_resource type="PackedScene" uid="uid://fngdeni12nub" path="res://scenes/WorldObjectComponents/clickable_component.tscn" id="3_pi3pe"]
+[ext_resource type="Script" uid="uid://dbmpks8hac4mt" path="res://scenes/WorldObjectComponents/ClickActions/ClickActionResource.cs" id="4_i07q5"]
+[ext_resource type="Resource" uid="uid://jrg3xhdhc6wr" path="res://scenes/WorldObjectComponents/ClickActions/delete_object.tres" id="5_fburh"]
+[ext_resource type="Resource" uid="uid://b0fwchm55g732" path="res://scenes/WorldObjectComponents/ClickActions/guitar_sounds_on_click.tres" id="6_fburh"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vyfv1"]
+radius = 31.1127
+height = 154.149
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h2p3s"]
+radius = 28.2843
+height = 156.978
+
+[node name="GuitarObject" instance=ExtResource("1_vyfv1")]
+_objectTexture = ExtResource("2_pi3pe")
+
+[node name="Texture" parent="." index="0"]
+position = Vector2(9.53674e-07, -1.27554e-05)
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("2_pi3pe")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(2, -3)
+rotation = 0.785398
+shape = SubResource("CapsuleShape2D_vyfv1")
+
+[node name="ClickableComponent" parent="." index="2" instance=ExtResource("3_pi3pe")]
+_onClickActions = Array[ExtResource("4_i07q5")]([ExtResource("5_fburh"), ExtResource("6_fburh")])
+
+[node name="CollisionShape2D" parent="ClickableComponent/ClickDetectionZone" index="0"]
+position = Vector2(3, -4)
+rotation = 0.785398
+shape = SubResource("CapsuleShape2D_h2p3s")
+
+[node name="GuitarSoundFx" type="AudioStreamPlayer2D" parent="." index="3"]
+
+[editable path="ClickableComponent"]
