@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://bqwfww5kbe8c1"]
+[gd_scene load_steps=7 format=3 uid="uid://bqwfww5kbe8c1"]
 
 [ext_resource type="PackedScene" uid="uid://bobmft2hp5g1f" path="res://scenes/WorldObjects/clickable_object.tscn" id="1_b4ev3"]
 [ext_resource type="Texture2D" uid="uid://iw6y8qwx5h6y" path="res://assets/object base/Chair.png" id="2_1yfgo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f77bg"]
 size = Vector2(19, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1yfgo"]
+size = Vector2(128, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b4ev3"]
 size = Vector2(128, 64)
@@ -20,6 +23,7 @@ shape = SubResource("RectangleShape2D_f77bg")
 
 [node name="CollisionShape2D" parent="ClickableComponent/ClickDetectionZone" index="1"]
 position = Vector2(0, 32)
+shape = SubResource("RectangleShape2D_1yfgo")
 
 [node name="Texture" parent="." index="1"]
 position = Vector2(-4.52995e-06, -2.5034e-06)

@@ -31,6 +31,12 @@ window/size/resizable=false
 
 project/assembly_name="SketchyGame"
 
+[file_customization]
+
+folder_colors={
+"res://scenes/WorldObjects/": "yellow"
+}
+
 [importer_defaults]
 
 csv_translation={
