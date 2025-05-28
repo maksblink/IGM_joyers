@@ -1,12 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://bkgv6d2xmtlie"]
+[gd_scene load_steps=10 format=3 uid="uid://bkgv6d2xmtlie"]
 
+[ext_resource type="Script" uid="uid://bbymyqrpbpctf" path="res://scenes/gui/TitleView.cs" id="1_a1deo"]
 [ext_resource type="Texture2D" uid="uid://rvlv5xilt4eq" path="res://assets/images/Sketchy Game.png" id="1_leq6m"]
 [ext_resource type="Texture2D" uid="uid://btna6eba8fmk8" path="res://assets/images/Stickman Ball.png" id="1_uqhjv"]
 [ext_resource type="Texture2D" uid="uid://bbw8smaso3vmt" path="res://assets/images/Stickman Running.png" id="2_mww6x"]
 [ext_resource type="Texture2D" uid="uid://gqlkqct8gg6b" path="res://assets/images/sticker.png" id="3_gktf5"]
 [ext_resource type="PackedScene" uid="uid://jepahwvj3hmy" path="res://scenes/gui_components/button_no_focus.tscn" id="4_j3ai8"]
-[ext_resource type="Texture2D" uid="uid://dh2tsme4yyr1f" path="res://assets/images/Navigation Bar.png" id="5_j3ai8"]
-[ext_resource type="Theme" uid="uid://bgjnnludhvht5" path="res://assets/themes/nav_button.tres" id="6_a1deo"]
+[ext_resource type="FontFile" uid="uid://c606s7dyeqrsl" path="res://assets/fonts/Inter-VariableFont_opsz,wght.ttf" id="7_gktf5"]
+[ext_resource type="Theme" uid="uid://bqmeijdgg3vn7" path="res://assets/themes/button_theme.tres" id="7_y6nlm"]
+
+[sub_resource type="Theme" id="Theme_y6nlm"]
 
 [node name="TitleView" type="Control"]
 layout_mode = 3
@@ -15,131 +18,217 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_a1deo")
 
-[node name="Rectangle2" type="ColorRect" parent="."]
+[node name="BackgroundContainer" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = -292.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.544245, 0.785296, 0.897435, 1)
 
-[node name="Rectangle3" type="ColorRect" parent="."]
+[node name="ColorTint" type="ColorRect" parent="BackgroundContainer"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 356.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.556863, 0.792157, 0.901961, 1)
 
-[node name="StickmanBall" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 174.0
-offset_top = -314.0
-offset_right = 774.0
-offset_bottom = 286.0
-grow_vertical = 2
-scale = Vector2(0.519999, 1)
-texture = ExtResource("1_uqhjv")
-expand_mode = 2
-
-[node name="StickmanRunning" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 453.0
-offset_top = -2.0
-offset_right = 1153.0
-offset_bottom = 648.0
-texture = ExtResource("2_mww6x")
-expand_mode = 2
-
-[node name="Sticker" type="TextureRect" parent="."]
-layout_mode = 0
-offset_top = 352.0
-offset_right = 300.0
-offset_bottom = 652.0
-texture = ExtResource("3_gktf5")
-expand_mode = 2
-
-[node name="Logo" type="TextureRect" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="BackgroundContainer"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 200.0
-offset_top = 80.0
-offset_right = -152.0
-offset_bottom = -418.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="BackgroundTop" type="ColorRect" parent="BackgroundContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.85098, 0.85098, 0.85098, 0.25098)
+
+[node name="BackgroundBottom" type="ColorRect" parent="BackgroundContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.85098, 0.85098, 0.85098, 0.45098)
+
+[node name="Sticker" type="TextureRect" parent="BackgroundContainer"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.323611
+anchor_right = 0.364844
+anchor_bottom = 1.0
+texture = ExtResource("3_gktf5")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="StickmanRunning" type="TextureRect" parent="BackgroundContainer"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.336458
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource("2_mww6x")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="StickmanBall" type="TextureRect" parent="BackgroundContainer"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.129167
+anchor_top = 0.00185185
+anchor_right = 0.416667
+anchor_bottom = 0.959259
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_uqhjv")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="BackgroundContainer"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.144271
+anchor_top = 0.133333
+anchor_right = 0.85625
+anchor_bottom = 0.335185
+offset_bottom = -3.05176e-05
+grow_horizontal = 2
 texture = ExtResource("1_leq6m")
-expand_mode = 2
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="StartPlayground" parent="." instance=ExtResource("4_j3ai8")]
-layout_mode = 0
-offset_left = 478.0
-offset_top = 315.0
-offset_right = 728.0
-offset_bottom = 395.0
-theme_override_font_sizes/font_size = 28
-text = "Start playground
-"
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.406771
+anchor_top = 0.435185
+anchor_right = 0.593229
+anchor_bottom = 0.844444
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(179, 221)
+theme_override_constants/separation = 16
+metadata/_edit_use_anchors_ = true
 
-[node name="LoadPlayground" parent="." instance=ExtResource("4_j3ai8")]
-layout_mode = 0
-offset_left = 478.0
-offset_top = 407.0
-offset_right = 728.0
-offset_bottom = 487.0
-theme_override_font_sizes/font_size = 28
-text = "Load playground
-"
+[node name="MainViewButton" parent="VBoxContainer" instance=ExtResource("4_j3ai8")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+text = "NEW_GAME"
+_changeToSceneOnClick = "res://scenes/gui/main_view_new.tscn"
 
-[node name="Exit" parent="." instance=ExtResource("4_j3ai8")]
-layout_mode = 0
-offset_left = 478.0
-offset_top = 498.0
-offset_right = 728.0
-offset_bottom = 578.0
-theme_override_font_sizes/font_size = 28
-text = "Exit
-"
+[node name="LibraryViewButton" parent="VBoxContainer" instance=ExtResource("4_j3ai8")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+text = "LOAD_GAME"
+_changeToSceneOnClick = "res://scenes/gui/save_view.tscn"
 
-[node name="NavBar" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("5_j3ai8")
+[node name="ExitButton" parent="VBoxContainer" instance=ExtResource("4_j3ai8")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+text = "EXIT"
+language = "pl,"
 
-[node name="Close" type="Button" parent="NavBar"]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 4.0
-offset_right = 39.0
-offset_bottom = 220.0
-scale = Vector2(1, 0.188)
-focus_mode = 0
-theme = ExtResource("6_a1deo")
+anchor_left = 0.88875
+anchor_top = 0.92
+anchor_right = 0.99
+anchor_bottom = 0.981111
+metadata/_edit_use_anchors_ = true
 
-[node name="Button" type="Button" parent="NavBar"]
-layout_mode = 0
-offset_left = 45.0
-offset_right = 80.0
-offset_bottom = 220.0
-scale = Vector2(1, 0.188)
-focus_mode = 0
-theme = ExtResource("6_a1deo")
+[node name="LocaleButton" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("7_y6nlm")
+text = "PL"
 
-[node name="Fullscreen" type="Button" parent="NavBar"]
-layout_mode = 0
-offset_left = 86.0
-offset_right = 121.0
-offset_bottom = 220.0
-scale = Vector2(1, 0.188)
-focus_mode = 0
-theme = ExtResource("6_a1deo")
+[node name="AboutButton" parent="HBoxContainer" instance=ExtResource("4_j3ai8")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "About"
+script = null
+
+[node name="About" type="CenterContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_y6nlm")
+
+[node name="PanelContainer" type="PanelContainer" parent="About"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="About/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 0
+
+[node name="Title" type="Label" parent="About/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("7_gktf5")
+theme_override_font_sizes/font_size = 32
+text = "About Sketchy Game"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="Label" parent="About/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(1000, 200)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("7_gktf5")
+theme_override_font_sizes/font_size = 24
+text = "This interactive game brings drawings to life using AI and procedural animations. Players sketch objects, which are then transformed into animated elements with unique behaviors, allowing interaction within a dynamic ecosystem. The game fosters creativity by adapting the player's creations to the world's physics and rules, creating an immersive and responsive experience."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Leader" type="Label" parent="About/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(1000, 35)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_gktf5")
+theme_override_font_sizes/font_size = 24
+text = "Team Leader: Maksymilian Moskwytyn"
+horizontal_alignment = 1
+
+[node name="Authors" type="Label" parent="About/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_gktf5")
+theme_override_font_sizes/font_size = 24
+text = "Authors: 
+Maksymilian Moskwytyn [272298@student.pwr.pl] 
+ Alicja Fuks [276225@student.pwr.edu.pl]
+Adrian Czubaty [272756@student.pwr.edu.pl] 
+Jakub Lipka [272993@student.pwr.edu.pl]
+Kuba Kędzia [264281@student.pwr.edu.pl]
+Kuba Gonczarek [263999@student.pwr.edu.pl]"
+horizontal_alignment = 1
+
+[node name="Release Date" type="Label" parent="About/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(1000, 25)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("7_gktf5")
+theme_override_font_sizes/font_size = 24
+text = "© 2025 IGM Enjoyers. All rights reserved."
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_game_exit"]
+[connection signal="pressed" from="HBoxContainer/LocaleButton" to="." method="_onLocaleButtonPressed"]
+[connection signal="pressed" from="HBoxContainer/AboutButton" to="." method="_on_about"]
+[connection signal="gui_input" from="About" to="." method="_on_about_outside_click"]

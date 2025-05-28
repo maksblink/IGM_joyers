@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bckndj16fv3pb"]
+
+[ext_resource type="Script" uid="uid://e0i1scgoanlo" path="res://scenes/WorldObjectComponents/ClickActions/AddVelocityOnClick.cs" id="1_x4rt8"]
+
+[resource]
+script = ExtResource("1_x4rt8")
+_velocityAdded = 1000.0
+_mouseButton = 1
