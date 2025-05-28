@@ -133,62 +133,54 @@ alignment = 1
 layout_mode = 2
 _worldObjectPath = "res://scenes/WorldObjects/clickable_object.tscn"
 _thumbnail = ExtResource("6_tr1en")
-_itemName = "Example Object"
 
 [node name="DummyItem2" parent="ScrollContainer/HFlowContainer" instance=ExtResource("4_8hkfk")]
 layout_mode = 2
-text = "GUITAR_OBJECT_NAME"
 _worldObjectPath = "res://scenes/WorldObjects/guitar_object.tscn"
 _thumbnail = ExtResource("7_tr1en")
-_itemName = "Door"
+
+[node name="Name" parent="ScrollContainer/HFlowContainer/DummyItem2" index="1"]
+text = "GUITAR_OBJECT_NAME"
 
 [node name="DummyItem3" parent="ScrollContainer/HFlowContainer" instance=ExtResource("4_8hkfk")]
 visible = false
 layout_mode = 2
 _thumbnail = ExtResource("7_tr1en")
-_itemName = "Guitar"
 
 [node name="DummyItem4" parent="ScrollContainer/HFlowContainer" instance=ExtResource("4_8hkfk")]
 visible = false
 layout_mode = 2
 _thumbnail = ExtResource("8_nb6nl")
-_itemName = "Key"
 
 [node name="DummyItem5" parent="ScrollContainer/HFlowContainer" instance=ExtResource("4_8hkfk")]
 visible = false
 layout_mode = 2
 _thumbnail = ExtResource("9_cij4t")
-_itemName = "Lamp"
 
 [node name="DummyItem6" parent="ScrollContainer/HFlowContainer" instance=ExtResource("4_8hkfk")]
 visible = false
 layout_mode = 2
 _thumbnail = ExtResource("10_tnart")
-_itemName = "Pencil"
 
 [node name="DummyItem7" parent="ScrollContainer/HFlowContainer" instance=ExtResource("4_8hkfk")]
 visible = false
 layout_mode = 2
 _thumbnail = ExtResource("11_i4mp3")
-_itemName = "Plant"
 
 [node name="DummyItem8" parent="ScrollContainer/HFlowContainer" instance=ExtResource("4_8hkfk")]
 visible = false
 layout_mode = 2
 _thumbnail = ExtResource("12_xkeql")
-_itemName = "Shield"
 
 [node name="DummyItem9" parent="ScrollContainer/HFlowContainer" instance=ExtResource("4_8hkfk")]
 visible = false
 layout_mode = 2
 _thumbnail = ExtResource("13_4m0fr")
-_itemName = "Sword"
 
 [node name="DummyItem10" parent="ScrollContainer/HFlowContainer" instance=ExtResource("4_8hkfk")]
 visible = false
 layout_mode = 2
 _thumbnail = ExtResource("14_84v17")
-_itemName = "Volleyball"
 
 [node name="BackToGameButton" parent="." instance=ExtResource("5_po4jv")]
 layout_mode = 0
@@ -203,3 +195,5 @@ theme_override_font_sizes/font_size = 36
 text = "BACK"
 _changeToSceneOnClick = "res://scenes/gui/main_view_new.tscn"
 metadata/_edit_use_anchors_ = true
+
+[editable path="ScrollContainer/HFlowContainer/DummyItem2"]
