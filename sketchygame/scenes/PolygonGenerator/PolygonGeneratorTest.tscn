@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyn3vpa5v8wrp"]
+
+[ext_resource type="Script" uid="uid://cfms7aksxpkds" path="res://scenes/PolygonGenerator/PolygonGeneratorTest.cs" id="1_ha4yx"]
+[ext_resource type="Texture2D" uid="uid://cma8ow7pq33ya" path="res://icon.svg" id="2_xhgts"]
+
+[node name="PolygonGeneratorTest" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ha4yx")
+metadata/_edit_use_anchors_ = true
+
+[node name="EdgeTexture" type="TextureRect" parent="."]
+layout_mode = 0
+anchor_left = 0.125
+anchor_top = 0.111111
+anchor_right = 0.4375
+anchor_bottom = 0.666667
+texture = ExtResource("2_xhgts")
+expand_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Generate" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4375
+anchor_top = 0.777778
+anchor_right = 0.5625
+anchor_bottom = 0.888889
+text = "Generate polygon"
+metadata/_edit_use_anchors_ = true
+
+[node name="PolygonContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+anchor_left = 0.5625
+anchor_top = 0.111111
+anchor_right = 0.875
+anchor_bottom = 0.666667
+metadata/_edit_use_anchors_ = true
+
+[node name="Polygon" type="Node2D" parent="PolygonContainer"]
+
+[node name="ResultPolygon" type="Polygon2D" parent="PolygonContainer/Polygon"]
+
+[connection signal="pressed" from="Generate" to="." method="_onGeneratePressed"]
