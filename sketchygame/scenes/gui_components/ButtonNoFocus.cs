@@ -8,11 +8,11 @@ public partial class ButtonNoFocus : Button {
 	[Export] private string _changeToSceneOnClick = string.Empty;
 
 	public virtual void _on_pressed() {
-		if (_changeToSceneOnClick == string.Empty) {
-			GD.PushWarning("Cannot change scene, path is empty.");
-			return;
+		GD.Print(_changeToSceneOnClick);
+		if (_changeToSceneOnClick == string.Empty) { return; }
+		else
+		{
+			GetTree().ChangeSceneToFile(_changeToSceneOnClick);
 		}
-
-		GetTree().ChangeSceneToFile(_changeToSceneOnClick);
 	}
 }
