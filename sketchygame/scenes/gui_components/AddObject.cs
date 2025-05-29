@@ -23,7 +23,7 @@ public partial class AddObject : Button
                 string fileName = System.IO.Path.GetFileName(file);
                 string filePath = System.IO.Path.GetFullPath(file);
                 var objectName = fileName.Split('_')[0];
-                objects[objectName] = "res://scenes/WorldObjects/"+fileName;
+                objects[objectName] = filePath;
             }
             catch (Exception ex)
             {
