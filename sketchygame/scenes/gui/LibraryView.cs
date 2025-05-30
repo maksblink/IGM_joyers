@@ -1,7 +1,7 @@
-using System;
 using Godot;
 using SketchyGame.scenes.Autoloads;
 using SketchyGame.scenes.gui_components;
+using SketchyGame.scenes.WorldObjects;
 
 namespace SketchyGame.scenes.gui;
 
@@ -18,10 +18,14 @@ public partial class LibraryView : Control {
 		base._Ready();
 	}
 
-	private void _onLibraryItemPressed(string scenePath) {
-		GD.Print("Add to queue");
-		
+	private void _OnLibraryItemPressed(string scenePath) {
 		_renderQueueAutoload.PushSceneToRenderQueue(scenePath);
+	}
+
+	private void _OnLibraryItemTscnPressed(PackedScene scene) {
+		var instance = scene.Instantiate<WorldObjectBase>();
+		
+		_renderQueueAutoload.PushNodeToRenderQueue(instance);
 	}
 
 	private void ConnectLibraryItems() {
@@ -30,7 +34,8 @@ public partial class LibraryView : Control {
 		foreach (var child in _libraryContainer.GetChildren()) {
 			if (child is not LibraryItem libraryItem) continue;
 			
-			libraryItem.LibraryItemPressed += _onLibraryItemPressed;
+			libraryItem.LibraryItemPressed += _OnLibraryItemPressed;
+			libraryItem.LibraryItemPressedTscn += _OnLibraryItemTscnPressed;
 		}
 	}
 
@@ -40,7 +45,8 @@ public partial class LibraryView : Control {
 		foreach (var child in _libraryContainer.GetChildren()) {
 			if (child is not LibraryItem libraryItem) continue;
 
-			libraryItem.LibraryItemPressed -= _onLibraryItemPressed;
+			libraryItem.LibraryItemPressed -= _OnLibraryItemPressed;
+			libraryItem.LibraryItemPressedTscn -= _OnLibraryItemTscnPressed;
 		}
 	}
 }

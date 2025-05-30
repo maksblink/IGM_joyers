@@ -11,8 +11,7 @@ public partial class MainViewNew : Node2D {
 	[Export]
 	private Node2D _worldObjectContainer = null!;
 	
-	
-	private bool _isMenuOpen = false;
+	private bool _isMenuOpen;
 	
 	private ObjectRenderQueue _renderQueue = null!;
 
