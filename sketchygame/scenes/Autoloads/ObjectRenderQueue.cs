@@ -39,5 +39,7 @@ public partial class ObjectRenderQueue : Node {
 	public void PushSceneToRenderQueue(string scenePath) {
 		var scene = GD.Load<PackedScene>(scenePath).Instantiate<WorldObjectBase>();
 		PushNodeToRenderQueue(scene);
+		
+		EmitSignalRenderQueueChanged();
 	}
 }
