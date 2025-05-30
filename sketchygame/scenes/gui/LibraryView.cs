@@ -19,7 +19,7 @@ public partial class LibraryView : Control {
 	}
 
 	private void _onLibraryItemPressed(string scenePath) {
-		GD.Print("Add to queue");
+		GD.Print("Add to queue " + scenePath);
 		
 		_renderQueueAutoload.PushSceneToRenderQueue(scenePath);
 	}

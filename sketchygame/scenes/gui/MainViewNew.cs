@@ -21,8 +21,15 @@ public partial class MainViewNew : Node2D {
 		
 		RenderNewObjects();
 		LoadGameState();
+
+		ObjectRenderQueue.Instance.RenderQueueChanged += _on_add_object_button_pressed;
 		
 		base._Ready();
+	}
+
+	public override void _ExitTree()
+	{
+		ObjectRenderQueue.Instance.RenderQueueChanged -= _on_add_object_button_pressed;
 	}
 
 	private void RenderNewObjects() {
@@ -35,6 +42,12 @@ public partial class MainViewNew : Node2D {
 			
 			item = _renderQueue.GetNextRenderItem();
 		}
+	}
+
+	private void _on_add_object_button_pressed()
+	{
+		GD.Print("Chuj 2");
+		RenderNewObjects();
 	}
 
 	private void LoadGameState() {
