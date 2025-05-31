@@ -17,4 +17,13 @@ BACK_TO_MENU;Powrót do menu;Back to menu
 SAVE_POPUP_TITLE;Sukces!;Success!
 SAVE_POPUP_TEXT;Pomyślnie zapisałeś grę!;You have successfully saved the game!
 SAVE_ITEM;Zapis;Save
-GUITAR_OBJECT_NAME;Gitara;Guitar
+GUITAR_OBJ_NAME;Gitara;Guitar
+CHAIR_OBJ_NAME;Krzesło;Chair
+DOOR_OBJ_NAME;Drzwi;Door
+KEY_OBJ_NAME;Klucz;Key
+LAMP_OBJ_NAME;Lampa;Lamp
+PENCIL_OBJ_NAME;Ołówek;Pencil
+PLANT_OBJ_NAME;Roślina;Plant
+SHIELD_OBJ_NAME;Tarcza;Shield
+SWORD_OBJ_NAME;Miecz;Sword
+BALL_OBJ_NAME;Piłka;Ball

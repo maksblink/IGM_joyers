@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://bqc1tasryhwkg"]
+
+[ext_resource type="PackedScene" uid="uid://bobmft2hp5g1f" path="res://scenes/WorldObjects/TestObjects/clickable_object.tscn" id="1_r8pj4"]
+[ext_resource type="Texture2D" uid="uid://bagsxl44j55qg" path="res://assets/object_base/shield-half.png" id="2_wmo5u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6iy41"]
+radius = 35.1283
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jc4do"]
+radius = 34.2345
+
+[node name="ShieldObject" instance=ExtResource("1_r8pj4")]
+
+[node name="CollisionShape2D" parent="ClickableComponent/ClickDetectionZone" index="0"]
+shape = SubResource("CircleShape2D_6iy41")
+
+[node name="Texture" parent="." index="1"]
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("2_wmo5u")
+
+[node name="CollisionShape2D" parent="." index="2"]
+shape = SubResource("CircleShape2D_jc4do")
+
+[editable path="ClickableComponent"]

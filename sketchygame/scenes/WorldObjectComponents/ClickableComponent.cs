@@ -61,7 +61,6 @@ public partial class ClickableComponent : WorldObjectComponentBase {
     }
 
     private void HandleOnClick(MouseButton button) {
-        GD.Print("HandleOnClick");
         foreach (var action in _onClickActions) {
             if (action.MouseButton != button) continue;
             
@@ -73,7 +72,6 @@ public partial class ClickableComponent : WorldObjectComponentBase {
     }
 
     private void HandleClickAndHold(MouseButton button) {
-        GD.Print("HandleClickAndHold");
         foreach (var action in _onClickAndHoldActions) {
             if (action.MouseButton != button) continue;
             

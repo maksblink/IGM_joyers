@@ -9,6 +9,6 @@ public partial class ClickActionResource : Resource {
     public MouseButton MouseButton => _mouseButton;
     
     public virtual void ClickAction(params object[] args) {
-        GD.Print("Some clickable action executed");
+        GD.PushWarning("Some clickable action executed. Override this.");
     }
 }

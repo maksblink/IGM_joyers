@@ -34,7 +34,16 @@ project/assembly_name="SketchyGame"
 [file_customization]
 
 folder_colors={
-"res://scenes/WorldObjects/": "yellow"
+"res://assets/fonts/": "red",
+"res://assets/images/": "orange",
+"res://assets/object_base/": "blue",
+"res://assets/sounds/": "purple",
+"res://assets/themes/": "pink",
+"res://scenes/Tools/": "red",
+"res://scenes/WorldObjectComponents/": "purple",
+"res://scenes/WorldObjects/": "yellow",
+"res://scenes/gui/": "blue",
+"res://scenes/gui_components/": "teal"
 }
 
 [importer_defaults]

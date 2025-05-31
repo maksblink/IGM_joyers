@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cfncye2w50uys"]
+[gd_scene load_steps=28 format=3 uid="uid://cfncye2w50uys"]
 
 [ext_resource type="Texture2D" uid="uid://gqlkqct8gg6b" path="res://assets/images/sticker.png" id="1_8inqh"]
 [ext_resource type="Script" uid="uid://brlugeqqly4od" path="res://scenes/gui/LibraryView.cs" id="1_byiss"]
@@ -6,15 +6,26 @@
 [ext_resource type="Texture2D" uid="uid://btna6eba8fmk8" path="res://assets/images/Stickman Ball.png" id="3_po4jv"]
 [ext_resource type="PackedScene" uid="uid://bqe4q4ta5d6lt" path="res://scenes/gui_components/library_item.tscn" id="4_8hkfk"]
 [ext_resource type="PackedScene" uid="uid://jepahwvj3hmy" path="res://scenes/gui_components/button_no_focus.tscn" id="5_po4jv"]
-[ext_resource type="Texture2D" uid="uid://cma8ow7pq33ya" path="res://icon.svg" id="6_tr1en"]
-[ext_resource type="Texture2D" uid="uid://b1oesbd458kwj" path="res://assets/object base/guitar.png" id="7_tr1en"]
-[ext_resource type="Texture2D" uid="uid://bb2oxpk1xlp74" path="res://assets/object base/key.png" id="8_nb6nl"]
-[ext_resource type="Texture2D" uid="uid://trxusy86tgp" path="res://assets/object base/lamp.png" id="9_cij4t"]
-[ext_resource type="Texture2D" uid="uid://dciwa8t41xvlh" path="res://assets/object base/pencil.png" id="10_tnart"]
-[ext_resource type="Texture2D" uid="uid://b0qehlqtneact" path="res://assets/object base/plant.png" id="11_i4mp3"]
-[ext_resource type="Texture2D" uid="uid://bagsxl44j55qg" path="res://assets/object base/shield-half.png" id="12_xkeql"]
-[ext_resource type="Texture2D" uid="uid://bjlcrorrdpgnn" path="res://assets/object base/sword.png" id="13_4m0fr"]
-[ext_resource type="Texture2D" uid="uid://do2hvymsicg08" path="res://assets/object base/volleyball.png" id="14_84v17"]
+[ext_resource type="PackedScene" uid="uid://dqhn1ty8p1xjl" path="res://scenes/WorldObjects/StandardObjects/volleyball_object.tscn" id="6_ilbhb"]
+[ext_resource type="Texture2D" uid="uid://b1oesbd458kwj" path="res://assets/object_base/guitar.png" id="7_tr1en"]
+[ext_resource type="PackedScene" uid="uid://cil21yp6edptx" path="res://scenes/WorldObjects/StandardObjects/guitar_object.tscn" id="8_5e0ie"]
+[ext_resource type="Texture2D" uid="uid://bb2oxpk1xlp74" path="res://assets/object_base/key.png" id="8_nb6nl"]
+[ext_resource type="Texture2D" uid="uid://trxusy86tgp" path="res://assets/object_base/lamp.png" id="9_cij4t"]
+[ext_resource type="Texture2D" uid="uid://dciwa8t41xvlh" path="res://assets/object_base/pencil.png" id="10_tnart"]
+[ext_resource type="PackedScene" uid="uid://bqwfww5kbe8c1" path="res://scenes/WorldObjects/StandardObjects/chair_object.tscn" id="10_wynsm"]
+[ext_resource type="Texture2D" uid="uid://b0qehlqtneact" path="res://assets/object_base/plant.png" id="11_i4mp3"]
+[ext_resource type="Texture2D" uid="uid://iw6y8qwx5h6y" path="res://assets/object_base/Chair.png" id="11_pmxna"]
+[ext_resource type="PackedScene" uid="uid://vxoki457hoh8" path="res://scenes/WorldObjects/StandardObjects/door_object.tscn" id="12_10fqe"]
+[ext_resource type="Texture2D" uid="uid://bagsxl44j55qg" path="res://assets/object_base/shield-half.png" id="12_xkeql"]
+[ext_resource type="Texture2D" uid="uid://bjlcrorrdpgnn" path="res://assets/object_base/sword.png" id="13_4m0fr"]
+[ext_resource type="Texture2D" uid="uid://xpsjusc3c2c4" path="res://assets/object_base/Door.png" id="13_sjttm"]
+[ext_resource type="Texture2D" uid="uid://do2hvymsicg08" path="res://assets/object_base/volleyball.png" id="14_84v17"]
+[ext_resource type="PackedScene" uid="uid://dm0counpgymhc" path="res://scenes/WorldObjects/StandardObjects/key_object.tscn" id="14_tx214"]
+[ext_resource type="PackedScene" uid="uid://b5qqhypf5pfax" path="res://scenes/WorldObjects/StandardObjects/lamp_object.tscn" id="16_mqlha"]
+[ext_resource type="PackedScene" uid="uid://dkpxlehdo6vln" path="res://scenes/WorldObjects/StandardObjects/pen_object.tscn" id="18_dc3qi"]
+[ext_resource type="PackedScene" uid="uid://6p0qpgsqrmy2" path="res://scenes/WorldObjects/StandardObjects/plant_object.tscn" id="20_u2xan"]
+[ext_resource type="PackedScene" uid="uid://bqc1tasryhwkg" path="res://scenes/WorldObjects/StandardObjects/shield_object.tscn" id="22_ouh8p"]
+[ext_resource type="PackedScene" uid="uid://m5fumjhvevco" path="res://scenes/WorldObjects/StandardObjects/sword_object.tscn" id="24_0qr0p"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_po4jv"]
 content_margin_left = 32.0
@@ -129,58 +140,126 @@ theme_override_constants/h_separation = 32
 theme_override_constants/v_separation = 32
 alignment = 1
 
-[node name="DummyItem" parent="ScrollContainer/HFlowContainer" instance=ExtResource("4_8hkfk")]
+[node name="Ball" parent="ScrollContainer/HFlowContainer" instance=ExtResource("4_8hkfk")]
 layout_mode = 2
-_worldObjectPath = "res://scenes/WorldObjects/clickable_object.tscn"
-_thumbnail = ExtResource("6_tr1en")
+_worldObjectScene = ExtResource("6_ilbhb")
+_thumbnail = ExtResource("14_84v17")
 
-[node name="DummyItem2" parent="ScrollContainer/HFlowContainer" instance=ExtResource("4_8hkfk")]
+[node name="Thumbnail" parent="ScrollContainer/HFlowContainer/Ball/ThumbnailContainer" index="0"]
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Name" parent="ScrollContainer/HFlowContainer/Ball" index="1"]
+text = "BALL_OBJ_NAME"
+
+[node name="Guitar" parent="ScrollContainer/HFlowContainer" instance=ExtResource("4_8hkfk")]
 layout_mode = 2
+_worldObjectScene = ExtResource("8_5e0ie")
 _worldObjectPath = "res://scenes/WorldObjects/guitar_object.tscn"
 _thumbnail = ExtResource("7_tr1en")
 
-[node name="Name" parent="ScrollContainer/HFlowContainer/DummyItem2" index="1"]
-text = "GUITAR_OBJECT_NAME"
+[node name="Thumbnail" parent="ScrollContainer/HFlowContainer/Guitar/ThumbnailContainer" index="0"]
+expand_mode = 2
+stretch_mode = 5
 
-[node name="DummyItem3" parent="ScrollContainer/HFlowContainer" instance=ExtResource("4_8hkfk")]
-visible = false
-layout_mode = 2
-_thumbnail = ExtResource("7_tr1en")
+[node name="Name" parent="ScrollContainer/HFlowContainer/Guitar" index="1"]
+text = "GUITAR_OBJ_NAME"
 
-[node name="DummyItem4" parent="ScrollContainer/HFlowContainer" instance=ExtResource("4_8hkfk")]
-visible = false
+[node name="Chair" parent="ScrollContainer/HFlowContainer" instance=ExtResource("4_8hkfk")]
 layout_mode = 2
+_worldObjectScene = ExtResource("10_wynsm")
+_thumbnail = ExtResource("11_pmxna")
+
+[node name="Thumbnail" parent="ScrollContainer/HFlowContainer/Chair/ThumbnailContainer" index="0"]
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Name" parent="ScrollContainer/HFlowContainer/Chair" index="1"]
+text = "CHAIR_OBJ_NAME"
+
+[node name="Door" parent="ScrollContainer/HFlowContainer" instance=ExtResource("4_8hkfk")]
+layout_mode = 2
+_worldObjectScene = ExtResource("12_10fqe")
+_thumbnail = ExtResource("13_sjttm")
+
+[node name="Thumbnail" parent="ScrollContainer/HFlowContainer/Door/ThumbnailContainer" index="0"]
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Name" parent="ScrollContainer/HFlowContainer/Door" index="1"]
+text = "DOOR_OBJ_NAME"
+
+[node name="Key" parent="ScrollContainer/HFlowContainer" instance=ExtResource("4_8hkfk")]
+layout_mode = 2
+_worldObjectScene = ExtResource("14_tx214")
 _thumbnail = ExtResource("8_nb6nl")
 
-[node name="DummyItem5" parent="ScrollContainer/HFlowContainer" instance=ExtResource("4_8hkfk")]
-visible = false
+[node name="Thumbnail" parent="ScrollContainer/HFlowContainer/Key/ThumbnailContainer" index="0"]
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Name" parent="ScrollContainer/HFlowContainer/Key" index="1"]
+text = "KEY_OBJ_NAME"
+
+[node name="Lamp" parent="ScrollContainer/HFlowContainer" instance=ExtResource("4_8hkfk")]
 layout_mode = 2
+_worldObjectScene = ExtResource("16_mqlha")
 _thumbnail = ExtResource("9_cij4t")
 
-[node name="DummyItem6" parent="ScrollContainer/HFlowContainer" instance=ExtResource("4_8hkfk")]
-visible = false
+[node name="Thumbnail" parent="ScrollContainer/HFlowContainer/Lamp/ThumbnailContainer" index="0"]
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Name" parent="ScrollContainer/HFlowContainer/Lamp" index="1"]
+text = "LAMP_OBJ_NAME"
+
+[node name="Pencil" parent="ScrollContainer/HFlowContainer" instance=ExtResource("4_8hkfk")]
 layout_mode = 2
+_worldObjectScene = ExtResource("18_dc3qi")
 _thumbnail = ExtResource("10_tnart")
 
-[node name="DummyItem7" parent="ScrollContainer/HFlowContainer" instance=ExtResource("4_8hkfk")]
-visible = false
+[node name="Thumbnail" parent="ScrollContainer/HFlowContainer/Pencil/ThumbnailContainer" index="0"]
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Name" parent="ScrollContainer/HFlowContainer/Pencil" index="1"]
+text = "PENCIL_OBJ_NAME"
+
+[node name="Plant" parent="ScrollContainer/HFlowContainer" instance=ExtResource("4_8hkfk")]
 layout_mode = 2
+_worldObjectScene = ExtResource("20_u2xan")
 _thumbnail = ExtResource("11_i4mp3")
 
-[node name="DummyItem8" parent="ScrollContainer/HFlowContainer" instance=ExtResource("4_8hkfk")]
-visible = false
+[node name="Thumbnail" parent="ScrollContainer/HFlowContainer/Plant/ThumbnailContainer" index="0"]
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Name" parent="ScrollContainer/HFlowContainer/Plant" index="1"]
+text = "PLANT_OBJ_NAME"
+
+[node name="Shield" parent="ScrollContainer/HFlowContainer" instance=ExtResource("4_8hkfk")]
 layout_mode = 2
+_worldObjectScene = ExtResource("22_ouh8p")
 _thumbnail = ExtResource("12_xkeql")
 
-[node name="DummyItem9" parent="ScrollContainer/HFlowContainer" instance=ExtResource("4_8hkfk")]
-visible = false
+[node name="Thumbnail" parent="ScrollContainer/HFlowContainer/Shield/ThumbnailContainer" index="0"]
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Name" parent="ScrollContainer/HFlowContainer/Shield" index="1"]
+text = "SHIELD_OBJ_NAME"
+
+[node name="Sword" parent="ScrollContainer/HFlowContainer" instance=ExtResource("4_8hkfk")]
 layout_mode = 2
+_worldObjectScene = ExtResource("24_0qr0p")
 _thumbnail = ExtResource("13_4m0fr")
 
-[node name="DummyItem10" parent="ScrollContainer/HFlowContainer" instance=ExtResource("4_8hkfk")]
-visible = false
-layout_mode = 2
-_thumbnail = ExtResource("14_84v17")
+[node name="Thumbnail" parent="ScrollContainer/HFlowContainer/Sword/ThumbnailContainer" index="0"]
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Name" parent="ScrollContainer/HFlowContainer/Sword" index="1"]
+text = "SWORD_OBJ_NAME"
 
 [node name="BackToGameButton" parent="." instance=ExtResource("5_po4jv")]
 layout_mode = 0
@@ -196,4 +275,13 @@ text = "BACK"
 _changeToSceneOnClick = "res://scenes/gui/main_view_new.tscn"
 metadata/_edit_use_anchors_ = true
 
-[editable path="ScrollContainer/HFlowContainer/DummyItem2"]
+[editable path="ScrollContainer/HFlowContainer/Ball"]
+[editable path="ScrollContainer/HFlowContainer/Guitar"]
+[editable path="ScrollContainer/HFlowContainer/Chair"]
+[editable path="ScrollContainer/HFlowContainer/Door"]
+[editable path="ScrollContainer/HFlowContainer/Key"]
+[editable path="ScrollContainer/HFlowContainer/Lamp"]
+[editable path="ScrollContainer/HFlowContainer/Pencil"]
+[editable path="ScrollContainer/HFlowContainer/Plant"]
+[editable path="ScrollContainer/HFlowContainer/Shield"]
+[editable path="ScrollContainer/HFlowContainer/Sword"]

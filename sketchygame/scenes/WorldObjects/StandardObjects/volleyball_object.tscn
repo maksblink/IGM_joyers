@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqhn1ty8p1xjl"]
+
+[ext_resource type="PackedScene" uid="uid://bobmft2hp5g1f" path="res://scenes/WorldObjects/TestObjects/clickable_object.tscn" id="1_l65rj"]
+[ext_resource type="Texture2D" uid="uid://do2hvymsicg08" path="res://assets/object_base/volleyball.png" id="2_njs8a"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tores"]
+radius = 32.28
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ggtoc"]
+radius = 32.249
+
+[node name="VolleyballObject" instance=ExtResource("1_l65rj")]
+
+[node name="CollisionShape2D" parent="ClickableComponent/ClickDetectionZone" index="0"]
+shape = SubResource("CircleShape2D_tores")
+
+[node name="Texture" parent="." index="1"]
+scale = Vector2(0.07875, 0.07875)
+texture = ExtResource("2_njs8a")
+
+[node name="CollisionShape2D" parent="." index="2"]
+shape = SubResource("CircleShape2D_ggtoc")
+
+[editable path="ClickableComponent"]

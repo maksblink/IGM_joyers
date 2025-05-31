@@ -13,6 +13,8 @@ public partial class SketchPadExportTool : Node {
     [Export]
     private string _savePath = string.Empty;
 
+    private Dictionary<string, string> _paths = [];
+
     public string ExportAsBitMap(Node meshContainer, Vector2I canvasSize) {
         var meshInstance2Ds = new List<MeshInstance2D>();
 
