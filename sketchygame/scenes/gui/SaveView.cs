@@ -35,6 +35,7 @@ public partial class SaveView : Control {
 
             var saveItem = _saveItemScene.Instantiate<gui_components.SaveItemComponent>();
             saveItem.SaveName = model;
+            saveItem.SaveFile = file;
             GetNode<Container>("%SaveItemContainer").AddChild(saveItem);
         }
     }

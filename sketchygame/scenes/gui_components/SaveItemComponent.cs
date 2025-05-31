@@ -4,6 +4,7 @@ namespace SketchyGame.scenes.gui_components;
 
 public partial class SaveItemComponent : Button {
     public string SaveName { get; set; }
+    public string SaveFile { get; set; }
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready() {
@@ -12,6 +13,6 @@ public partial class SaveItemComponent : Button {
     }
 
     private void _on_pressed() {
-        GetTree().ChangeSceneToFile("user://saves/" + SaveName);
+        GetTree().ChangeSceneToFile("user://saves/" + SaveFile);
     }
 }
