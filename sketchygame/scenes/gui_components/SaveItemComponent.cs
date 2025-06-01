@@ -13,6 +13,11 @@ public partial class SaveItemComponent : Button {
     }
 
     private void _on_pressed() {
+        if (SaveFile.StartsWith("res")) {
+            GetTree().ChangeSceneToFile(SaveFile);
+            return;
+        }
+        
         GetTree().ChangeSceneToFile("user://saves/" + SaveFile);
     }
 }
