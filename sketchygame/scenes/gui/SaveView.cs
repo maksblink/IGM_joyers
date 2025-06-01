@@ -38,5 +38,11 @@ public partial class SaveView : Control {
             saveItem.SaveFile = file;
             GetNode<Container>("%SaveItemContainer").AddChild(saveItem);
         }
+        
+        var modelNik = FormatSaveFileName.FormattedDate("20250531-232454.tscn");
+        var saveFileNik = _saveItemScene.Instantiate<gui_components.SaveItemComponent>();
+        saveFileNik.SaveName = modelNik;
+        saveFileNik.SaveFile = "res://assets/20250531-232454.tscn";
+        GetNode<Container>("%SaveItemContainer").AddChild(saveFileNik);
     }
 }
