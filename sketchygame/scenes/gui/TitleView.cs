@@ -17,17 +17,6 @@ public partial class TitleView : Control {
 
     private void _on_about() {
         var aboutPanel = GetNode<Control>("%About");
-        var title = GetNode<Label>("%Title");
-        var description = GetNode<Label>("%Description");
-        var leader = GetNode<Label>("%Leader");
-        var authors = GetNode<Label>("%AuthorsTitle");
-        var releaseDate = GetNode<Label>("%ReleaseDate");
-
-        title.Text = TranslationServer.Translate("ABOUT_TITLE");
-        description.Text = TranslationServer.Translate("ABOUT_DESCRIPTION");
-        leader.Text = TranslationServer.Translate("ABOUT_LEADER");
-        authors.Text = TranslationServer.Translate("ABOUT_AUTHORS");
-        releaseDate.Text = TranslationServer.Translate("ABOUT_RELEASE_DATE");
 
         aboutPanel.Visible = true;
     }

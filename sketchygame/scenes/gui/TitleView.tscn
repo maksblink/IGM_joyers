@@ -159,6 +159,7 @@ script = null
 
 [node name="About" type="CenterContainer" parent="."]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -182,7 +183,7 @@ layout_mode = 2
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("7_gktf5")
 theme_override_font_sizes/font_size = 32
-text = "About Sketchy Game"
+text = "ABOUT_TITLE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -193,7 +194,7 @@ layout_mode = 2
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("7_gktf5")
 theme_override_font_sizes/font_size = 24
-text = "This interactive game brings drawings to life using AI and procedural animations. Players sketch objects, which are then transformed into animated elements with unique behaviors, allowing interaction within a dynamic ecosystem. The game fosters creativity by adapting the player's creations to the world's physics and rules, creating an immersive and responsive experience."
+text = "ABOUT_DESCRIPTION"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -204,7 +205,7 @@ custom_minimum_size = Vector2(1000, 35)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("7_gktf5")
 theme_override_font_sizes/font_size = 24
-text = "Team Leader: Maksymilian Moskwytyn"
+text = "ABOUT_LEADER"
 horizontal_alignment = 1
 
 [node name="AuthorsTitle" type="Label" parent="About/PanelContainer/VBoxContainer"]
@@ -212,7 +213,7 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("7_gktf5")
 theme_override_font_sizes/font_size = 24
-text = "Authors: "
+text = "ABOUT_AUTHORS"
 horizontal_alignment = 1
 autowrap_mode = 2
 
@@ -237,7 +238,7 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("7_gktf5")
 theme_override_font_sizes/font_size = 24
-text = "© 2025 IGM Enjoyers. All rights reserved."
+text = "ABOUT_RELEASE_DATE"
 horizontal_alignment = 1
 vertical_alignment = 2
 
