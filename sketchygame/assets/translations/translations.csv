@@ -27,3 +27,9 @@ PLANT_OBJ_NAME;Roślina;Plant
 SHIELD_OBJ_NAME;Tarcza;Shield
 SWORD_OBJ_NAME;Miecz;Sword
 BALL_OBJ_NAME;Piłka;Ball
+ABOUT;O Projekcie;About
+ABOUT_TITLE;O Sketchy Game;About Sketchy Game
+ABOUT_DESCRIPTION;Ta interaktywna gra ożywia rysunki za pomocą sztucznej inteligencji i proceduralnych animacji. Gracze szkicują obiekty, które następnie są przekształcane w animowane elementy o unikalnych zachowaniach, umożliwiając interakcję w dynamicznym ekosystemie. Gra rozwija kreatywność, dostosowując twórczość gracza do zasad fizyki i reguł świata, tworząc immersyjne i responsywne doświadczenie.;This interactive game brings drawings to life using AI and procedural animations. Players sketch objects, which are then transformed into animated elements with unique behaviors, allowing interaction within a dynamic ecosystem. The game fosters creativity by adapting the player's creations to the world's physics and rules, creating an immersive and responsive experience.
+ABOUT_LEADER;Lider Zespołu: Maksymilian Moskwytyn;Team Leader: Maksymilian Moskwytyn
+ABOUT_AUTHORS;Autorzy:;Authors:
+ABOUT_RELEASE_DATE;© 2025 Politechnika Wrocławska. Wszystkie prawa zastrzeżone.;© 2025 Wroclaw University of Science and Technology. All rights reserved.
