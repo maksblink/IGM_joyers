@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Godot;
 using SketchyGame.scenes.WorldObjects;
@@ -36,8 +35,8 @@ public partial class ObjectRenderQueue : Node {
 		_renderQueue.Enqueue(node);
 	}
 
-	public void PushSceneToRenderQueue(string scenePath) {
-		var scene = GD.Load<PackedScene>(scenePath).Instantiate<WorldObjectBase>();
+	public void PushSceneToRenderQueue(string scenePath /* res://scenes/WorldObjects/<>.tscn */) {
+		var scene = GD.Load<PackedScene>(scenePath).Instantiate<WorldObjectBase>(); 
 		PushNodeToRenderQueue(scene);
 	}
 }

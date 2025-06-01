@@ -1,44 +1,42 @@
-using Godot;
-using System;
 using System.Collections.Generic;
+using Godot;
+using SketchyGame.scenes.tools.Formatters;
 
-using SketchyGame.scenes.gui_components;
+namespace SketchyGame.scenes.gui;
 
-public partial class SaveView : Control
-{
-	public override void _Ready()
-	{
-		string savePath = "user://saves";
-		var scrollContainer = GetNode<ScrollContainer>("ScrollContainer");
+public partial class SaveView : Control {
+    [Export]
+    private PackedScene _saveItemScene = null!;
+    
+    private const string SavePath = "user://saves";
+    
+    public override void _Ready() {
 
-		var dir = DirAccess.Open(savePath);
+        var dir = DirAccess.Open(SavePath);
 
-		List<string> files = new List<string>();
+        var files = new List<string>();
 
-		dir.ListDirBegin();
-		string fileName = dir.GetNext();
+        dir.ListDirBegin();
+        var fileName = dir.GetNext();
 
-		while(!string.IsNullOrEmpty(fileName))
-		{
-			if(!dir.CurrentIsDir() && fileName.EndsWith(".tscn"))
-				files.Add(fileName);
+        while (!string.IsNullOrEmpty(fileName)) {
+            if (!dir.CurrentIsDir() && fileName.EndsWith(".tscn"))
+                files.Add(fileName);
 
-			fileName = dir.GetNext();
-		}
-		dir.ListDirEnd();
+            fileName = dir.GetNext();
+        }
 
-		files.Reverse(); // najnowsze będą na początku
+        dir.ListDirEnd();
 
-		foreach(var file in files)
-		{
-			var model = new SaveItem
-			{
-				fileName = file
-			};
+        files.Reverse(); // najnowsze będą na początku
 
-			var saveItem = GD.Load<PackedScene>("res://scenes/gui_components/save_item_component.tscn").Instantiate<SaveitemComponent>();
-			saveItem.Model = model;
-			GetNode<Container>("ScrollContainer/HFlowContainer").AddChild(saveItem);
-		}
-	}
+        foreach (var file in files) {
+            var model = FormatSaveFileName.FormattedDate(file);
+
+            var saveItem = _saveItemScene.Instantiate<gui_components.SaveItemComponent>();
+            saveItem.SaveName = model;
+            saveItem.SaveFile = file;
+            GetNode<Container>("%SaveItemContainer").AddChild(saveItem);
+        }
+    }
 }
