@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://lxoeyrjr27pp"]
+
+[ext_resource type="Script" uid="uid://dhmqpgx4yti3m" path="res://scenes/Autoloads/ObjectRenderQueue.cs" id="1_b6vqf"]
+
+[node name="ObjectRenderQueue" type="Node"]
+script = ExtResource("1_b6vqf")

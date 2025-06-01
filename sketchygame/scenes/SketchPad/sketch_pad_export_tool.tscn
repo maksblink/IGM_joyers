@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b56fi06uicdqp"]
+
+[ext_resource type="Script" uid="uid://bmfpq0af2h1hh" path="res://scenes/SketchPad/SketchPadExportTool.cs" id="1_8hygc"]
+
+[node name="SketchPadExportTool" type="Node"]
+script = ExtResource("1_8hygc")

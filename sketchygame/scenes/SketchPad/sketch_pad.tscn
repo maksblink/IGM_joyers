@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3qfvfqhfh27b"]
+
+[ext_resource type="Script" uid="uid://bcilwk4rr25v6" path="res://scenes/SketchPad/sketch_pad.gd" id="1_36ofn"]
+
+[node name="SketchPad" type="SubViewport"]
+handle_input_locally = false
+render_target_update_mode = 4
+script = ExtResource("1_36ofn")

@@ -13,13 +13,41 @@ config_version=5
 config/name="SketchyGame"
 run/main_scene="uid://bkgv6d2xmtlie"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
+boot_splash/show_image=false
 config/icon="res://icon.svg"
+
+[autoload]
+
+ObjectRenderQueue="*res://scenes/Autoloads/object_render_queue.tscn"
+GameState="*res://scenes/Autoloads/game_state.tscn"
 
 [display]
 
-window/size/viewport_width=1920
-window/size/viewport_height=1080
+window/size/viewport_width=1600
+window/size/viewport_height=900
+window/size/resizable=false
 
 [dotnet]
 
 project/assembly_name="SketchyGame"
+
+[file_customization]
+
+folder_colors={
+"res://scenes/WorldObjects/": "yellow"
+}
+
+[importer_defaults]
+
+csv_translation={
+"compress": true,
+"delimiter": 1
+}
+
+[internationalization]
+
+locale/translations=PackedStringArray("res://assets/translations/translations.en.translation", "res://assets/translations/translations.pl.translation")
+locale/include_text_server_data=true
+locale/test="pl"
+locale/fallback="pl,en"
+rendering/text_driver="ICU / HarfBuzz / Graphite (Built-in)"

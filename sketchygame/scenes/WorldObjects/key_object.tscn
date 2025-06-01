@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://dm0counpgymhc"]
+
+[ext_resource type="PackedScene" uid="uid://bobmft2hp5g1f" path="res://scenes/WorldObjects/clickable_object.tscn" id="1_qrep8"]
+[ext_resource type="Texture2D" uid="uid://bb2oxpk1xlp74" path="res://assets/object base/key.png" id="2_2jaan"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_julyj"]
+size = Vector2(98, 51)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4c1vh"]
+radius = 39.0512
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8fncw"]
+size = Vector2(98, 52)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m8oas"]
+radius = 39.0512
+
+[node name="KeyObject" instance=ExtResource("1_qrep8")]
+
+[node name="CollisionShape2D" parent="ClickableComponent/ClickDetectionZone" index="0"]
+position = Vector2(-39, 16.5)
+shape = SubResource("RectangleShape2D_julyj")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ClickableComponent/ClickDetectionZone" index="1"]
+position = Vector2(49, -3)
+shape = SubResource("CircleShape2D_4c1vh")
+
+[node name="Texture" parent="." index="1"]
+scale = Vector2(0.202899, 0.202899)
+texture = ExtResource("2_2jaan")
+
+[node name="CollisionShape2D" parent="." index="2"]
+position = Vector2(-39, 16)
+shape = SubResource("RectangleShape2D_8fncw")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." index="3"]
+position = Vector2(49, -3)
+shape = SubResource("CircleShape2D_m8oas")
+
+[editable path="ClickableComponent"]

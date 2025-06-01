@@ -3,4 +3,9 @@
     <TargetFramework>net8.0</TargetFramework>
     <EnableDynamicLoading>true</EnableDynamicLoading>
   </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="OpenCvSharp4" Version="4.11.0.20250507" />
+    <PackageReference Include="OpenCvSharp4.Extensions" Version="4.10.0.20241108" />
+    <PackageReference Include="OpenCvSharp4.runtime.win" Version="4.10.0.20241108" />
+  </ItemGroup>
 </Project>

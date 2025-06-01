@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bobmft2hp5g1f"]
+
+[ext_resource type="PackedScene" uid="uid://d064q02m5573v" path="res://scenes/WorldObjects/world_object_base.tscn" id="1_ecg83"]
+[ext_resource type="PackedScene" uid="uid://fngdeni12nub" path="res://scenes/WorldObjectComponents/clickable_component.tscn" id="2_6im80"]
+
+[node name="ClickableObject" instance=ExtResource("1_ecg83")]
+
+[node name="ClickableComponent" parent="." index="0" instance=ExtResource("2_6im80")]
+
+[node name="CollisionShape2D" parent="ClickableComponent/ClickDetectionZone" index="0"]
+position = Vector2(0, -1)
+
+[node name="CollisionShape2D" parent="." index="2"]
+position = Vector2(0, -1)
+
+[editable path="ClickableComponent"]
