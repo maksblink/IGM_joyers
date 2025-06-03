@@ -1,3 +1,4 @@
+using System.Linq;
 using Godot;
 using SketchyGame.scenes.WorldObjectComponents.ClickActions;
 
@@ -20,12 +21,23 @@ public partial class ClickableComponent : WorldObjectComponentBase {
     private MouseButton _mouseButton = MouseButton.None;
     private Timer _holdTimer = null!;
     private bool _isHolding = false;
+    
+    private CollisionPolygon2D _collisionPolygon2D = null!;
 
     public override void _Ready() {
         _holdTimer = GetNode<Timer>("HoldTimer");
         _holdTimer.WaitTime = _holdThreshold;
         _holdTimer.Stop();
+        
+        _collisionPolygon2D = GetNode<CollisionPolygon2D>("%ClickCollider");
+        
+        Owner.Ready += () => {
+            var polygon = WorldObject.Polygon.Polygon;
+            var offset = WorldObject.GetOffset();
 
+            _collisionPolygon2D.Polygon = polygon.Select(p => p - offset).ToArray();
+        };
+        
         base._Ready();
     }
 

@@ -1,27 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b5qqhypf5pfax"]
+[gd_scene load_steps=3 format=3 uid="uid://b5qqhypf5pfax"]
 
 [ext_resource type="PackedScene" uid="uid://bobmft2hp5g1f" path="res://scenes/WorldObjects/TestObjects/clickable_object.tscn" id="1_alr2m"]
 [ext_resource type="Texture2D" uid="uid://trxusy86tgp" path="res://assets/object_base/lamp.png" id="2_6em3p"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4n8pl"]
-size = Vector2(51, 28)
-
-[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_euq5p"]
-points = PackedVector2Array(15, 0.5, 20, 10.5, 0, 10.5, -20, 10.5, -15, 0.5, -3, 0.5, -3, -28.5, -25, -28.5, -11, -56.5, 12, -56.5, 26, -28.5, 3, -28.5, 3, 0.5)
-
 [node name="LampObject" instance=ExtResource("1_alr2m")]
-
-[node name="CollisionShape2D" parent="ClickableComponent/ClickDetectionZone" index="0"]
-position = Vector2(0.5, -19)
-shape = SubResource("RectangleShape2D_4n8pl")
-
-[node name="Texture" parent="." index="1"]
-position = Vector2(0.375, 0.515574)
-scale = Vector2(0.0568051, 0.0568051)
-texture = ExtResource("2_6em3p")
-
-[node name="CollisionShape2D" parent="." index="2"]
-position = Vector2(0, 23.5)
-shape = SubResource("ConvexPolygonShape2D_euq5p")
+_objectTexture = ExtResource("2_6em3p")
+_objectWidth = 100.0
 
 [editable path="ClickableComponent"]

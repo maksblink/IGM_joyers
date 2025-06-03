@@ -25,8 +25,10 @@ corner_radius_bottom_left = 18
 [node name="LibraryItem" type="Button"]
 custom_minimum_size = Vector2(256, 316)
 anchors_preset = -1
-anchor_right = 0.133333
-anchor_bottom = 0.292593
+anchor_right = 0.16
+anchor_bottom = 0.351
+offset_right = -42.6672
+offset_bottom = -52.5663
 size_flags_horizontal = 4
 size_flags_vertical = 4
 focus_mode = 0
