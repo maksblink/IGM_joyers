@@ -93,7 +93,7 @@ color = Color(0.0605303, 0.0605303, 0.0605303, 1)
 [node name="MeshTool" parent="CanvasLayer/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" instance=ExtResource("3_5j6cq")]
 
 [node name="SketchPadExportTool" parent="CanvasLayer/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" instance=ExtResource("4_wb0gf")]
-_savePath = "res://assets/exported/"
+_savePath = "res://assets/"
 
 [node name="ButtonsMarginContainer" type="MarginContainer" parent="CanvasLayer/DrawingPanel/DrawingPanelContainer"]
 layout_mode = 2
@@ -119,13 +119,11 @@ size_flags_stretch_ratio = 0.5
 theme = ExtResource("5_ynwsr")
 text = "OPEN_MENU"
 
-[node name="ExportImageButton" parent="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/Navigation" instance=ExtResource("6_537f8")]
+[node name="AddObjectButton" type="Button" parent="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/Navigation"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
-disabled = true
+theme = ExtResource("5_ynwsr")
 text = "ADD_OBJECT"
-metadata/_edit_use_anchors_ = true
 
 [node name="KitItemButtons" parent="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer" instance=ExtResource("7_f58n2")]
 layout_mode = 2
@@ -243,7 +241,7 @@ size = Vector2i(314, 100)
 dialog_text = "SAVE_POPUP_TEXT"
 
 [connection signal="pressed" from="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/Navigation/MenuButton" to="." method="_onOpenMenuButtonPressed"]
-[connection signal="pressed" from="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/Navigation/ExportImageButton" to="CanvasLayer/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" method="_on_export_image_to_bmp"]
+[connection signal="pressed" from="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/Navigation/AddObjectButton" to="CanvasLayer/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" method="_on_export_image_to_bmp"]
 [connection signal="pressed" from="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/KitItemButtons/ButtonsContainer/btn_Draw" to="CanvasLayer/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" method="_on_btn_draw_pressed"]
 [connection signal="pressed" from="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/KitItemButtons/ButtonsContainer/btn_Erase" to="CanvasLayer/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" method="_on_btn_erase_pressed"]
 [connection signal="pressed" from="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/KitItemButtons/ButtonsContainer/btn_Left" to="CanvasLayer/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" method="_on_undo_btn_pressed"]

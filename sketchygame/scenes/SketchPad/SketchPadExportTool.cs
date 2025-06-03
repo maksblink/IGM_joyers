@@ -1,8 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using Godot;
 using OpenCvSharp;
+using SketchyGame.scenes.Autoloads;
+using SketchyGame.scenes.Tools.Cnn;
 
 namespace SketchyGame.scenes.SketchPad;
 
@@ -15,7 +18,7 @@ public partial class SketchPadExportTool : Node {
 
     private Dictionary<string, string> _paths = [];
 
-    public string ExportAsBitMap(Node meshContainer, Vector2I canvasSize) {
+    public void ExportAsBitMap(Node meshContainer, Vector2I canvasSize) {
         var meshInstance2Ds = new List<MeshInstance2D>();
 
         foreach (var mesh in meshContainer.GetChildren()) {
@@ -39,13 +42,37 @@ public partial class SketchPadExportTool : Node {
             }
         }
 
+        AddObject(image);
+
         // In release mode (standalone exe) image will be saved in same folder as exe,
         // otherwise res://assets/exported
         var path = (OS.IsDebugBuild() ? CastPathToAbsolute(_savePath) : GetExecutablePath()) + CreateFileName();
         GD.Print(path);
         Cv2.ImWrite(path, image);
+        //
+        // return path;
+    }
 
-        return path;
+    private void AddObject(Mat image) {
+        var array = new int[image.Cols][];
+        
+        // convert image to int_32 2D array
+        for (var i = 0; i < image.Rows; i++)
+        {
+            array[i] = new int[image.Rows];
+            for (var j = 0; j < image.Cols; j++)
+            {
+                array[i][j] = image.At<int>(i, j);
+            }
+        }
+
+        // Serialize array - {"image" : [[0, 0, ...], [...], ...]}
+        var jsonContent = JsonSerializer.Serialize(new {image = array});
+        
+        var response = CnnClient.GetCnnOpinion(jsonContent);
+        
+        // Add object
+        
     }
 
     private static string CreateFileName() {
@@ -62,7 +89,7 @@ public partial class SketchPadExportTool : Node {
     }
 
     private static Mat CreateImage(int width, int height) {
-        return new Mat(height, width, MatType.CV_8UC3); // uint8, 3 channels
+        return new Mat(height, width, MatType.CV_8UC1, Scalar.Black); // uint8, 3 channels
     }
 }
 

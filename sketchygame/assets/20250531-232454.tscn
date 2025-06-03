@@ -1,27 +1,16 @@
-[gd_scene load_steps=45 format=3]
+[gd_scene load_steps=34 format=3 uid="uid://dscoilhs8cg6m"]
 
-[ext_resource type="Script" path="res://scenes/gui/MainViewNew.cs" id="1_0x7ul"]
-[ext_resource type="PackedScene" path="res://scenes/SketchPad/sketch_pad.tscn" id="2_6dtrw"]
-[ext_resource type="Script" path="res://scenes/SketchPad/sketch_pad_main_view.gd" id="3_vuboi"]
-[ext_resource type="PackedScene" path="res://scenes/SketchPad/mesh_tool.tscn" id="4_u3cxi"]
-[ext_resource type="Script" path="res://scenes/SketchPad/mesh_tool.gd" id="5_lyf4b"]
-[ext_resource type="PackedScene" path="res://scenes/SketchPad/sketch_pad_export_tool.tscn" id="6_65ura"]
-[ext_resource type="Script" path="res://scenes/SketchPad/SketchPadExportTool.cs" id="7_vfpic"]
-[ext_resource type="Theme" path="res://assets/themes/button_theme.tres" id="8_jixc7"]
-[ext_resource type="PackedScene" path="res://scenes/gui_components/button_no_focus.tscn" id="9_m4vtt"]
-[ext_resource type="Script" path="res://scenes/gui_components/ButtonNoFocus.cs" id="10_8aqa0"]
-[ext_resource type="PackedScene" path="res://scenes/gui_components/kit_item_buttons.tscn" id="11_opqj0"]
-[ext_resource type="Script" path="res://scenes/gui_components/KitItemButtons.cs" id="12_fmhq7"]
-[ext_resource type="Texture2D" path="res://assets/icon_btn_Draw.png" id="13_f6cg8"]
-[ext_resource type="Texture2D" path="res://assets/icon_btn_Erase.png" id="14_eysyj"]
-[ext_resource type="Texture2D" path="res://assets/icon_btn_Left.png" id="15_b4c4l"]
-[ext_resource type="Texture2D" path="res://assets/icon_btn_Right.png" id="16_gjnxi"]
-[ext_resource type="Texture2D" path="res://assets/icon_btn_Clear.png" id="17_ojcaw"]
-[ext_resource type="Script" path="res://scenes/gui_components/ViewLibraryButton.cs" id="18_dmgoa"]
-[ext_resource type="PackedScene" path="res://scenes/WorldObjects/StandardObjects/volleyball_object.tscn" id="19_qtjol"]
-[ext_resource type="Script" path="res://scenes/WorldObjects/WorldObjectBase.cs" id="20_abrq4"]
-[ext_resource type="PackedScene" path="res://scenes/WorldObjects/StandardObjects/guitar_object.tscn" id="21_ec3gw"]
-[ext_resource type="Texture2D" path="res://assets/object_base/guitar.png" id="22_apjlv"]
+[ext_resource type="Script" uid="uid://c24dxhjt6usx0" path="res://scenes/gui/MainViewNew.cs" id="1_0x7ul"]
+[ext_resource type="PackedScene" uid="uid://d3qfvfqhfh27b" path="res://scenes/SketchPad/sketch_pad.tscn" id="2_6dtrw"]
+[ext_resource type="Script" uid="uid://bfdue51xbcnh5" path="res://scenes/SketchPad/sketch_pad_main_view.gd" id="3_vuboi"]
+[ext_resource type="PackedScene" uid="uid://bgby4lprf5ps6" path="res://scenes/SketchPad/mesh_tool.tscn" id="4_u3cxi"]
+[ext_resource type="PackedScene" uid="uid://b56fi06uicdqp" path="res://scenes/SketchPad/sketch_pad_export_tool.tscn" id="6_65ura"]
+[ext_resource type="Theme" uid="uid://bqmeijdgg3vn7" path="res://assets/themes/button_theme.tres" id="8_jixc7"]
+[ext_resource type="PackedScene" uid="uid://jepahwvj3hmy" path="res://scenes/gui_components/button_no_focus.tscn" id="9_m4vtt"]
+[ext_resource type="PackedScene" uid="uid://3drt5n08y3k" path="res://scenes/gui_components/kit_item_buttons.tscn" id="11_opqj0"]
+[ext_resource type="Script" uid="uid://28r5qnn3dmld" path="res://scenes/gui_components/ViewLibraryButton.cs" id="18_dmgoa"]
+[ext_resource type="PackedScene" uid="uid://dqhn1ty8p1xjl" path="res://scenes/WorldObjects/StandardObjects/volleyball_object.tscn" id="19_qtjol"]
+[ext_resource type="PackedScene" uid="uid://cil21yp6edptx" path="res://scenes/WorldObjects/StandardObjects/guitar_object.tscn" id="21_ec3gw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5akto"]
 bg_color = Color(0.00784314, 0.188235, 0.278431, 1)
@@ -136,13 +125,11 @@ layout_mode = 2
 stretch = true
 stretch_shrink = 2
 
-[node name="SketchPad" type="SubViewport" parent="CanvasLayer/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer" node_paths=PackedStringArray("visible_layers", "unvisible_layers", "mesh_tool", "export_tool") instance=ExtResource("2_6dtrw")]
+[node name="SketchPad" parent="CanvasLayer/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer" node_paths=PackedStringArray("visible_layers", "unvisible_layers", "mesh_tool", "export_tool") instance=ExtResource("2_6dtrw")]
 transparent_bg = true
-handle_input_locally = false
 msaa_2d = 3
 canvas_item_default_texture_filter = 0
 size = Vector2i(255, 255)
-render_target_update_mode = 4
 script = ExtResource("3_vuboi")
 visible_layers = NodePath("VisibleLayers")
 unvisible_layers = NodePath("HiddenLayers")
@@ -163,11 +150,9 @@ color = Color(0.0605303, 0.0605303, 0.0605303, 1)
 
 [node name="HiddenLayers" type="Node" parent="CanvasLayer/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad"]
 
-[node name="MeshTool" type="Node" parent="CanvasLayer/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" instance=ExtResource("4_u3cxi")]
-script = ExtResource("5_lyf4b")
+[node name="MeshTool" parent="CanvasLayer/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" instance=ExtResource("4_u3cxi")]
 
-[node name="SketchPadExportTool" type="Node" parent="CanvasLayer/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" instance=ExtResource("6_65ura")]
-script = ExtResource("7_vfpic")
+[node name="SketchPadExportTool" parent="CanvasLayer/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" instance=ExtResource("6_65ura")]
 _savePath = "res://assets/exported/"
 
 [node name="ButtonsMarginContainer" type="MarginContainer" parent="CanvasLayer/DrawingPanel/DrawingPanelContainer"]
@@ -194,171 +179,56 @@ size_flags_stretch_ratio = 0.5
 theme = ExtResource("8_jixc7")
 text = "OPEN_MENU"
 
-[node name="ExportImageButton" type="Button" parent="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/Navigation" instance=ExtResource("9_m4vtt")]
+[node name="ExportImageButton" parent="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/Navigation" instance=ExtResource("9_m4vtt")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-focus_mode = 0
-theme = ExtResource("8_jixc7")
 disabled = true
 text = "ADD_OBJECT"
-script = ExtResource("10_8aqa0")
 metadata/_edit_use_anchors_ = true
 
 [node name="KitItemButtons" parent="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer" instance=ExtResource("11_opqj0")]
-clip_contents = true
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_huvpp")
-script = ExtResource("12_fmhq7")
-metadata/_edit_use_anchors_ = true
-
-[node name="ButtonsContainer" parent="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/KitItemButtons" index="0"]
-clip_contents = true
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.0211132
-anchor_right = 0.978887
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="btn_Draw" parent="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/KitItemButtons/ButtonsContainer" index="0"]
-unique_name_in_owner = true
-modulate = Color(0.129412, 0.619608, 0.737255, 1)
-layout_mode = 2
-size_flags_horizontal = 3
 tooltip_text = "BRUSH"
-focus_mode = 0
 theme_override_styles/hover = SubResource("StyleBoxFlat_p0bip")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_xft0g")
 theme_override_styles/normal = SubResource("StyleBoxFlat_jctfq")
-icon_alignment = 1
-metadata/_edit_group_ = true
-
-[node name="TextureRect" parent="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/KitItemButtons/ButtonsContainer/btn_Draw" index="0"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.115789
-anchor_top = 0.152174
-anchor_right = 0.884211
-anchor_bottom = 0.847826
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("13_f6cg8")
-expand_mode = 3
-stretch_mode = 5
 
 [node name="btn_Erase" parent="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/KitItemButtons/ButtonsContainer" index="1"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
 tooltip_text = "ERASE"
-focus_mode = 0
 theme_override_styles/hover = SubResource("StyleBoxFlat_ykg0j")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ycsr2")
 theme_override_styles/normal = SubResource("StyleBoxFlat_noykb")
-icon_alignment = 1
-metadata/_edit_group_ = true
-
-[node name="TextureRect" parent="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/KitItemButtons/ButtonsContainer/btn_Erase" index="0"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.0898438
-anchor_top = 0.119565
-anchor_right = 0.910156
-anchor_bottom = 0.880435
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("14_eysyj")
-expand_mode = 3
-stretch_mode = 5
-metadata/_edit_use_anchors_ = true
 
 [node name="VSeparator" parent="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/KitItemButtons/ButtonsContainer" index="2"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.4
-theme_override_constants/separation = 0
 theme_override_styles/separator = SubResource("StyleBoxLine_p0bip")
 
 [node name="btn_Left" parent="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/KitItemButtons/ButtonsContainer" index="3"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.8
 tooltip_text = "UNDO"
-focus_mode = 0
 theme_override_styles/hover = SubResource("StyleBoxFlat_mxjr4")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_t4io7")
 theme_override_styles/normal = SubResource("StyleBoxFlat_2eiab")
-icon_alignment = 1
-metadata/_edit_group_ = true
-
-[node name="TextureRect" parent="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/KitItemButtons/ButtonsContainer/btn_Left" index="0"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.10674
-anchor_top = 0.130435
-anchor_right = 0.893266
-anchor_bottom = 0.869565
-texture = ExtResource("15_b4c4l")
-expand_mode = 3
-stretch_mode = 5
-metadata/_edit_use_anchors_ = true
 
 [node name="btn_Right" parent="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/KitItemButtons/ButtonsContainer" index="4"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.8
 tooltip_text = "REDO"
-focus_mode = 0
 theme_override_styles/hover = SubResource("StyleBoxFlat_3atvm")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_epppj")
 theme_override_styles/normal = SubResource("StyleBoxFlat_s12rc")
-icon_alignment = 1
-metadata/_edit_group_ = true
-
-[node name="TextureRect" parent="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/KitItemButtons/ButtonsContainer/btn_Right" index="0"]
-layout_mode = 0
-anchor_left = 0.0998442
-anchor_top = 0.130435
-anchor_right = 0.900169
-anchor_bottom = 0.869565
-texture = ExtResource("16_gjnxi")
-expand_mode = 3
-stretch_mode = 5
-metadata/_edit_use_anchors_ = true
 
 [node name="btn_Clear" parent="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/KitItemButtons/ButtonsContainer" index="5"]
-layout_mode = 2
-size_flags_horizontal = 3
 tooltip_text = "CLEAR"
-focus_mode = 0
 theme_override_styles/hover = SubResource("StyleBoxFlat_04exc")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ghui3")
 theme_override_styles/normal = SubResource("StyleBoxFlat_cjuu5")
-icon_alignment = 1
-metadata/_edit_group_ = true
 
-[node name="TextureRect" parent="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/KitItemButtons/ButtonsContainer/btn_Clear" index="0"]
-layout_mode = 0
-anchor_left = 0.208333
-anchor_top = 0.152174
-anchor_right = 0.791667
-anchor_bottom = 0.847826
-texture = ExtResource("17_ojcaw")
-expand_mode = 3
-stretch_mode = 5
-metadata/_edit_use_anchors_ = true
-
-[node name="ViewLibraryButton" type="Button" parent="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer" instance=ExtResource("9_m4vtt")]
+[node name="ViewLibraryButton" parent="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer" instance=ExtResource("9_m4vtt")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-focus_mode = 0
-theme = ExtResource("8_jixc7")
 text = "VIEW_LIBRARY"
 autowrap_mode = 2
 script = ExtResource("18_dmgoa")
@@ -397,16 +267,12 @@ text = "BACK_TO_GAME"
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("8_jixc7")
-button_pressed = true
 text = "SAVE_GAME"
 
-[node name="BackToMenuButton" type="Button" parent="CanvasLayer/MenuView/MenuButtons" instance=ExtResource("9_m4vtt")]
+[node name="BackToMenuButton" parent="CanvasLayer/MenuView/MenuButtons" instance=ExtResource("9_m4vtt")]
 layout_mode = 2
 size_flags_vertical = 3
-focus_mode = 0
-theme = ExtResource("8_jixc7")
 text = "BACK_TO_MENU"
-script = ExtResource("10_8aqa0")
 _changeToSceneOnClick = "res://scenes/gui/TitleView.tscn"
 
 [node name="WorldView" type="Node2D" parent="."]
@@ -448,22 +314,17 @@ shape = SubResource("RectangleShape2D_h5iah")
 
 [node name="ObjectContainer" type="Node2D" parent="WorldView"]
 
-[node name="VolleyballObject" type="RigidBody2D" parent="WorldView/ObjectContainer" instance=ExtResource("19_qtjol")]
+[node name="VolleyballObject" parent="WorldView/ObjectContainer" instance=ExtResource("19_qtjol")]
 position = Vector2(210.217, 868.374)
 rotation = -0.601237
-input_pickable = true
 linear_velocity = Vector2(-73.9774, -0.000524521)
 angular_velocity = -2.29394
-script = ExtResource("20_abrq4")
 
-[node name="GuitarObject" type="RigidBody2D" parent="WorldView/ObjectContainer" instance=ExtResource("21_ec3gw")]
+[node name="GuitarObject" parent="WorldView/ObjectContainer" instance=ExtResource("21_ec3gw")]
 position = Vector2(126.467, 825.963)
 rotation = -0.796526
-input_pickable = true
 linear_velocity = Vector2(-202.686, -3.95535)
 angular_velocity = -2.63059
-script = ExtResource("20_abrq4")
-_objectTexture = ExtResource("22_apjlv")
 
 [node name="SaveSuccessPopup" type="AcceptDialog" parent="."]
 title = "SAVE_POPUP_TITLE"
@@ -473,18 +334,13 @@ dialog_text = "SAVE_POPUP_TEXT"
 
 [connection signal="pressed" from="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/Navigation/MenuButton" to="." method="_onOpenMenuButtonPressed"]
 [connection signal="pressed" from="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/Navigation/ExportImageButton" to="CanvasLayer/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" method="_on_export_image_to_bmp"]
-[connection signal="pressed" from="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/Navigation/ExportImageButton" to="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/Navigation/ExportImageButton" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/KitItemButtons/ButtonsContainer/btn_Draw" to="CanvasLayer/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" method="_on_btn_draw_pressed"]
-[connection signal="pressed" from="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/KitItemButtons/ButtonsContainer/btn_Draw" to="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/KitItemButtons" method="_onBrushButtonPressed"]
 [connection signal="pressed" from="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/KitItemButtons/ButtonsContainer/btn_Erase" to="CanvasLayer/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" method="_on_btn_erase_pressed"]
-[connection signal="pressed" from="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/KitItemButtons/ButtonsContainer/btn_Erase" to="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/KitItemButtons" method="_onEraseButtonPressed"]
 [connection signal="pressed" from="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/KitItemButtons/ButtonsContainer/btn_Left" to="CanvasLayer/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" method="_on_undo_btn_pressed"]
 [connection signal="pressed" from="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/KitItemButtons/ButtonsContainer/btn_Right" to="CanvasLayer/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" method="_on_redo_btn_pressed"]
 [connection signal="pressed" from="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/KitItemButtons/ButtonsContainer/btn_Clear" to="CanvasLayer/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" method="_on_clear_btn_pressed"]
 [connection signal="ViewLibraryButtonPressed" from="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/ViewLibraryButton" to="." method="SaveGameState"]
-[connection signal="pressed" from="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/ViewLibraryButton" to="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/ViewLibraryButton" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/MenuView/MenuButtons/BackToGameButton" to="." method="_onOpenMenuButtonPressed"]
 [connection signal="pressed" from="CanvasLayer/MenuView/MenuButtons/SaveGameButton" to="." method="_onSaveGameButtonPressed"]
-[connection signal="pressed" from="CanvasLayer/MenuView/MenuButtons/BackToMenuButton" to="CanvasLayer/MenuView/MenuButtons/BackToMenuButton" method="_on_pressed"]
 
 [editable path="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/KitItemButtons"]
