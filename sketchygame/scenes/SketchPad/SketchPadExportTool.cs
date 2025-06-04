@@ -16,25 +16,53 @@ public partial class SketchPadExportTool : Node {
     [Export]
     private string _savePath = string.Empty;
 
-    private Dictionary<string, string> _paths = [];
+    private Dictionary<string, string> objectsPaths = [];
 
-    public void ExportAsBitMap(Node meshContainer, Vector2I canvasSize) {
+    public override void _Ready()
+    {
+        string objectsPath = "/scenes/WorldObjects";
+        string absPath = System.IO.Path.Join(System.IO.Directory.GetCurrentDirectory(), objectsPath);
+
+        var files = System.IO.Directory.GetFiles(absPath);
+        foreach (var file in files)
+        {
+            try
+            {
+                string fileName = System.IO.Path.GetFileName(file);
+                string filePath = System.IO.Path.GetFullPath(file);
+                var objectName = fileName.Split('_')[0];
+                objectsPaths[objectName] = filePath;
+            }
+            catch (Exception ex)
+            {
+                GD.PrintErr($"Failed to read filenames {file}: {ex.Message}");
+            }
+        }
+
+        return;
+    }
+
+    public void ExportAsBitMap(Node meshContainer, Vector2I canvasSize)
+    {
         var meshInstance2Ds = new List<MeshInstance2D>();
 
-        foreach (var mesh in meshContainer.GetChildren()) {
+        foreach (var mesh in meshContainer.GetChildren())
+        {
             if (mesh is not MeshInstance2D mesh2D) continue;
             meshInstance2Ds.Add(mesh2D);
         }
 
         var image = CreateImage(canvasSize.X, canvasSize.Y);
 
-        foreach (var mesh in meshInstance2Ds.Select(meshInstance => meshInstance.Mesh)) {
+        foreach (var mesh in meshInstance2Ds.Select(meshInstance => meshInstance.Mesh))
+        {
             if (mesh is not ArrayMesh arrayMesh) continue;
 
             var surface = mesh.SurfaceGetArrays(0);
             var vertices = (Godot.Collections.Array)surface[(int)Mesh.ArrayType.Vertex];
 
-            for (var i = 0; i < vertices.Count - 1; ++i) {
+            for (var i = 0; i < vertices.Count - 1; ++i)
+            {
                 var thisVert = (Vector3I)vertices[i];
                 var nextVert = (Vector3I)vertices[i + 1];
 
@@ -49,13 +77,12 @@ public partial class SketchPadExportTool : Node {
         var path = (OS.IsDebugBuild() ? CastPathToAbsolute(_savePath) : GetExecutablePath()) + CreateFileName();
         GD.Print(path);
         Cv2.ImWrite(path, image);
-        //
-        // return path;
     }
 
-    private void AddObject(Mat image) {
+    private async void AddObject(Mat image)
+    {
         var array = new int[image.Cols][];
-        
+
         // convert image to int_32 2D array
         for (var i = 0; i < image.Rows; i++)
         {
@@ -67,12 +94,28 @@ public partial class SketchPadExportTool : Node {
         }
 
         // Serialize array - {"image" : [[0, 0, ...], [...], ...]}
-        var jsonContent = JsonSerializer.Serialize(new {image = array});
-        
-        var response = CnnClient.GetCnnOpinion(jsonContent);
-        
-        // Add object
-        
+        var jsonContent = JsonSerializer.Serialize(new { image = array });
+
+        // Get Cnn Opinion
+        var response = await CnnClient.GetCnnOpinion(jsonContent);
+        var responseBytes = System.Text.Encoding.UTF8.GetBytes(response);
+        using var doc = JsonDocument.Parse(new ReadOnlyMemory<byte>(responseBytes));
+        string className = doc.RootElement.GetProperty("class_name").GetString();
+
+        GD.Print($"Predicted class: {className}");
+
+        // Add Object
+        if (objectsPaths.Keys.Contains(className))
+        {
+            ObjectRenderQueue.Instance.PushSceneToRenderQueue(objectsPaths[className]);
+            GetTree().ChangeSceneToFile("res://scenes/gui/main_view_new.tscn");
+        }
+        else
+        {
+            GD.Print("not found");
+            GD.PushError("object not found");
+        }
+
     }
 
     private static string CreateFileName() {
