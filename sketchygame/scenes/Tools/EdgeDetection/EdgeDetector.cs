@@ -4,11 +4,25 @@ using OpenCvSharp;
 
 namespace SketchyGame.scenes.Tools.EdgeDetection;
 
+/// <summary>
+/// Klasa implementująca algorytm wykrywania krawędzi,
+/// pozwala dla dowolnego zdjęcia wytworzyć zdjęcia, w którym pozostawiono tylko krawędzie.
+/// klasa pozwala również poprzez 3 stałe skonfigurować czułość algorytmu wykrywania krawędzi
+/// </summary>
 public static class EdgeDetector {
 	private const double CannyThreshold1 = 1; // Lower for more sensitivity
 	private const double CannyThreshold2 = 2; // Keep ratio (e.g., 2x-3x threshold1)
 	private const int GaussianBlurSize = 3; // Kernel size for Gaussian blur (odd number, e.g., 3 or 5)
 
+	/// <summary>
+	/// Metoda, która uruchamia algorytm wykrywania krawędzi na podanym obrazie
+	/// następnie w wynikowym obrazie ustawiane są kolory:
+	/// 1. Czarny dla krawędzi
+	/// 2. Przezroczysty dla pozostałych fragmentów obrazu
+	/// ostateczny obraz jest następnie zwracany
+	/// </summary>
+	/// <param name="inputTexture">Wejściowy obraz</param>
+	/// <returns>Obraz, w którym pozostawiono jedynie krawędzie</returns>
 	public static Texture2D ApplyEdgeDetection(Texture2D inputTexture) {
 		if (inputTexture == null) {
 			GD.PrintErr("EdgeDetector: Input texture is null.");

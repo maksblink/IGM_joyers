@@ -2,8 +2,16 @@ using System;
 
 namespace SketchyGame.scenes.tools.Formatters;
 
+/// <summary>
+/// Klasa formatująca nazwę pliku zapisu na obiekt typu string.
+/// </summary>
 public static class FormatSaveFileName {
-    public static string FormattedDate(string saveFileName) {
+    /// <summary>
+    /// Funkcja formatująca nazwę pliku zapisu na obiekt typu string.
+    /// </summary>
+    /// <param name="saveFileName">Nazwa pliku z zapisem gry.</param>
+    /// <returns>Sformatowana nazwa pliku z zapisem gry.</returns>
+    public static string FormatDate(string saveFileName) {
         // usuwamy ".tscn" z końca
         var name = saveFileName.Replace(".tscn", "");
 

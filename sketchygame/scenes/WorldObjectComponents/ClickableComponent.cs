@@ -4,6 +4,9 @@ using SketchyGame.scenes.WorldObjectComponents.ClickActions;
 
 namespace SketchyGame.scenes.WorldObjectComponents;
 
+/// <summary>
+/// Komponent dodający obsługę myszy dla obiektów gry.
+/// </summary>
 public partial class ClickableComponent : WorldObjectComponentBase {
     [Export]
     private float _holdThreshold = 0.2f;
@@ -24,6 +27,9 @@ public partial class ClickableComponent : WorldObjectComponentBase {
     
     private CollisionPolygon2D _collisionPolygon2D = null!;
 
+    /// <summary>
+    /// Funkcja wywoływana po zainicjowaniu klasy w drzewie obiektów.
+    /// </summary>
     public override void _Ready() {
         _holdTimer = GetNode<Timer>("HoldTimer");
         _holdTimer.WaitTime = _holdThreshold;
@@ -41,6 +47,12 @@ public partial class ClickableComponent : WorldObjectComponentBase {
         base._Ready();
     }
 
+    /// <summary>
+    /// Funkcja reagująca na wydarzenia wejścia i wywołująca odpowiednie zachowanie dla danego wejścia.
+    /// </summary>
+    /// <param name="viewport">Nie używane.</param>
+    /// <param name="inputEvent">Rodzaj akcji wejścia, np. wciśnięcie przycisku myszy.</param>
+    /// <param name="shapeIdx">Nie używane></param>
     private void _onInputEventReceived(Node viewport, InputEvent inputEvent, int shapeIdx) {
         if (inputEvent is not InputEventMouseButton mouseEvent) {
             return;
@@ -62,6 +74,12 @@ public partial class ClickableComponent : WorldObjectComponentBase {
         _mouseButton = mouseEvent.ButtonIndex;
     }
 
+    /// <summary>
+    /// Funkcja obsługująca wydarzenie przeciągania obiektu po ekranie.
+    /// </summary>
+    /// <param name="viewport">Nie używane.</param>
+    /// <param name="inputEvent">Rodzaj akcji wejścia, np. wciśnięcie przycisku myszy.</param>
+    /// <param name="shapeIdx">Nie używane></param>
     private void _onInputEventDragged(Node viewport, InputEvent inputEvent, int shapeIdx) {
         if (inputEvent is not InputEventMouseMotion mouseEvent) return;
         if (!_isHolding) return;
@@ -72,6 +90,10 @@ public partial class ClickableComponent : WorldObjectComponentBase {
         WorldObject.GlobalPosition = mouseEvent.GlobalPosition;
     }
 
+    /// <summary>
+    /// Funkcja obsługująca pojedyncze wciśnięcie dowolnego przycisku myszy.
+    /// </summary>
+    /// <param name="button">Indeks przycisku myszy, który został zarejestrowany podczas wystąpienia tego wydarzenia.</param>
     private void HandleOnClick(MouseButton button) {
         foreach (var action in _onClickActions) {
             if (action.MouseButton != button) continue;
@@ -83,6 +105,10 @@ public partial class ClickableComponent : WorldObjectComponentBase {
         WorldObject.Modulate = Colors.White;
     }
 
+    /// <summary>
+    /// Funkcja obsługująca pojedyncze wciśnięcie i przytrzymanie dowolnego przycisku myszy.
+    /// </summary>
+    /// <param name="button">Indeks przycisku myszy, który został zarejestrowany podczas wystąpienia tego wydarzenia.</param>
     private void HandleClickAndHold(MouseButton button) {
         foreach (var action in _onClickAndHoldActions) {
             if (action.MouseButton != button) continue;
@@ -90,16 +116,19 @@ public partial class ClickableComponent : WorldObjectComponentBase {
             action.ClickAction(WorldObject);
         }
     }
-
+    
     private void HandleDragAndDrop() {
         GD.Print("HandleDragAndDrop");
     }
-
+    
     private void _onHoldTimerTimeOut() {
         _isHolding = true;
         HandleClickAndHold(_mouseButton);
     }
 
+    /// <summary>
+    /// Funkcja resetująca stan wydarzeń wejścia.
+    /// </summary>
     private void _resetMouseState() {
         _previousState = false;
         _mouseButton = MouseButton.None;

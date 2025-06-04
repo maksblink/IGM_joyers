@@ -4,10 +4,17 @@ using SketchyGame.scenes.WorldObjects;
 
 namespace SketchyGame.scenes.WorldObjectComponents.ClickActions;
 
+/// <summary>
+/// Klasa przykładająca losowy impuls siły do obiektu.
+/// </summary>
 public partial class AddVelocityOnClick : ClickActionResource {
     [Export]
     private float _velocityAdded = 100f;
     
+    /// <summary>
+    /// Definicja zachowania dla nadania impulsu
+    /// </summary>
+    /// <param name="args">Dodatkowe argumenty wywołania funkcji</param>
     public override void ClickAction(params object[] args) {
         if (args?[0] is not WorldObjectBase worldObject) {
             GD.PrintErr("Wrong arguments");

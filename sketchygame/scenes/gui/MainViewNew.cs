@@ -4,10 +4,19 @@ using SketchyGame.scenes.Autoloads;
 
 namespace SketchyGame.scenes.gui;
 
+/// <summary>
+/// 
+/// </summary>
 public partial class MainViewNew : Node2D {
+	/// <summary>
+	/// Węzeł głównego widoku.
+	/// </summary>
 	[Export]
 	private Control _menuView = null!;
 	
+	/// <summary>
+	/// Kontener przechowujący wszystkie obiekty występujące w świecie gry.
+	/// </summary>
 	[Export]
 	private Node2D _worldObjectContainer = null!;
 	
@@ -15,6 +24,9 @@ public partial class MainViewNew : Node2D {
 	
 	private ObjectRenderQueue _renderQueue = null!;
 
+	/// <summary>
+	/// Funkcja wywoływana po zainicjowaniu klasy w drzewie obiektów.
+	/// </summary>
 	public override void _Ready() {
 		_renderQueue = ObjectRenderQueue.Instance;
 		
@@ -24,6 +36,9 @@ public partial class MainViewNew : Node2D {
 		base._Ready();
 	}
 
+	/// <summary>
+	/// Dodaje obiekty z klasy ObjectRenderQueue, które zostały dodane w widoku LibraryView.
+	/// </summary>
 	private void RenderNewObjects() {
 		var item = _renderQueue.GetNextRenderItem();
 		
@@ -36,22 +51,34 @@ public partial class MainViewNew : Node2D {
 		}
 	}
 
+	/// <summary>
+	/// Wczytuje stan gry podczas przechodzenia między widokami.
+	/// </summary>
 	private void LoadGameState() {
 		GameState.Instance.RestoreWorld(_worldObjectContainer);
 	}
 
+	/// <summary>
+	/// Zapisuje stan gry podczas przechodzenia między widokami.
+	/// </summary>
 	private void SaveGameState() {
 		GameState.Instance.SaveWorld(_worldObjectContainer);
 	}
 
+	/// <summary>
+	/// Funkcja reagująca na wciśnięcie przycisku `Otwórz Menu` - otwiera menu.
+	/// </summary>
 	private void _onOpenMenuButtonPressed() {
 		_menuView.Visible = !_menuView.Visible;
 		GetTree().Paused = _menuView.Visible;
 	}
 	
+	/// <summary>
+	/// Funkcja tworząca nowy zapis gry w folderze lokalnym gry.
+	/// </summary>
 	private void _onSaveGameButtonPressed()
 	{
-		// sprawdzenie czy katalog saves istnieje
+		// Sprawdzenie, czy katalog saves istnieje
 		var dir = DirAccess.Open("user://");
 		if(!dir.DirExists("saves"))
 		{

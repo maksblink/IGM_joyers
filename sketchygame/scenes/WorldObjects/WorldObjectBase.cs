@@ -5,10 +5,16 @@ using SketchyGame.scenes.Tools.PolygonGenerator;
 
 namespace SketchyGame.scenes.WorldObjects;
 
+/// <summary>
+/// Podstawowa klasa dla obiektów występujących w świecie gry.
+/// </summary>
 public partial class WorldObjectBase : RigidBody2D {
     [Export]
     private Texture2D _objectTexture = null!;
     
+    /// <summary>
+    /// Funkcja dostępu do tekstury obiektu.
+    /// </summary>
     protected Texture2D GetObjectTexture2D => _objectTexture;
     
     [Export]
@@ -17,11 +23,17 @@ public partial class WorldObjectBase : RigidBody2D {
     [Export]
     private float _objectWidth;
 
+    /// <summary>
+    /// Wielokąt opisujący kształt obiektu.
+    /// </summary>
     public Polygon2D Polygon { get; private set; }
     
     private CollisionPolygon2D CollisionShape { get; set; }
 
 
+    /// <summary>
+    /// Funkcja wywoływana po zainicjowaniu klasy w drzewie obiektów.
+    /// </summary>
     public override void _Ready() {
         Polygon = GetNode<Polygon2D>("%ObjectSkeleton");
         CollisionShape = GetNode<CollisionPolygon2D>("%ObjectCollisionSkeleton");
@@ -75,6 +87,10 @@ public partial class WorldObjectBase : RigidBody2D {
         return new Vector2(textureScaleX, textureScaleY);
     }
 
+    /// <summary>
+    /// Funkcja obliczająca przesunięcie dla tekstury i kształtu obiektu.
+    /// </summary>
+    /// <returns></returns>
     public Vector2 GetOffset() {
         var textureSize = GetObjectTexture2D.GetSize();
         var ratio = textureSize.X / textureSize.Y;

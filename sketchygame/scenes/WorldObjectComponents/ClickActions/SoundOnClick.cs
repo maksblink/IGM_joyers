@@ -5,6 +5,9 @@ using SketchyGame.scenes.WorldObjects;
 
 namespace SketchyGame.scenes.WorldObjectComponents.ClickActions;
 
+/// <summary>
+/// Klasa odtwarzająca dźwięk po wciśnięciu przycisku myszy.
+/// </summary>
 public partial class SoundOnClick : ClickActionResource {
     [Export]
     private string _audioStreamPlayer2DPath = null!;
@@ -12,6 +15,10 @@ public partial class SoundOnClick : ClickActionResource {
     [Export]
     private Godot.Collections.Array<AudioStreamWav> _audioStreamWavs = [];
 
+    /// <summary>
+    /// Definicja zachowania do odtworzenia dźwięku.
+    /// </summary>
+    /// <param name="args">Dodatkowe argumenty wywołania funkcji</param>
     public override void ClickAction(params object[] args) {
         AudioStreamPlayer2D audioStreamPlayer = null!;
         WorldObjectBase worldObject = null!;

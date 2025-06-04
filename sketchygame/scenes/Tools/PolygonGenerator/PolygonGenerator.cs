@@ -5,8 +5,21 @@ using OpenCvSharp;
 
 namespace SketchyGame.scenes.Tools.PolygonGenerator;
 
+/// <summary>
+/// Klasa odpowiedzialna za generowanie wielokątów na podstawie mapy krawędzi
+/// Umożliwia konwersję obrazu krawędzi na uproszczony kontur w postaci tablicy punktów Vector2,
+/// </summary>
 public static class PolygonGenerator {
-	// delta - minimalna odległość między sąsiadującymi punktami
+	/// <summary>
+	/// Funckja generuje wielokąt reprezentujący zewnętrzny kontur obiektu na obrazie krawędziowym <paramref name="edgeTexture"/>
+	/// W pierwszym kroku tworzy binarną maskę krawędzi na podstawie kanału alfa tekstury.
+	/// Następnie stosuje operację morfologiczną zamykania (closing), aby domknąć drobne w konturze szczeliny.
+	/// Na tak przetworzonym obrazie wykrywane są kontury zewnętrzne, z których wybierany jest największy.
+	/// Ten kontur jest próbkowany w równych odstępach określonych przez parametr <paramref name="delta"/>.
+	/// </summary>
+	/// <param name="edgeTexture">Obraz krawędziowy, z którego generowany będzie kontur.</param>
+	/// <param name="delta">Minimalna odległość (w pikselach) pomiędzy kolejnymi punktami konturu. Im większa wartość, tym mniej punktów w wielokącie.</param>
+	/// <returns>Tablica punktów Vector2 reprezentujących uproszczony zewnętrzny kontur (wielokąt).</returns>
 	public static Vector2[] GeneratePolygon(Texture2D edgeTexture, float delta) {
 		Image image = edgeTexture.GetImage();
 

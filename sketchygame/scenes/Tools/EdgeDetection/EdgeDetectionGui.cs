@@ -9,7 +9,7 @@ public partial class EdgeDetectionGui : Control {
 	private TextureRect _preFilter;
 	private TextureRect _postFilter;
 	private readonly List<string> _imagePaths = [];
-
+	
 	public override void _Ready() {
 		_imageSelector = GetNode<OptionButton>("%ImageSelector");
 		_preFilter = GetNode<TextureRect>("%PreFilter");
@@ -20,7 +20,7 @@ public partial class EdgeDetectionGui : Control {
 		_imageSelector.Selected = 0;
 		OnImageSelected(0);
 	}
-
+	
 	private void LoadImages() {
 		const string path = "res://assets/object_base";
 
@@ -29,7 +29,7 @@ public partial class EdgeDetectionGui : Control {
 			_imageSelector.AddItem(fileName);
 		}
 	}
-
+	
 	private void OnImageSelected(int index) {
 		var path = _imagePaths[index];
 		var image = ResourceLoader.Load<Texture2D>(path);
@@ -38,7 +38,7 @@ public partial class EdgeDetectionGui : Control {
 		_preFilter.Texture = image;
 		_postFilter.Texture = filtered;
 	}
-
+	
 	private void OnSavePressed() {
 		const string path = "res://assets/object_base/filtered/";
 

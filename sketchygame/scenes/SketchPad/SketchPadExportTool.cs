@@ -9,6 +9,9 @@ using SketchyGame.scenes.Tools.Cnn;
 
 namespace SketchyGame.scenes.SketchPad;
 
+/// <summary>
+/// Klasa generująca obraz.
+/// </summary>
 [GodotClassName("SketchPadExportTool")]
 public partial class SketchPadExportTool : Node {
     private MeshDataTool _mdt = new();
@@ -16,8 +19,11 @@ public partial class SketchPadExportTool : Node {
     [Export]
     private string _savePath = string.Empty;
 
-    private Dictionary<string, string> objectsPaths = [];
+    private readonly Dictionary<string, string> _objectsPaths = [];
 
+    /// <summary>
+    /// Funkcja wywoływana po zainicjowaniu klasy w drzewie obiektów.
+    /// </summary>
     public override void _Ready()
     {
         string objectsPath = "/scenes/WorldObjects";
@@ -31,7 +37,7 @@ public partial class SketchPadExportTool : Node {
                 string fileName = System.IO.Path.GetFileName(file);
                 string filePath = System.IO.Path.GetFullPath(file);
                 var objectName = fileName.Split('_')[0];
-                objectsPaths[objectName] = filePath;
+                _objectsPaths[objectName] = filePath;
             }
             catch (Exception ex)
             {
@@ -42,6 +48,11 @@ public partial class SketchPadExportTool : Node {
         return;
     }
 
+    /// <summary>
+    /// Funkcja eksportująca listę wierzchołków do obrazu w formacie BMP.
+    /// </summary>
+    /// <param name="meshContainer">Węzeł przechowujący wierzchołki obrazu</param>
+    /// <param name="canvasSize">Wielkość obrazu, jaki ma być wygenerowany</param>
     public void ExportAsBitMap(Node meshContainer, Vector2I canvasSize)
     {
         var meshInstance2Ds = new List<MeshInstance2D>();
@@ -79,6 +90,10 @@ public partial class SketchPadExportTool : Node {
         Cv2.ImWrite(path, image);
     }
 
+    /// <summary>
+    /// Funkcja dodająca obiekt do świata gry na podstawie wygenerowanego obrazu.
+    /// </summary>
+    /// <param name="image">Obraz w postaci macierzowej, jednokanałowy o typie uint_8</param>
     private async void AddObject(Mat image)
     {
         var array = new int[image.Cols][];
@@ -105,9 +120,9 @@ public partial class SketchPadExportTool : Node {
         GD.Print($"Predicted class: {className}");
 
         // Add Object
-        if (objectsPaths.Keys.Contains(className))
+        if (_objectsPaths.Keys.Contains(className))
         {
-            ObjectRenderQueue.Instance.PushSceneToRenderQueue(objectsPaths[className]);
+            ObjectRenderQueue.Instance.PushSceneToRenderQueue(_objectsPaths[className]);
             GetTree().ChangeSceneToFile("res://scenes/gui/main_view_new.tscn");
         }
         else
@@ -118,15 +133,28 @@ public partial class SketchPadExportTool : Node {
 
     }
 
+    /// <summary>
+    /// Tworzy nazwę pliku dla obrazu na podstawie aktualnej daty.
+    /// </summary>
+    /// <returns></returns>
     private static string CreateFileName() {
         var date = DateTime.Now.ToString("yyyyMMdd_HHmmss");
         return $"{date}_sketchy_draw.bmp";
     }
 
+    /// <summary>
+    /// Tworzy globalną ścieżkę do pliku na podstawie ścieżki względnej.
+    /// </summary>
+    /// <param name="path">Względna ścieżka do danego folderu.</param>
+    /// <returns>Globalną ścieżkę do danego folderu</returns>
     private static string CastPathToAbsolute(string path) {
         return ProjectSettings.GlobalizePath(path);
     }
 
+    /// <summary>
+    /// Generuje ścieżkę, w której znajduje się plik wykonywalny gry.
+    /// </summary>
+    /// <returns>Ścieżka do pliku wykonywalnego z grą.</returns>
     private static string GetExecutablePath() {
         return OS.GetExecutablePath().GetBaseDir() + '\\';
     }
@@ -136,7 +164,17 @@ public partial class SketchPadExportTool : Node {
     }
 }
 
+/// <summary>
+/// Generator prostej linii w obrazie na podstawie dwóch punktów.
+/// </summary>
 public static class LineGenerate {
+    /// <summary>
+    /// Renderuje prostę linie w obrazie pomiędzy dwoma punktami 3D.
+    /// </summary>
+    /// <param name="image">Obraz, w którym ma być wyrenderowana linia.</param>
+    /// <param name="start">Punkt początkowy linii.</param>
+    /// <param name="end">Punkt końcowy linii.</param>
+    /// <returns></returns>
     public static Mat GenerateLine(Mat image, Vector3I start, Vector3I end) {
         Cv2.Line(image, start.X, start.Y, end.X, end.Y, Scalar.White);
         return image;

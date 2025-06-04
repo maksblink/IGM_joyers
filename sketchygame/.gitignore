@@ -3,6 +3,8 @@
 /android
 sketchy_recogniser.code-workspace
 
+docs/
+
 sketchy_recogniser/.venv/
 sketchy_recogniser/assets/
 

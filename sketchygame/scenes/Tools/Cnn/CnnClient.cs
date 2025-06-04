@@ -5,7 +5,15 @@ using System.Threading.Tasks;
 
 namespace SketchyGame.scenes.Tools.Cnn;
 
+/// <summary>
+/// Klasa odpytująca serwer AI.
+/// </summary>
 class CnnClient {
+    /// <summary>
+    /// Metoda wysyłająca obraz w postaci pliku json do serwera AI i czekająca na odpowiedź z nazwą obiektu najbardziej podobnym do obiektu z bazy danych.
+    /// </summary>
+    /// <param name="data">Dane obrazu w formacie pliku json.</param>
+    /// <returns>Zwraca nazwę najbardziej podobnego obiektu.</returns>
     public static Task<string> GetCnnOpinion(string data) {
         string host = "localhost";
         int port = 9999;
