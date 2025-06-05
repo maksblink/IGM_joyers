@@ -5,7 +5,14 @@ from torch import from_numpy, Tensor
 from numpy import array, ndarray, uint8
 from src.core import SketchyRecognizer
 
-class RequestHandler(ss.StreamRequestHandler): 
+class RequestHandler(ss.StreamRequestHandler):
+    """TCP Request Handler for sketch recognition server.
+
+        Processes client requests and returns predictions.
+
+        Attributes:
+            cnn (SketchyRecognizer): Shared recognizer instance
+        """
 
     cnn = SketchyRecognizer()
 

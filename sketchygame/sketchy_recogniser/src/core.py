@@ -18,6 +18,16 @@ try: assert Path(getcwd()).name == "sketchy_recogniser"
 except: print(f"{Fore.RED}Invalid CWD -> change to 'sketchy_recogniser'{Fore.WHITE}")
 
 class SketchyRecognizer:
+    """Main class for sketch recognition system.
+
+        Handles model training, evaluation, prediction and persistence.
+
+        Attributes:
+            cnn (SketchyCNN): CNN model instance
+            device (torch.device): Computation device (CPU/GPU)
+            object_list (list): List of recognized classes
+            transform (transforms.Compose): Image preprocessing pipeline
+        """
 
     cnn: SketchyCNN = SketchyCNN()
     device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
@@ -36,6 +46,17 @@ class SketchyRecognizer:
     
 
     def __init__(self, auto_load_model: bool = True):
+        """Initialize the recognizer.
+
+                Args:
+                    auto_load_model (bool): If True, attempts to load saved model
+
+                Initializes:
+                    - Model architecture
+                    - Device (GPU if available)
+                    - Directory structure
+                    - Preprocessing transforms
+                """
         print("Using:\t", SketchyRecognizer.device)
 
         assets_dir: Path = Path(self.assest_dir)
@@ -52,14 +73,31 @@ class SketchyRecognizer:
         SketchyRecognizer.cnn.to(SketchyRecognizer.device)
 
 
-    def load_model(self, model_name: str = "model.mdl") -> None: 
+    def load_model(self, model_name: str = "model.mdl") -> None:
+        """Load model weights from file.
+
+               Args:
+                   model_name (str): Path to model file
+
+               Note:
+                   Silently fails if model cannot be loaded
+               """
+
         try: 
             SketchyRecognizer.cnn.load_state_dict(torch.load(model_name, weights_only=True))
         except: 
             print("Model could not be loaded")
 
 
-    def save_model(self, model_name: str = "model.mdl") -> None: 
+    def save_model(self, model_name: str = "model.mdl") -> None:
+        """Save model weights to file.
+
+                Args:
+                    model_name (str): Path to save model file
+
+                Note:
+                    Silently fails if model cannot be saved
+                """
         try:
             SketchyRecognizer.cnn.to("cpu")
             torch.save(SketchyRecognizer.cnn.state_dict(), model_name)
@@ -68,6 +106,17 @@ class SketchyRecognizer:
 
 
     def _predict(self, tensor: torch.Tensor) -> dict[str, int|str]:
+        """Internal prediction method.
+
+                Args:
+                    tensor (torch.Tensor): Input tensor
+
+                Returns:
+                    dict: {
+                        'class_id': predicted class index,
+                        'class_name': predicted class name
+                    }
+                """
         device_tensor = tensor.to(SketchyRecognizer.device)
         prediction: torch.Tensor = SketchyRecognizer.cnn.forward(device_tensor)
         host_prediction = prediction.to("cpu")
@@ -75,7 +124,15 @@ class SketchyRecognizer:
         return {"class_id": predicted_class, "class_name": SketchyRecognizer.object_list[predicted_class]} 
 
 
-    def test_predict_from_image(self) -> None: 
+    def test_predict_from_image(self) -> None:
+        """Test prediction with random image from training set.
+
+               Displays:
+                   - Selected image
+                   - Prediction results
+
+               Used for debugging/development
+               """
         images_path: Path = Path(self.train_dir)
         classes: list[Path] = [folder for folder in images_path.iterdir()]
         random_class: str = choice(classes)
@@ -90,11 +147,34 @@ class SketchyRecognizer:
 
 
     def predict_from_image(self, image: Image) -> dict[str, int|str]:
+        """Make prediction from PIL Image.
+
+               Args:
+                   image (PIL.Image): Input image
+
+               Returns:
+                   dict: Prediction results with class ID and name
+
+               Applies preprocessing transforms automatically
+               """
         input_tensor: torch.Tensor = SketchyRecognizer.transform(image)
         return self._predict(input_tensor)
 
 
     def predict_from_array(self, array: np.ndarray) -> dict[str, int|str]:
+        """Make prediction from numpy array.
+
+                Args:
+                    array (np.ndarray): Input array
+
+                Returns:
+                    dict: Prediction results with class ID and name
+
+                Applies:
+                    - Tensor conversion
+                    - Resizing
+                    - Normalization
+                """
         input_tensor = transforms.ToTensor()(np.array(array))
         input_tensor = transforms.Resize((64, 64))(input_tensor)
         input_tensor = transforms.Normalize((0.0), (0.5))(input_tensor)
@@ -102,6 +182,19 @@ class SketchyRecognizer:
 
 
     def train_one_epoch(self, batch_size: int = 64, train_loader = None, optimizer = None, loss_fn = None) -> float:
+        """Train model for single epoch.
+
+                Args:
+                    batch_size (int): Batch size
+                    train_loader (DataLoader): Optional custom data loader
+                    optimizer: Optional custom optimizer
+                    loss_fn: Optional custom loss function
+
+                Returns:
+                    float: Average training loss
+
+                Displays progress bar during training
+                """
         SketchyRecognizer.cnn.train()
         running_loss = 0.0
 
@@ -135,6 +228,19 @@ class SketchyRecognizer:
 
 
     def validate(self, batch_size: int = 64, valid_loader = None, validate_data = None, loss_fn = None) -> tuple[float, float]:
+        """Validate model performance.
+
+                Args:
+                    batch_size (int): Batch size
+                    valid_loader (DataLoader): Optional custom data loader
+                    validate_data: Optional custom validation data
+                    loss_fn: Optional custom loss function
+
+                Returns:
+                    tuple: (validation_loss, validation_accuracy)
+
+                Displays progress bar during validation
+                """
         SketchyRecognizer.cnn.eval()
         running_loss = 0.0
         correct = 0
@@ -171,6 +277,19 @@ class SketchyRecognizer:
 
 
     def train(self, epochs: int = 12, batch_size: int = 64, learning_rate: float = 0.001) -> None:
+        """Complete training procedure.
+
+                Args:
+                    epochs (int): Number of training epochs
+                    batch_size (int): Batch size
+                    learning_rate (float): Learning rate
+
+                Performs:
+                    - Training loop
+                    - Validation
+                    - Loss/accuracy tracking
+                    - Model saving
+                """
         train_dir = "assets/train"
         valid_dir = "assets/valid"
 

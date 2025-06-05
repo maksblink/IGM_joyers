@@ -9,6 +9,16 @@
 #define BUFFER_SIZE 1024
 
 int main() {
+"""Example client implementation in C.
+
+   ' Connects to server and sends test data.
+
+   ' Steps:
+       '1. Create socket
+       '2. Connect to localhost:9999
+       '3. Send hardcoded test data
+       '4. Receive and print response
+    """
     int sock;
     struct sockaddr_in server_address;
     char *data = "{\"image\": [0,0,0,1,1,1,2,2,2]}";
