@@ -1,0 +1,7 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dkmk8fugpaqbs"]
+
+[ext_resource type="Script" uid="uid://dmnpwxp633yaq" path="res://scenes/WorldObjectComponents/ClickActions/LightOnClick.cs" id="1_ve0ph"]
+
+[resource]
+script = ExtResource("1_ve0ph")
+_mouseButton = 1

@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Godot;
 using SketchyGame.scenes.WorldObjectComponents.ClickActions;
@@ -17,15 +18,14 @@ public partial class ClickableComponent : WorldObjectComponentBase {
     [Export]
     private Godot.Collections.Array<ClickActionResource> _onClickAndHoldActions = [];
 
-    [Export]
-    private Godot.Collections.Array<ClickActionResource> _onClickAndDragActions = [];
-
     private bool _previousState = false;
     private MouseButton _mouseButton = MouseButton.None;
     private Timer _holdTimer = null!;
     private bool _isHolding = false;
     
     private CollisionPolygon2D _collisionPolygon2D = null!;
+    
+    private bool _isMouseInside = false;
 
     /// <summary>
     /// Funkcja wywoływana po zainicjowaniu klasy w drzewie obiektów.
@@ -38,13 +38,17 @@ public partial class ClickableComponent : WorldObjectComponentBase {
         _collisionPolygon2D = GetNode<CollisionPolygon2D>("%ClickCollider");
         
         Owner.Ready += () => {
-            var polygon = WorldObject.Polygon.Polygon;
-            var offset = WorldObject.GetOffset();
+            var polygon = Parent.Polygon.Polygon;
+            var offset = Parent.GetOffset();
 
             _collisionPolygon2D.Polygon = polygon.Select(p => p - offset).ToArray();
         };
         
         base._Ready();
+    }
+
+    private void _onMouseEntered() {
+        _isMouseInside = true;
     }
 
     /// <summary>
@@ -57,7 +61,7 @@ public partial class ClickableComponent : WorldObjectComponentBase {
         if (inputEvent is not InputEventMouseButton mouseEvent) {
             return;
         }
-
+        
         if (_holdTimer.IsStopped() && mouseEvent.Pressed) {
             _holdTimer.Start();
         }
@@ -81,13 +85,10 @@ public partial class ClickableComponent : WorldObjectComponentBase {
     /// <param name="inputEvent">Rodzaj akcji wejścia, np. wciśnięcie przycisku myszy.</param>
     /// <param name="shapeIdx">Nie używane></param>
     private void _onInputEventDragged(Node viewport, InputEvent inputEvent, int shapeIdx) {
-        if (inputEvent is not InputEventMouseMotion mouseEvent) return;
+        if (inputEvent is not InputEventMouseMotion) return;
         if (!_isHolding) return;
-
         
-        WorldObject.Freeze = true;
-        WorldObject.Modulate = Colors.Orange;
-        WorldObject.GlobalPosition = mouseEvent.GlobalPosition;
+        HandleClickAndHold(_mouseButton);
     }
 
     /// <summary>
@@ -98,11 +99,11 @@ public partial class ClickableComponent : WorldObjectComponentBase {
         foreach (var action in _onClickActions) {
             if (action.MouseButton != button) continue;
             
-            action.ClickAction(WorldObject);
+            action.ClickAction(CallArguments);
         }
         
-        WorldObject.Freeze = false;
-        WorldObject.Modulate = Colors.White;
+        Parent.Freeze = false;
+        Parent.Modulate = Colors.White;
     }
 
     /// <summary>
@@ -113,12 +114,8 @@ public partial class ClickableComponent : WorldObjectComponentBase {
         foreach (var action in _onClickAndHoldActions) {
             if (action.MouseButton != button) continue;
             
-            action.ClickAction(WorldObject);
+            action.ClickAction(CallArguments);
         }
-    }
-    
-    private void HandleDragAndDrop() {
-        GD.Print("HandleDragAndDrop");
     }
     
     private void _onHoldTimerTimeOut() {
@@ -134,6 +131,8 @@ public partial class ClickableComponent : WorldObjectComponentBase {
         _mouseButton = MouseButton.None;
         _holdTimer.Stop();
         _isHolding = false;
-        WorldObject.Freeze = false;
+        Parent.Freeze = false;
+        
+        _isMouseInside = false;
     }
 }

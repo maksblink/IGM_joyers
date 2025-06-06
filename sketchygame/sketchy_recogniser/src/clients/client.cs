@@ -1,16 +1,15 @@
 using System;
 using System.Net.Sockets;
 using System.Text;
-"""Example client implementation in C#.
-
-   'Connects to server and sends test data.
-
-   'Methods:
-       'Main(): Entry point
-          ' - Connects to localhost:9999
-           'Sends hardcoded test data
-           'Receives and displays response
-    """
+// Example client implementation in C#.
+//
+//    'Connects to server and sends test data.
+//
+//    'Methods:
+//        'Main(): Entry point
+//           ' - Connects to localhost:9999
+//            'Sends hardcoded test data
+//           'Receives and displays response
 class Client {
 
     static void Main(string[] args) {

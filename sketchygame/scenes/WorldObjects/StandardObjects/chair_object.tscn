@@ -1,10 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://bqwfww5kbe8c1"]
+[gd_scene load_steps=4 format=3 uid="uid://bqwfww5kbe8c1"]
 
 [ext_resource type="PackedScene" uid="uid://bobmft2hp5g1f" path="res://scenes/WorldObjects/TestObjects/clickable_object.tscn" id="1_b4ev3"]
 [ext_resource type="Texture2D" uid="uid://iw6y8qwx5h6y" path="res://assets/object_base/Chair.png" id="2_1yfgo"]
+[ext_resource type="Resource" uid="uid://1eodg524wyyb" path="res://scenes/WorldObjectComponents/ClickActions/DragObject.tres" id="3_heo6d"]
 
 [node name="ChairObject" instance=ExtResource("1_b4ev3")]
 _objectTexture = ExtResource("2_1yfgo")
 _objectWidth = 100.0
+
+[node name="ClickableComponent" parent="." index="0" node_paths=PackedStringArray("Parent")]
+_onClickAndHoldActions = [ExtResource("3_heo6d")]
+Parent = NodePath("..")
 
 [editable path="ClickableComponent"]

@@ -18,12 +18,12 @@ public partial class SoundOnClick : ClickActionResource {
     /// <summary>
     /// Definicja zachowania do odtworzenia dźwięku.
     /// </summary>
-    /// <param name="args">Dodatkowe argumenty wywołania funkcji</param>
-    public override void ClickAction(params object[] args) {
+    /// <param name="callArgs">Dodatkowe argumenty wywołania funkcji</param>
+    public override void ClickAction(Godot.Collections.Array<Node> callArgs) {
         AudioStreamPlayer2D audioStreamPlayer = null!;
         WorldObjectBase worldObject = null!;
 
-        foreach (var arg in args) {
+        foreach (var arg in callArgs) {
             switch (arg) {
                 case WorldObjectBase worldObjectBase:
                     worldObject = worldObjectBase;

@@ -1,17 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://fngdeni12nub"]
+[gd_scene load_steps=5 format=3 uid="uid://fngdeni12nub"]
 
 [ext_resource type="PackedScene" uid="uid://c2stretinktoc" path="res://scenes/WorldObjectComponents/world_object_component_base.tscn" id="1_alujl"]
 [ext_resource type="Script" uid="uid://b18luw722gp8e" path="res://scenes/WorldObjectComponents/ClickableComponent.cs" id="2_u2416"]
-[ext_resource type="Script" uid="uid://dbmpks8hac4mt" path="res://scenes/WorldObjectComponents/ClickActions/ClickActionResource.cs" id="3_nfxpt"]
 [ext_resource type="Resource" uid="uid://bckndj16fv3pb" path="res://scenes/WorldObjectComponents/ClickActions/test_push.tres" id="5_5mqjb"]
 [ext_resource type="Resource" uid="uid://jrg3xhdhc6wr" path="res://scenes/WorldObjectComponents/ClickActions/delete_object.tres" id="5_nfxpt"]
 
 [node name="ClickableComponent" instance=ExtResource("1_alujl")]
 script = ExtResource("2_u2416")
 _holdThreshold = 0.2
-_onClickActions = Array[ExtResource("3_nfxpt")]([ExtResource("5_nfxpt"), ExtResource("5_5mqjb")])
-_onClickAndHoldActions = Array[ExtResource("3_nfxpt")]([])
-_onClickAndDragActions = Array[ExtResource("3_nfxpt")]([])
+_onClickActions = [ExtResource("5_nfxpt"), ExtResource("5_5mqjb")]
+_onClickAndHoldActions = []
+_onClickAndDragActions = []
 
 [node name="ClickDetectionZone" type="Area2D" parent="." index="0"]
 collision_layer = 2

@@ -11,7 +11,13 @@ public partial class WorldObjectComponentBase : Node2D {
     /// Obiekt, w którym występuje dana instancja komponentu.
     /// </summary>
     [Export]
-    public WorldObjectBase WorldObject { get; private set; } = null!;
+    protected WorldObjectBase Parent { get; private set; } = null!;
+
+    /// <summary>
+    /// 
+    /// </summary>
+    [Export]
+    protected Godot.Collections.Array<Node> CallArguments { get; private set; } = [];
 
     /// <summary>
     /// Funkcja wywoływana po zainicjowaniu klasy w drzewie obiektów.
@@ -20,6 +26,7 @@ public partial class WorldObjectComponentBase : Node2D {
         var parent = GetParent();
 
         if (parent is not WorldObjectBase worldObjectBase) return;
-        WorldObject = worldObjectBase;
+        Parent = worldObjectBase;
+        CallArguments.Add(Parent);
     }
 }

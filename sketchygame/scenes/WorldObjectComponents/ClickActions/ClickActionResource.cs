@@ -17,8 +17,8 @@ public partial class ClickActionResource : Resource {
     /// <summary>
     /// Definicja zachowania dla wydarzenia wciśnięcia myszy.
     /// </summary>
-    /// <param name="args">Dodatkowe argumenty wywołania funkcji</param>
-    public virtual void ClickAction(params object[] args) {
+    /// <param name="callArgs">Dodatkowe argumenty wywołania funkcji</param>
+    public virtual void ClickAction(Godot.Collections.Array<Node> callArgs) {
         GD.PushWarning("Some clickable action executed. Override this.");
     }
 }
