@@ -27,7 +27,7 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 one_shot = true
 
-[connection signal="input_event" from="ClickDetectionZone" to="." method="_onInputEventReceived"]
 [connection signal="input_event" from="ClickDetectionZone" to="." method="_onInputEventDragged"]
+[connection signal="input_event" from="ClickDetectionZone" to="." method="_onInputEventReceived"]
 [connection signal="mouse_exited" from="ClickDetectionZone" to="." method="_resetMouseState"]
 [connection signal="timeout" from="HoldTimer" to="." method="_onHoldTimerTimeOut"]

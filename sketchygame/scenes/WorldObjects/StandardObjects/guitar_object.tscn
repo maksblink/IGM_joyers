@@ -13,12 +13,8 @@ _objectTexture = ExtResource("2_pi3pe")
 _objectWidth = 100.0
 
 [node name="ClickableComponent" parent="." index="2" node_paths=PackedStringArray("Parent", "CallArguments") instance=ExtResource("3_pi3pe")]
-_holdTimeThreshold = 0.2
 _onClickActions = Array[ExtResource("4_i07q5")]([ExtResource("5_fburh"), ExtResource("6_fburh")])
 _onClickAndHoldActions = Array[ExtResource("4_i07q5")]([ExtResource("7_fq76r")])
-_offClickAndHoldActions = Array[ExtResource("4_i07q5")]([])
-_offClickAndDragActions = Array[ExtResource("4_i07q5")]([])
-_holdDistanceThreshold = 10.0
 Parent = NodePath("..")
 CallArguments = [NodePath("../GuitarSoundFx")]
 

@@ -97,4 +97,8 @@ public partial class WorldObjectBase : RigidBody2D {
 
         return new Vector2(_objectWidth / 2f, _objectWidth / ratio / 2f);
     }
+
+    private void _onScreenExitedNotifier() {
+        QueueFree();
+    }
 }

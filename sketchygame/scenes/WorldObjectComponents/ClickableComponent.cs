@@ -37,9 +37,11 @@ public partial class ClickableComponent : WorldObjectComponentBase {
     private float _holdDistanceThreshold = 10f;
     private Vector2 _startMousePosition = Vector2.Zero;
     private Vector2 _lastMousePosition = Vector2.Zero;
+    private Vector2 _mouseVelocity = Vector2.Zero;
     
     public Vector2 StartMousePosition => _startMousePosition;
     public Vector2 LastMousePosition => _lastMousePosition;
+    public Vector2 MouseVelocity => _mouseVelocity;
 
     /// <summary>
     /// Funkcja wywoływana po zainicjowaniu klasy w drzewie obiektów.
@@ -72,6 +74,10 @@ public partial class ClickableComponent : WorldObjectComponentBase {
     /// <param name="inputEvent">Rodzaj akcji wejścia, np. wciśnięcie przycisku myszy.</param>
     /// <param name="shapeIdx">Nie używane></param>
     private void _onInputEventReceived(Node viewport, InputEvent inputEvent, int shapeIdx) {
+        if (inputEvent is InputEventMouseMotion mouseMotion) {
+            _mouseVelocity = mouseMotion.ScreenVelocity;
+        }
+        
         if (inputEvent is not InputEventMouseButton mouseEvent) {
             return;
         }

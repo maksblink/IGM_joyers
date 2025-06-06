@@ -5,6 +5,9 @@ using SketchyGame.scenes.WorldObjects;
 namespace SketchyGame.scenes.WorldObjectComponents.ClickActions;
 
 public partial class ThrowObject : ClickActionResource {
+    [Export]
+    private float _throwStrengthScale = 1f;
+
     public override void ClickAction(Array<Node> callArgs) {
         WorldObjectBase worldObject = null!;
         ClickableComponent clickableComponent = null!;
@@ -17,8 +20,6 @@ public partial class ThrowObject : ClickActionResource {
         if (worldObject is null) return;
         if (clickableComponent is null) return;
 
-        worldObject.LinearVelocity =
-            (clickableComponent.LastMousePosition - clickableComponent.StartMousePosition).Normalized()
-            * 500f;
+        worldObject.LinearVelocity = clickableComponent.MouseVelocity * _throwStrengthScale;
     }
 }

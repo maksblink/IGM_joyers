@@ -10,11 +10,7 @@ _objectTexture = ExtResource("2_1yfgo")
 _objectWidth = 100.0
 
 [node name="ClickableComponent" parent="." index="0" node_paths=PackedStringArray("Parent")]
-_holdTimeThreshold = 0.2
-_onClickAndHoldActions = [ExtResource("3_heo6d")]
-_offClickAndHoldActions = Array[ExtResource("4_537xc")]([])
-_offClickAndDragActions = Array[ExtResource("4_537xc")]([])
-_holdDistanceThreshold = 10.0
+_onClickAndHoldActions = Array[ExtResource("4_537xc")]([ExtResource("3_heo6d")])
 Parent = NodePath("..")
 
 [editable path="ClickableComponent"]

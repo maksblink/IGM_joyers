@@ -4,4 +4,5 @@
 
 [resource]
 script = ExtResource("1_w8ioi")
+_throwStrengthScale = 2.0
 _mouseButton = 1
