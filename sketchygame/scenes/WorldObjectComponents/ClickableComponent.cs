@@ -10,13 +10,19 @@ namespace SketchyGame.scenes.WorldObjectComponents;
 /// </summary>
 public partial class ClickableComponent : WorldObjectComponentBase {
     [Export]
-    private float _holdThreshold = 0.2f;
+    private float _holdTimeThreshold = 0.2f;
 
     [Export]
     private Godot.Collections.Array<ClickActionResource> _onClickActions = [];
 
     [Export]
     private Godot.Collections.Array<ClickActionResource> _onClickAndHoldActions = [];
+    
+    [Export]
+    private Godot.Collections.Array<ClickActionResource> _offClickAndHoldActions = [];
+    
+    [Export]
+    private Godot.Collections.Array<ClickActionResource> _offClickAndDragActions = [];
 
     private bool _previousState = false;
     private MouseButton _mouseButton = MouseButton.None;
@@ -26,13 +32,21 @@ public partial class ClickableComponent : WorldObjectComponentBase {
     private CollisionPolygon2D _collisionPolygon2D = null!;
     
     private bool _isMouseInside = false;
+    
+    [Export]
+    private float _holdDistanceThreshold = 10f;
+    private Vector2 _startMousePosition = Vector2.Zero;
+    private Vector2 _lastMousePosition = Vector2.Zero;
+    
+    public Vector2 StartMousePosition => _startMousePosition;
+    public Vector2 LastMousePosition => _lastMousePosition;
 
     /// <summary>
     /// Funkcja wywoływana po zainicjowaniu klasy w drzewie obiektów.
     /// </summary>
     public override void _Ready() {
         _holdTimer = GetNode<Timer>("HoldTimer");
-        _holdTimer.WaitTime = _holdThreshold;
+        _holdTimer.WaitTime = _holdTimeThreshold;
         _holdTimer.Stop();
         
         _collisionPolygon2D = GetNode<CollisionPolygon2D>("%ClickCollider");
@@ -67,6 +81,11 @@ public partial class ClickableComponent : WorldObjectComponentBase {
         }
         else if (!mouseEvent.Pressed) {
             _holdTimer.Stop();
+
+            if (_isHolding) {
+                HandleOffClickAndHold(mouseEvent.ButtonIndex);
+            }
+            
             _isHolding = false;
         }
 
@@ -116,11 +135,29 @@ public partial class ClickableComponent : WorldObjectComponentBase {
             
             action.ClickAction(CallArguments);
         }
+
+        _lastMousePosition = GetGlobalMousePosition();
+    }
+
+    private void HandleOffClickAndHold(MouseButton button) {
+        foreach (var action in _offClickAndHoldActions) {
+            if (action.MouseButton != button) continue;
+            
+            action.ClickAction(CallArguments);
+        }
+
+        foreach (var action in _offClickAndDragActions) {
+            if ((GetGlobalMousePosition() - _startMousePosition).Length() < _holdDistanceThreshold) continue;
+            if (action.MouseButton != button) continue;
+
+            action.ClickAction(CallArguments);
+        }
     }
     
     private void _onHoldTimerTimeOut() {
         _isHolding = true;
-        HandleClickAndHold(_mouseButton);
+        _startMousePosition = GetGlobalMousePosition();
+        // HandleClickAndHold(_mouseButton);
     }
 
     /// <summary>

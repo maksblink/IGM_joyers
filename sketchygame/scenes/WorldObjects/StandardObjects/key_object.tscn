@@ -1,10 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://dm0counpgymhc"]
+[gd_scene load_steps=5 format=3 uid="uid://dm0counpgymhc"]
 
 [ext_resource type="PackedScene" uid="uid://bobmft2hp5g1f" path="res://scenes/WorldObjects/TestObjects/clickable_object.tscn" id="1_qrep8"]
 [ext_resource type="Texture2D" uid="uid://bb2oxpk1xlp74" path="res://assets/object_base/key.png" id="2_2jaan"]
+[ext_resource type="Script" uid="uid://dbmpks8hac4mt" path="res://scenes/WorldObjectComponents/ClickActions/ClickActionResource.cs" id="3_hfoa8"]
+[ext_resource type="Resource" uid="uid://1eodg524wyyb" path="res://scenes/WorldObjectComponents/ClickActions/DragObject.tres" id="4_q8r1l"]
 
 [node name="KeyObject" instance=ExtResource("1_qrep8")]
 _objectTexture = ExtResource("2_2jaan")
 _objectWidth = 100.0
+
+[node name="ClickableComponent" parent="." index="0" node_paths=PackedStringArray("Parent")]
+_holdTimeThreshold = 0.2
+_onClickAndHoldActions = Array[ExtResource("3_hfoa8")]([ExtResource("4_q8r1l")])
+_offClickAndHoldActions = Array[ExtResource("3_hfoa8")]([])
+_offClickAndDragActions = Array[ExtResource("3_hfoa8")]([])
+_holdDistanceThreshold = 10.0
+Parent = NodePath("..")
 
 [editable path="ClickableComponent"]

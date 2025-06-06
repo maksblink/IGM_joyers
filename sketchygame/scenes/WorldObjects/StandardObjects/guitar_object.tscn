@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cil21yp6edptx"]
+[gd_scene load_steps=8 format=3 uid="uid://cil21yp6edptx"]
 
 [ext_resource type="PackedScene" uid="uid://d064q02m5573v" path="res://scenes/WorldObjects/world_object_base.tscn" id="1_vyfv1"]
 [ext_resource type="Texture2D" uid="uid://b1oesbd458kwj" path="res://assets/object_base/guitar.png" id="2_pi3pe"]
@@ -6,13 +6,21 @@
 [ext_resource type="Script" uid="uid://dbmpks8hac4mt" path="res://scenes/WorldObjectComponents/ClickActions/ClickActionResource.cs" id="4_i07q5"]
 [ext_resource type="Resource" uid="uid://jrg3xhdhc6wr" path="res://scenes/WorldObjectComponents/ClickActions/delete_object.tres" id="5_fburh"]
 [ext_resource type="Resource" uid="uid://b0fwchm55g732" path="res://scenes/WorldObjectComponents/ClickActions/guitar_sounds_on_click.tres" id="6_fburh"]
+[ext_resource type="Resource" uid="uid://1eodg524wyyb" path="res://scenes/WorldObjectComponents/ClickActions/DragObject.tres" id="7_fq76r"]
 
 [node name="GuitarObject" instance=ExtResource("1_vyfv1")]
 _objectTexture = ExtResource("2_pi3pe")
 _objectWidth = 100.0
 
-[node name="ClickableComponent" parent="." index="2" instance=ExtResource("3_pi3pe")]
+[node name="ClickableComponent" parent="." index="2" node_paths=PackedStringArray("Parent", "CallArguments") instance=ExtResource("3_pi3pe")]
+_holdTimeThreshold = 0.2
 _onClickActions = Array[ExtResource("4_i07q5")]([ExtResource("5_fburh"), ExtResource("6_fburh")])
+_onClickAndHoldActions = Array[ExtResource("4_i07q5")]([ExtResource("7_fq76r")])
+_offClickAndHoldActions = Array[ExtResource("4_i07q5")]([])
+_offClickAndDragActions = Array[ExtResource("4_i07q5")]([])
+_holdDistanceThreshold = 10.0
+Parent = NodePath("..")
+CallArguments = [NodePath("../GuitarSoundFx")]
 
 [node name="GuitarSoundFx" type="AudioStreamPlayer2D" parent="." index="3"]
 

@@ -8,6 +8,7 @@ namespace SketchyGame.scenes.WorldObjectComponents.ClickActions;
 /// TODO: Add docs
 /// </summary>
 public partial class DragObject : ClickActionResource {
+    
     /// <summary>
     /// 
     /// </summary>

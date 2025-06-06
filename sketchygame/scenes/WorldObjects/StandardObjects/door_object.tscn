@@ -1,10 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://vxoki457hoh8"]
+[gd_scene load_steps=5 format=3 uid="uid://vxoki457hoh8"]
 
 [ext_resource type="PackedScene" uid="uid://bobmft2hp5g1f" path="res://scenes/WorldObjects/TestObjects/clickable_object.tscn" id="1_c3jtl"]
 [ext_resource type="Texture2D" uid="uid://xpsjusc3c2c4" path="res://assets/object_base/Door.png" id="2_25clq"]
+[ext_resource type="Script" uid="uid://dbmpks8hac4mt" path="res://scenes/WorldObjectComponents/ClickActions/ClickActionResource.cs" id="3_nxbmx"]
+[ext_resource type="Resource" uid="uid://1eodg524wyyb" path="res://scenes/WorldObjectComponents/ClickActions/DragObject.tres" id="4_xi2ap"]
 
 [node name="DoorObject" instance=ExtResource("1_c3jtl")]
 _objectTexture = ExtResource("2_25clq")
 _objectWidth = 200.0
+
+[node name="ClickableComponent" parent="." index="0"]
+_holdTimeThreshold = 0.2
+_onClickAndHoldActions = Array[ExtResource("3_nxbmx")]([ExtResource("4_xi2ap")])
+_offClickAndHoldActions = Array[ExtResource("3_nxbmx")]([])
+_offClickAndDragActions = Array[ExtResource("3_nxbmx")]([])
+_holdDistanceThreshold = 10.0
 
 [editable path="ClickableComponent"]

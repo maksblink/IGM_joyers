@@ -1,10 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://dqhn1ty8p1xjl"]
+[gd_scene load_steps=7 format=3 uid="uid://dqhn1ty8p1xjl"]
 
 [ext_resource type="PackedScene" uid="uid://bobmft2hp5g1f" path="res://scenes/WorldObjects/TestObjects/clickable_object.tscn" id="1_l65rj"]
 [ext_resource type="Texture2D" uid="uid://do2hvymsicg08" path="res://assets/object_base/volleyball.png" id="2_njs8a"]
+[ext_resource type="Script" uid="uid://dbmpks8hac4mt" path="res://scenes/WorldObjectComponents/ClickActions/ClickActionResource.cs" id="3_02phc"]
+[ext_resource type="Resource" uid="uid://1eodg524wyyb" path="res://scenes/WorldObjectComponents/ClickActions/DragObject.tres" id="4_t4qpn"]
+[ext_resource type="Resource" uid="uid://jujv1me3tyws" path="res://scenes/WorldObjectComponents/ClickActions/throw_object.tres" id="5_t4qpn"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_02phc"]
+bounce = 0.6
 
 [node name="VolleyballObject" instance=ExtResource("1_l65rj")]
+physics_material_override = SubResource("PhysicsMaterial_02phc")
 _objectTexture = ExtResource("2_njs8a")
 _objectWidth = 100.0
+
+[node name="ClickableComponent" parent="." index="0" node_paths=PackedStringArray("Parent", "CallArguments")]
+_holdTimeThreshold = 0.2
+_onClickAndHoldActions = Array[ExtResource("3_02phc")]([ExtResource("4_t4qpn")])
+_offClickAndHoldActions = Array[ExtResource("3_02phc")]([])
+_offClickAndDragActions = Array[ExtResource("3_02phc")]([ExtResource("5_t4qpn")])
+_holdDistanceThreshold = 10.0
+Parent = NodePath("..")
+CallArguments = [NodePath(".")]
 
 [editable path="ClickableComponent"]
