@@ -20,6 +20,9 @@ public partial class LibraryItem : Button {
     /// <param name="item">Scena z wybranym obiektem.</param>
     [Signal]
     public delegate void LibraryItemPressedTscnEventHandler(PackedScene item);
+    
+    [Signal]
+    public delegate void NotifyLibraryItemPressedEventHandler(string objectName);
 
     [Export]
     private PackedScene? _worldObjectScene = null;
@@ -43,10 +46,13 @@ public partial class LibraryItem : Button {
     private void _on_pressed() {
         if (_worldObjectScene is null) {
             EmitSignal(SignalName.LibraryItemPressed, _worldObjectPath);
+            EmitSignalNotifyLibraryItemPressed(GetNode<Label>("%Name").Text);
             return;
         }
         else {
             EmitSignal(SignalName.LibraryItemPressedTscn, _worldObjectScene);
+            EmitSignalNotifyLibraryItemPressed(GetNode<Label>("%Name").Text);
+            GD.Print(GetNode<Label>("%Name").Text);
         }
     }
 }

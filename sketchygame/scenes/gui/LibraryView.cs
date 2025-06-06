@@ -13,6 +13,9 @@ public partial class LibraryView : Control {
 	
 	[Export]
 	private HFlowContainer _libraryContainer = null!;
+	
+	[Export]
+	private PackedScene _addObjectPopupScene = null!;
 
 	/// <summary>
 	/// Funkcja wywoływana po zainicjowaniu klasy w drzewie obiektów.
@@ -53,6 +56,7 @@ public partial class LibraryView : Control {
 			
 			libraryItem.LibraryItemPressed += _OnLibraryItemPressed;
 			libraryItem.LibraryItemPressedTscn += _OnLibraryItemTscnPressed;
+			libraryItem.NotifyLibraryItemPressed += AddObjectAddedPopup;
 		}
 	}
 
@@ -67,6 +71,18 @@ public partial class LibraryView : Control {
 
 			libraryItem.LibraryItemPressed -= _OnLibraryItemPressed;
 			libraryItem.LibraryItemPressedTscn -= _OnLibraryItemTscnPressed;
+			libraryItem.NotifyLibraryItemPressed -= AddObjectAddedPopup;
 		}
+	}
+
+	private void AddObjectAddedPopup(string objectDictName) {
+		if (_addObjectPopupScene is null) return;
+
+		var addObjectPopup = _addObjectPopupScene.Instantiate<AddItemPopup>();
+		addObjectPopup.ObjectName = objectDictName;
+		addObjectPopup.SetLabelName();
+
+		var notifierContainer = GetNode<VBoxContainer>("%Notificator");
+		notifierContainer.AddChild(addObjectPopup);
 	}
 }

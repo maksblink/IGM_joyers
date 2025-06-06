@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3bx4ndeb7nla"]
+
+[ext_resource type="Script" uid="uid://bx7uk5les8cdg" path="res://scenes/gui_components/AddItemPopup.cs" id="1_68eee"]
+
+[node name="AddItemPopup" type="Panel"]
+custom_minimum_size = Vector2(0, 66)
+anchors_preset = -1
+anchor_right = 0.129
+anchor_bottom = 0.073
+offset_right = -0.400009
+offset_bottom = 0.299995
+grow_horizontal = 2
+size_flags_horizontal = 3
+script = ExtResource("1_68eee")
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "ADD_OBJECT_POPUP"
+vertical_alignment = 1
+
+[node name="AutoOffTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="AutoOffTimer" to="." method="_onAutoOffTimeOut"]
