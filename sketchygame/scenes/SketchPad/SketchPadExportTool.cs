@@ -26,7 +26,7 @@ public partial class SketchPadExportTool : Node {
     /// </summary>
     public override void _Ready()
     {
-        string objectsPath = "/scenes/WorldObjects";
+        string objectsPath = "./scenes/WorldObjects/StandardObjects/";
         string absPath = System.IO.Path.Join(System.IO.Directory.GetCurrentDirectory(), objectsPath);
 
         var files = System.IO.Directory.GetFiles(absPath);
@@ -38,6 +38,7 @@ public partial class SketchPadExportTool : Node {
                 string filePath = System.IO.Path.GetFullPath(file);
                 var objectName = fileName.Split('_')[0];
                 _objectsPaths[objectName] = filePath;
+                GD.Print(filePath);
             }
             catch (Exception ex)
             {
@@ -82,12 +83,6 @@ public partial class SketchPadExportTool : Node {
         }
 
         AddObject(image);
-
-        // In release mode (standalone exe) image will be saved in same folder as exe,
-        // otherwise res://assets/exported
-        var path = (OS.IsDebugBuild() ? CastPathToAbsolute(_savePath) : GetExecutablePath()) + CreateFileName();
-        GD.Print(path);
-        Cv2.ImWrite(path, image);
     }
 
     /// <summary>
@@ -104,7 +99,7 @@ public partial class SketchPadExportTool : Node {
             array[i] = new int[image.Rows];
             for (var j = 0; j < image.Cols; j++)
             {
-                array[i][j] = image.At<int>(i, j);
+                array[i][j] = image.At<byte>(i, j);
             }
         }
 

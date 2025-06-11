@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cfncye2w50uys"]
+[gd_scene load_steps=28 format=3 uid="uid://cfncye2w50uys"]
 
 [ext_resource type="Texture2D" uid="uid://gqlkqct8gg6b" path="res://assets/images/sticker.png" id="1_8inqh"]
 [ext_resource type="Script" uid="uid://brlugeqqly4od" path="res://scenes/gui/LibraryView.cs" id="1_byiss"]
@@ -26,7 +26,6 @@
 [ext_resource type="PackedScene" uid="uid://6p0qpgsqrmy2" path="res://scenes/WorldObjects/StandardObjects/plant_object.tscn" id="20_u2xan"]
 [ext_resource type="PackedScene" uid="uid://bqc1tasryhwkg" path="res://scenes/WorldObjects/StandardObjects/shield_object.tscn" id="22_ouh8p"]
 [ext_resource type="PackedScene" uid="uid://m5fumjhvevco" path="res://scenes/WorldObjects/StandardObjects/sword_object.tscn" id="24_0qr0p"]
-[ext_resource type="PackedScene" uid="uid://b3bx4ndeb7nla" path="res://scenes/gui_components/add_item_popup.tscn" id="27_5e0ie"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_po4jv"]
 content_margin_left = 32.0
@@ -48,7 +47,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_byiss")
 _libraryContainer = NodePath("ScrollContainer/HFlowContainer")
-_addObjectPopupScene = ExtResource("27_5e0ie")
 
 [node name="BackgroundContainer" type="Control" parent="."]
 layout_mode = 1
