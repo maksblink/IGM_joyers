@@ -240,6 +240,7 @@ position = Vector2i(643, 200)
 size = Vector2i(314, 100)
 dialog_text = "SAVE_POPUP_TEXT"
 
+[connection signal="AddObjectToWorld" from="CanvasLayer/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad/SketchPadExportTool" to="." method="_on_sketch_pad_export_tool_add_object_to_world"]
 [connection signal="pressed" from="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/Navigation/MenuButton" to="." method="_onOpenMenuButtonPressed"]
 [connection signal="pressed" from="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/Navigation/AddObjectButton" to="CanvasLayer/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" method="_on_export_image_to_bmp"]
 [connection signal="pressed" from="CanvasLayer/DrawingPanel/DrawingPanelContainer/ButtonsMarginContainer/VBoxContainer/KitItemButtons/ButtonsContainer/btn_Draw" to="CanvasLayer/DrawingPanel/DrawingPanelContainer/CenterContainer/SubViewportContainer/SketchPad" method="_on_btn_draw_pressed"]

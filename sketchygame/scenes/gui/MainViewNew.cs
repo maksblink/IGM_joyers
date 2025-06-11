@@ -51,6 +51,10 @@ public partial class MainViewNew : Node2D {
 		}
 	}
 
+	private void _on_sketch_pad_export_tool_add_object_to_world() {
+		RenderNewObjects();
+	}
+
 	/// <summary>
 	/// Wczytuje stan gry podczas przechodzenia między widokami.
 	/// </summary>

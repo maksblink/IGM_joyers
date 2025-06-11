@@ -14,6 +14,9 @@ namespace SketchyGame.scenes.SketchPad;
 /// </summary>
 [GodotClassName("SketchPadExportTool")]
 public partial class SketchPadExportTool : Node {
+    [Signal]
+    public delegate void AddObjectToWorldEventHandler();
+    
     private MeshDataTool _mdt = new();
 
     [Export]
@@ -117,8 +120,9 @@ public partial class SketchPadExportTool : Node {
         // Add Object
         if (_objectsPaths.Keys.Contains(className))
         {
-            ObjectRenderQueue.Instance.PushSceneToRenderQueue(_objectsPaths[className]);
-            GetTree().ChangeSceneToFile("res://scenes/gui/main_view_new.tscn");
+            ObjectRenderQueue.Instance.PushAndAddSceneToRenderQueue(_objectsPaths[className]);
+            // GetTree().ChangeSceneToFile("res://scenes/gui/main_view_new.tscn");
+            EmitSignalAddObjectToWorld();
         }
         else
         {

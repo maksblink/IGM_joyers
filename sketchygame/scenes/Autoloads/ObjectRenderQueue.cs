@@ -61,6 +61,10 @@ public partial class ObjectRenderQueue : Node {
         _renderQueue.Enqueue(node);
     }
 
+    public void PushAndAddSceneToRenderQueue(string scenePath) {
+        PushSceneToRenderQueue(scenePath);
+    }
+
     /// <summary>
     /// Dodaje i tworzy instancję węzła do _renderQueue.
     /// </summary>

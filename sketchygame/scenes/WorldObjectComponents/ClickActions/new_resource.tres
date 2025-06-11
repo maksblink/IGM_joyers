@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://ja7fbe6t5les"]
+
+[ext_resource type="Script" uid="uid://bcsfk3vancqy3" path="res://scenes/WorldObjectComponents/ClickActions/SoundOnClick.cs" id="1_7umle"]
+
+[resource]
+script = ExtResource("1_7umle")
+_audioStreamPlayer2DPath = ""
+_audioStreamWavs = Array[AudioStreamWAV]([])
+_mouseButton = 1
